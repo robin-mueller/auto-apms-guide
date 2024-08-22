@@ -25,5 +25,5 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/robin-mueller/px4-behavior' }
     ]
   },
-  base: '/repo/'
+  base: '/px4-behavior-docs/'
 })
