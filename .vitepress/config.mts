@@ -2,10 +2,12 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "PX4 Behavior Guide",
-  description: "Flexible behavior-based task management for automated systems integrating with PX4",
+  lang: 'en-US',
+  title: "Documentation",
+  description: "Flexible behavior-based task management for automated systems integrating with PX4.",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    logo: '/logo.png',
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Examples', link: '/markdown-examples' }
