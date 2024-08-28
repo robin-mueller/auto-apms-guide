@@ -4,17 +4,31 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'en-US',
   title: 'PX4 Behavior',
-  description: 'Flexible behavior-based task management for automated systems integrating with PX4.',
+  description: 'User Guide and Documentation for the PX4 Behavior package',
   base: '/px4-behavior-docs/',
+  cleanUrls: true,
+
+  head: [
+    ['link', { rel: 'icon', href: '/px4-behavior-docs/favicon.ico' }]
+  ],
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     siteTitle: false,
+    externalLinkIcon: true,
     logo: '/logo.png',
     nav: [
-      { text: 'API Reference', link: 'https://robin-mueller.github.io/px4-behavior' },
+      { text: 'User Guide', link: '/introduction/' },
+      { text: 'API Reference', link: 'https://robin-mueller.github.io/px4-behavior' }
     ],
-    
+
     sidebar: [
+      {
+        text: 'Introduction',
+        items: [
+          { text: 'What is PX4 Behavior?', link: '/introduction/' }
+        ]
+      },
       {
         text: 'Examples',
         items: [
@@ -36,6 +50,9 @@ export default defineConfig({
         timeStyle: 'short'
       }
     },
-    externalLinkIcon: true
+    footer: {
+      message: 'Released under the Apache-2.0 License.',
+      copyright: 'Copyright © 2024-present Robin Müller'
+    }
   }
 })

@@ -4,25 +4,25 @@ layout: home
 
 hero:
   name: PX4 Behavior
-  text: Behavior-based Task Management
-  tagline: For automated systems integrating with PX4 and ROS 2
+  text: User friendly Robotic Task Management
+  tagline: Automating Missions using PX4 and ROS 2
   image:
     src: /logo-wo-bg.png
     alt: PX4 Behavior
   actions:
     - theme: brand
-      text: GitHub
-      link: https://github.com/robin-mueller/px4-behavior
-    - theme: brand
+      text: User Guide
+      link: /introduction/
+    - theme: alt
       text: API Reference
       link: https://robin-mueller.github.io/px4-behavior
     - theme: alt
-      text: User Guide
-      link: /api-examples.md
+      text: GitHub
+      link: https://github.com/robin-mueller/px4-behavior
 
-# features:
-#   - title: Feature A
-#     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+features:
+  - title: Modular Framework
+    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 #   - title: Feature B
 #     details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
 #   - title: Feature C
