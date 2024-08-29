@@ -9,7 +9,8 @@ export default defineConfig({
   cleanUrls: true,
 
   head: [
-    ['link', { rel: 'icon', href: '/px4-behavior-docs/favicon.ico' }]
+    ['link', { rel: 'icon', href: '/px4-behavior-docs/favicon.ico' }],
+    ['meta', {name: 'google-site-verification', content: 'deYaqCwJq_6IydHhpWd_eiMjPjwJJ_yelf0aAgET3Ow'}]
   ],
 
   themeConfig: {

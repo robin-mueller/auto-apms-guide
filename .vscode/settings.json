@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///c%3A/Users/robin/Desktop/px4-behavior-docs/.github/workflows/deploy.yml"
+    }
+}
