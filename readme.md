@@ -1,4 +1,4 @@
-# Documentation and User Guide for PX4-Behavior
+# PX4 Behavior Documentation and User Guide
 
 [![Build Docs](https://github.com/robin-mueller/px4-behavior-docs/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/robin-mueller/px4-behavior-docs/deployments)
 
