@@ -5,7 +5,7 @@ layout: home
 hero:
   name: PX4 Behavior
   text: User-friendly Mission Management
-  tagline: Developing highly autonomated systems with PX4 and ROS 2
+  tagline: Developing highly automated systems using PX4 and ROS 2
   image:
     src: /logo-wo-bg.png
     alt: PX4 Behavior
