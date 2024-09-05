@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'en-US',
   title: 'PX4 Behavior',
-  description: 'User Guide and Documentation for the PX4 Behavior package',
+  description: 'A flexible behavior-based mission management framework for robotic applications relying on PX4 and ROS 2',
   base: '/px4-behavior-docs/',
 
   cleanUrls: true,
