@@ -7,12 +7,14 @@ export default defineConfig({
   description: 'A flexible behavior-based mission management framework for robotic applications relying on PX4 and ROS 2',
   base: '/px4-behavior-docs/',
 
-  cleanUrls: true,
-
   head: [
     ['link', { rel: 'icon', href: '/px4-behavior-docs/favicon.ico' }],
     ['meta', {name: 'google-site-verification', content: 'deYaqCwJq_6IydHhpWd_eiMjPjwJJ_yelf0aAgET3Ow'}]
   ],
+
+  srcExclude: ['**/readme.md', '**/README.md', '**/TODO.md'],
+
+  cleanUrls: true,
 
   sitemap: {
     hostname: 'https://robin-mueller.github.io/px4-behavior-docs/'
