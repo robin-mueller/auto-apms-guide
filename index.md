@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: User Guide
-      link: /introduction/
+      link: /welcome/
     - theme: alt
       text: API Reference
       link: https://robin-mueller.github.io/px4-behavior
