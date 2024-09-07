@@ -2,7 +2,7 @@
 
 Welcome developers and engineers! 🎉
 
-This is the user guide and documentation for the *PX4 Behavior* package. This website is currently under active development, so please be patient. There will be frequent updates in the coming months.
+This is the user guide and documentation for all the functionality included by the [*PX4 Behavior GitHub repository*](https://github.com/robin-mueller/px4-behavior). This website is currently under active development, so please be patient. There will be frequent updates in the coming months.
 
 ## What is PX4 Behavior?
 

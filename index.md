@@ -35,7 +35,7 @@ features:
     icon: 
       dark: /routing-dark.svg
       light: /routing-light.svg
-    details: Thanks to a model-based approach, behaviors can be created by visually arraning tasks 
+    details: Thanks to the model-based software design, behaviors can be created using a high level of abstraction
   - title: Extensible and Modular
     icon: 
       dark: /code-dark.svg
