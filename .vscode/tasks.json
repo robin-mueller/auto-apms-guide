@@ -15,7 +15,8 @@
             "detail": "Builds the HTML files",
             "type": "shell",
             "command": "npm run docs:build",
-            "problemMatcher": "$gcc"
+            "problemMatcher": "$gcc",
+            "group": "build"
         },
         {
             "label": "Launch Site Preview",
