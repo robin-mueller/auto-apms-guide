@@ -1,0 +1,31 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Launch Site Dev Server",
+            "detail": "Launches the website in development mode with fast reload",
+            "type": "shell",
+            "command": "npm run docs:dev",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Build Site",
+            "detail": "Builds the HTML files",
+            "type": "shell",
+            "command": "npm run docs:build",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "Launch Site Preview",
+            "detail": "Launches the website in preview mode",
+            "type": "shell",
+            "command": "npm run docs:preview",
+            "dependsOn": [
+                "Build Site"
+            ],
+            "problemMatcher": "$gcc"
+        }
+    ]
+}
