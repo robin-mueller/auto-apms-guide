@@ -1,6 +1,6 @@
-# PX4 Behavior Documentation and User Guide
+# AutoAPMS User Guide and Documentation
 
-[![Build Docs](https://github.com/robin-mueller/px4-behavior-docs/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/robin-mueller/px4-behavior-docs/deployments)
+[![Build Docs](https://github.com/robin-mueller/auto-apms-guide/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/robin-mueller/auto-apms-guide/deployments)
 
 
 The docs are powered by [VitePress](https://vitepress.dev/). The website is deployed by a GitHub action on every push to the `master` branch.

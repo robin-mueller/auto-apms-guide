@@ -5,7 +5,7 @@ export default defineConfig({
   lang: 'en-US',
   title: 'AutoAPMS',
   description: 'Smarter Missions with Safer Outcomes',
-  base: '/auto-apms/',
+  base: '/auto-apms-guide/',
 
   head: [
     // Favicon
