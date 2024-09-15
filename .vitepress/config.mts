@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'en-US',
   title: 'AutoAPMS',
-  description: 'Robotics Software Framework for Automated Action Planning and Mission Safeguarding (APMS) to enable fully autonomous operation. Works with ROS 2 and PX4 Autopilot.',
+  description: 'Robotics Software Framework for Automated Action Planning and Mission Safeguarding (APMS). Works with ROS 2 and PX4 Autopilot.',
   base: '/auto-apms-guide/',
 
   head: [

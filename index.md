@@ -6,7 +6,7 @@ titleTemplate: :title - Smarter Missions with Safer Outcomes
 hero:
   name: AutoAPMS
   text: Smarter Missions with Safer Outcomes
-  tagline: Automated Action Planning and Mission Safeguarding for highly automated robotic systems
+  tagline: Enabling fully autonomous Robotic Applications by introducing automated Action Planning and Mission Safeguarding (APMS)
   image:
     src: /logo/logo-wo-bg.png
   actions:
