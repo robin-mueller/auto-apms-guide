@@ -4,14 +4,14 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Launch Site Dev Server",
+            "label": "Launch auto-apms-guide dev server",
             "detail": "Launches the website in development mode with fast reload",
             "type": "shell",
             "command": "npm run docs:dev",
             "problemMatcher": "$gcc"
         },
         {
-            "label": "Build Site",
+            "label": "Build auto-apms-guide",
             "detail": "Builds the HTML files",
             "type": "shell",
             "command": "npm run docs:build",
@@ -19,12 +19,12 @@
             "group": "build"
         },
         {
-            "label": "Launch Site Preview",
+            "label": "Launch auto-apms-guide preview",
             "detail": "Launches the website in preview mode",
             "type": "shell",
             "command": "npm run docs:preview",
             "dependsOn": [
-                "Build Site"
+                "Build auto-apms-guide"
             ],
             "problemMatcher": "$gcc"
         }

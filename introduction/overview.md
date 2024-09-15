@@ -1,4 +1,4 @@
-# User Guide and Documentation
+# User Guide
 
 Welcome developers and engineers! 🎉
 
