@@ -26,12 +26,19 @@ export default defineConfig({
     ['meta', { name: 'msapplication-TileColor', content: '#74c7c7' }],
     ['meta', { name: 'msapplication-TileImage', content: '/auto-apms-guide/ms-icon-144x144.png' }],
     ['meta', { name: 'theme-color', content: '#74c7c7' }],
+    ['meta', { property: 'og:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'en' }],
     ['meta', { property: 'og:title', content: 'AutoAPMS - Smarter Missions with Safer Outcomes' }],
     ['meta', { property: 'og:site_name', content: 'AutoAPMS' }],
-    ['meta', { property: 'og:image', content: 'https://robin-mueller.github.io/auto-apms-guide/favicon-96x96.png' }],
-    ['meta', { property: 'og:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
+    ['meta', { property: 'og:image', content: 'https://robin-mueller.github.io/auto-apms-guide/logo/logo-og.png' }],
+    ['meta', { property: 'og:image:width', content: '1306' }],
+    ['meta', { property: 'og:image:height', content: '910' }],
+    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+    ['meta', { property: 'twitter:domain', content: 'robin-mueller.github.io' }],
+    ['meta', { property: 'twitter:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
+    ['meta', { name: 'twitter:title', content: 'AutoAPMS - Smarter Missions with Safer Outcomes' }],
+    ['meta', { name: 'twitter:image', content: 'https://robin-mueller.github.io/auto-apms-guide/logo/logo-og.png' }],
 
     // Google Search Console
     ['meta', { name: 'google-site-verification', content: 'deYaqCwJq_6IydHhpWd_eiMjPjwJJ_yelf0aAgET3Ow' }]
@@ -60,7 +67,7 @@ export default defineConfig({
         text: 'Introduction',
         items: [
           { text: 'Overview', link: '/introduction/overview' },
-          { text: 'Getting started', 'link': '/introduction/getting-started'}
+          { text: 'Getting started', 'link': '/introduction/getting-started' }
         ]
       },
     ],
