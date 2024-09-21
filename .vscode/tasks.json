@@ -7,14 +7,14 @@
             "label": "Launch auto-apms-guide dev server",
             "detail": "Launches the website in development mode with fast reload",
             "type": "shell",
-            "command": "npm run docs:dev",
+            "command": "npm run dev",
             "problemMatcher": "$gcc"
         },
         {
             "label": "Build auto-apms-guide",
             "detail": "Builds the HTML files",
             "type": "shell",
-            "command": "npm run docs:build",
+            "command": "npm run build",
             "problemMatcher": "$gcc",
             "group": "build"
         },
@@ -22,7 +22,7 @@
             "label": "Launch auto-apms-guide preview",
             "detail": "Launches the website in preview mode",
             "type": "shell",
-            "command": "npm run docs:preview",
+            "command": "npm run preview",
             "dependsOn": [
                 "Build auto-apms-guide"
             ],

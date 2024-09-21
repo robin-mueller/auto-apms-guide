@@ -1,8 +1,8 @@
 :root {
-    --vp-c-brand-1: #44c0c0;
-    --vp-c-brand-2: #84d1d1;
-    --vp-c-brand-3: #65bbbb;
-    --vp-c-brand-soft: rgba(119, 224, 224, 0.14);
+    --vp-c-brand-1: #37b6b6;
+    --vp-c-brand-2: #59c6c6;
+    --vp-c-brand-3: #369e9e;
+    --vp-c-brand-soft: rgba(116, 199, 199, 0.14);
 
     --vp-home-hero-name-color: transparent;
     --vp-home-hero-name-background: -webkit-linear-gradient(140deg, var(--vp-c-brand-3), #c77474);
