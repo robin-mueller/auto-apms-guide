@@ -1,4 +1,4 @@
-# AutoAPMS User Guide and Documentation
+# AutoAPMS User Guide
 
 [![Build Docs](https://github.com/robin-mueller/auto-apms-guide/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/robin-mueller/auto-apms-guide/deployments)
 

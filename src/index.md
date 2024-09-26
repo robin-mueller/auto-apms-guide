@@ -23,19 +23,19 @@ hero:
 features:
   - title: Compatible with PX4 Autopilot
     icon: 
-      src: /image/drone-light.svg
+      src: /drone-light.svg
     details: This software framework has been designed for safeguarding missions executed by unmanned systems running PX4
   - title: Leveraging modern ROS 2
     icon: 
-      src: /image/cpu-light.svg
+      src: /cpu-light.svg
     details: Real-time processes are managed by the state-of-the-art ROS 2 middleware
   - title: Comprehensible Task Planning
     icon: 
-      src: /image/routing-light.svg
+      src: /routing-light.svg
     details: Thanks to the behavior-based software design, actions or tasks can be created using a high level of abstraction
   - title: Extensible and Modular
     icon: 
-      src: /image/code-light.svg
+      src: /code-light.svg
     details: Develop your own tasks and control flow to create any kind of behavior you'd like
 ---
 

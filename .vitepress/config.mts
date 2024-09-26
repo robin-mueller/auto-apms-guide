@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'en-US',
   title: 'AutoAPMS',
-  description: 'A Software Framework for Automated Action Planning and Mission Safeguarding in Robotics. Works with ROS 2 and PX4 Autopilot.',
+  description: 'A Software Framework for Automated (Auto) Action Planning and Mission Safeguarding (APMS) in Robotics. Works with ROS 2 and PX4 Autopilot.',
   base: '/auto-apms-guide/',
 
   head: [
@@ -59,17 +59,28 @@ export default defineConfig({
     externalLinkIcon: true,
     logo: '/logo/favicon-96x96.png',
     nav: [
-      { text: 'User Guide', link: '/overview' },
+      { text: 'User Guide', link: '/overview', activeMatch: '/\\S' },
       { text: 'API Reference', link: 'https://robin-mueller.github.io/auto-apms' }
     ],
+
+    search: {
+      provider: "local",
+    },
 
     sidebar: [
       {
         text: 'Introduction',
         items: [
           { text: 'Overview', link: '/overview' },
-          { text: 'Installation', 'link': '/installation' },
-          { text: 'Getting started', 'link': '/getting-started' }
+          {
+            text: 'Getting started',
+            collapsed: true,
+            items: [
+              { text: 'Build AutoAPMS', link: '/build-auto-apms' },
+              { text: 'PX4 Simulation', link: '/px4-simulation' },
+              { text: 'Additional Software', link: '/additional-software' }
+            ]
+          }
         ]
       },
     ],
