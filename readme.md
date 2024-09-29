@@ -8,9 +8,9 @@ The docs are powered by [VitePress](https://vitepress.dev/). The website is depl
 ## Setup
 Install [Node.js](https://nodejs.org/en). We recommend the latest LTS version (as for now it's 20). Here is how to do it on Ubuntu:
 
-```bash
+```sh
 # Setup the local Ubuntu repository
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E sh -
 
 # Install Node.js
 sudo apt-get install nodejs -y

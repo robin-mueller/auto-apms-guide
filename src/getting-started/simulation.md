@@ -1,4 +1,8 @@
-# PX4 Simulation Stack
+---
+order: 10
+---
+
+# Simulation
 For developing missions for UASs using [PX4 Autopilot](https://github.com/PX4/PX4-Autopilot), it is useful to set up the simulation environment provided by the software stack. For that, you need to download the resources introduced in the following sections.
 
 > [!TIP]
@@ -6,7 +10,7 @@ For developing missions for UASs using [PX4 Autopilot](https://github.com/PX4/PX
 
 ## PX4 Autopilot
 The simulation module for PX4 comes packaged with the source code. AutoAPMS requires at least [v1.15.0](https://github.com/PX4/PX4-Autopilot/releases/tag/v1.15.0).
-```bash
+```sh
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
 
 # Checkout specific version/branch and update submodules
@@ -14,10 +18,10 @@ PX4_VERSION=v1.15.0
 (cd ./PX4-Autopilot && git checkout $PX4_VERSION && make submodulesclean)
 
 # Install PX4 Autopilot dependencies on current system
-bash ./PX4-Autopilot/Tools/setup/ubuntu.sh
+sh ./PX4-Autopilot/Tools/setup/ubuntu.sh
 ```
 If you ever find yourself switching revisions, you have to follow the steps below to cleanly update the PX4 source code:
-```bash
+```sh
 cd ./PX4-Autopilot
 make clean
 make distclean
@@ -38,11 +42,11 @@ microxrcedds_agent:
 > ROS 2 Humble doesn't support newer versions than 2.4.2 due to the fact that it only comes with Fast CDR 1.0.x.
 
 As soon as the source code is available in your ROS workspace, you can build the package with `colcon`:
-```bash
+```sh
 colcon build --packages-select microxrcedds_agent
 ```
 Afterwards, you should be able to connect to the Micro XRCE-DDS client running on the simulator:
-```bash
+```sh
 MicroXRCEAgent udp4 -p 8888
 ```
 

@@ -1,4 +1,15 @@
 import { defineConfig } from 'vitepress'
+import { generateSidebar } from 'vitepress-sidebar'
+
+const vitepressSidebarOptions = {
+  documentRootPath: 'src',
+  useFolderLinkFromIndexFile: true,
+  useFolderTitleFromIndexFile: true,
+  useTitleFromFileHeading: true,
+  useTitleFromFrontmatter: true,
+  collapseDepth: 2,
+  sortMenusByFrontmatterOrder: true
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -58,35 +69,22 @@ export default defineConfig({
     siteTitle: 'AutoAPMS',
     externalLinkIcon: true,
     logo: '/logo/favicon-96x96.png',
-    nav: [
-      { text: 'User Guide', link: '/overview', activeMatch: '/\\S' },
-      { text: 'API Reference', link: 'https://robin-mueller.github.io/auto-apms' }
-    ],
 
     search: {
       provider: "local",
     },
 
-    sidebar: [
-      {
-        text: 'Introduction',
-        items: [
-          { text: 'Overview', link: '/overview' },
-          {
-            text: 'Getting started',
-            collapsed: true,
-            items: [
-              { text: 'Build AutoAPMS', link: '/build-auto-apms' },
-              { text: 'PX4 Simulation', link: '/px4-simulation' },
-              { text: 'Additional Software', link: '/additional-software' }
-            ]
-          }
-        ]
-      },
+    nav: [
+      { text: 'User Guide', link: '/intro', activeMatch: '/\\S' },
+      { text: 'API Reference', link: 'https://robin-mueller.github.io/auto-apms' }
     ],
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/robin-mueller/auto-apms' }
     ],
+
+    sidebar: generateSidebar(vitepressSidebarOptions),
+
     editLink: {
       pattern: 'https://github.com/robin-mueller/auto-apms-guide/blob/master/src/:path'
     },
