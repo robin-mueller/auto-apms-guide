@@ -1,12 +1,12 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
-titleTemplate: :title - Smarter Missions with Safer Outcomes
+titleTemplate: :title - Resilient Robot Mission Management
 
 hero:
   name: AutoAPMS
-  text: Smarter Missions with Safer Outcomes
-  tagline: Enabling resilient robotics with automated action planning and mission safeguarding
+  text: Resilient Robot Mission Management
+  tagline: Smarter Missions with Safer Outcomes
   image:
     src: /logo/logo-wo-bg.png
   actions:

@@ -15,8 +15,8 @@ curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E sh -
 # Install Node.js
 sudo apt-get install nodejs -y
 
-# Install VitePress module (Run in auto-apms-guide directory)
-npm add -D vitepress
+# Install dependencies specified in package.json (Run in auto-apms-guide directory)
+npm install
 ```
 
 For further information, visit the [quickstart guide](https://vitepress.dev/guide/getting-started) for setting up VitePress. 

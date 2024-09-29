@@ -15,7 +15,7 @@ const vitepressSidebarOptions = {
 export default defineConfig({
   lang: 'en-US',
   title: 'AutoAPMS',
-  description: 'A Software Framework for Automated (Auto) Action Planning and Mission Safeguarding (APMS) in Robotics. Works with ROS 2 and PX4 Autopilot.',
+  description: 'An open-source software framework for robot mission planning and safeguarding. Works with ROS 2 and PX4 Autopilot.',
   base: '/auto-apms-guide/',
 
   head: [
