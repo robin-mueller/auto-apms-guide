@@ -8,7 +8,8 @@ hero:
   text: Resilient Robot Mission Management
   tagline: Smarter Missions with Safer Outcomes
   image:
-    src: /logo/logo-wo-bg.png
+    src: /logo/main_page_logo.png
+    width: 250
   actions:
     - theme: brand
       text: User Guide
@@ -38,4 +39,3 @@ features:
       src: /code-light.svg
     details: Develop your own tasks and control flow to create any kind of behavior you'd like
 ---
-

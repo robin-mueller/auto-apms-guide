@@ -38,7 +38,7 @@ microxrcedds_agent:
     url: https://github.com/eProsima/Micro-XRCE-DDS-Agent.git
     version: v2.4.2
 ```
-> [!IMPORTANT]
+> [!NOTE]
 > ROS 2 Humble doesn't support newer versions than 2.4.2 due to the fact that it only comes with Fast CDR 1.0.x.
 
 As soon as the source code is available in your ROS workspace, you can build the package with `colcon`:
