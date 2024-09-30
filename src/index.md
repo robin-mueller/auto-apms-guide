@@ -9,7 +9,7 @@ hero:
   tagline: Smarter Missions with Safer Outcomes
   image:
     src: /logo/mainpage-icon.png
-    width: 250
+    width: 230
   actions:
     - theme: brand
       text: User Guide
