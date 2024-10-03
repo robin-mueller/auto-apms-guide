@@ -33,10 +33,7 @@
     }
 }
 
-/* For indenting sidebar entries from the first level (default is from second level) */
-/* .group:has([role='button']) .VPSidebarItem.level-0 .items {
-    padding-left: 16px !important;
-    border-left: 1px solid var(--vp-c-divider);
-    border-radius: 2px;
-    transition: background-color 0.25s;
-} */
+/* Remove soft background from icon in article component on home page */
+article > .icon {
+    background-color: transparent !important;
+}

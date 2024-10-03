@@ -8,7 +8,8 @@ const vitepressSidebarOptions = {
   useTitleFromFileHeading: true,
   useTitleFromFrontmatter: true,
   collapseDepth: 2,
-  sortMenusByFrontmatterOrder: true
+  sortMenusByFrontmatterOrder: true,
+  frontmatterTitleFieldName: 'sidebar'
 }
 
 // https://vitepress.dev/reference/site-config
