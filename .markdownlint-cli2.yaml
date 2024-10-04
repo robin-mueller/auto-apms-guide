@@ -1,0 +1,4 @@
+config:
+  line-length: false
+  single-title:
+    front_matter_title: ""  # Allow to specify 'title' in frontmatter AND a h1 heading
