@@ -1,4 +1,4 @@
 ---
-order: 20
+order: 10
 ---
 # Creating Behaviors

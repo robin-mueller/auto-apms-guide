@@ -7,7 +7,7 @@ const vitepressSidebarOptions = {
   useFolderTitleFromIndexFile: true,
   useTitleFromFileHeading: true,
   useTitleFromFrontmatter: true,
-  collapseDepth: 2,
+  collapsed: true,
   sortMenusByFrontmatterOrder: true,
   frontmatterTitleFieldName: 'sidebar'
 }

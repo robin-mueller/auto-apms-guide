@@ -14,10 +14,10 @@ This is the official user guide and documentation for the open-source repository
 
 You want to know more about the purpose of this framework and how to get started? Check out the [next pages](./why-autoapms) in this section. Otherwise navigate to one of the following chapters:
 
-- [Installation](../installation/) - Intallation guide for different robot hardware.
+- [Installation](../installation/) - Installation guide for the development environment and different robot hardware.
+
+- [Concepts](../concepts/) - Learn more about design decisions and theoretic concepts.
 
 - [Usage](../usage/) - Learn how to configure and execute missions with this framework.
-
-- [Development](../development/) - Learn how to extend or customize the existing concepts specifically for your application.
 
 - [Tutorials](../tutorials/) - Tutorials and examples for common use cases.
