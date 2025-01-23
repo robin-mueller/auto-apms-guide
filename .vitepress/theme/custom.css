@@ -3,7 +3,7 @@
     --c-secondary-brand: #f02a6c;
 
     --vp-c-brand-1: #03b9da;
-    --vp-c-brand-2: #12a7bb;
+    --vp-c-brand-2: #067ca0;
     --vp-c-brand-3: #13bbd1;
     --vp-c-brand-soft: rgb(5, 184, 207, 0.14);
 
@@ -15,9 +15,9 @@
 }
 
 .dark {
-    --vp-c-brand-1: #29d3d9;
-    --vp-c-brand-2: #05b8cf;
-    --vp-c-brand-3: #0c9abd;
+    --vp-c-brand-1: #2fcce0;
+    --vp-c-brand-2: #198ca0;
+    --vp-c-brand-3: #1ca5bd;
     --vp-c-brand-soft: rgb(5, 184, 207, 0.16);
 }
 
@@ -34,6 +34,6 @@
 }
 
 /* Remove soft background from icon in article component on home page */
-article > .icon {
+article>.icon {
     background-color: transparent !important;
 }

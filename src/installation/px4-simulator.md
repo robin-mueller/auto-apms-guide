@@ -2,7 +2,7 @@
 order: 10
 ---
 
-# Simulation
+# PX4 Simulator
 
 For developing missions for UASs using [PX4 Autopilot](https://github.com/PX4/PX4-Autopilot), it is useful to set up the simulation environment provided by the software stack. For that, you need to download the resources introduced in the following sections.
 

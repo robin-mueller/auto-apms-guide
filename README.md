@@ -1,16 +1,16 @@
 # AutoAPMS User Guide
 
-[![Build Docs](https://github.com/robin-mueller/auto-apms-guide/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/robin-mueller/auto-apms-guide/deployments)
+[![Deploy](https://github.com/robin-mueller/auto-apms-guide/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/robin-mueller/auto-apms-guide/deployments)
 
 The docs are powered by [VitePress](https://vitepress.dev/). The website is deployed by a GitHub action on every push to the `master` branch.
 
 ## Setup
 
-Install [Node.js](https://nodejs.org/en). We recommend the latest LTS version (as for now it's 20). Here is how to do it on Ubuntu:
+Install [Node.js](https://nodejs.org/en). We recommend the latest LTS version (as for now it's 22). Here is how to do it on Ubuntu:
 
 ```sh
 # Setup the local Ubuntu repository
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E sh -
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E sh -
 
 # Install Node.js
 sudo apt-get install nodejs -y
