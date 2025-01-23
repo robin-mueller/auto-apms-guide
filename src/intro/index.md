@@ -14,7 +14,7 @@ Welcome developers and engineers! 🎉
 
 This is the official user guide and documentation for the open-source repository AutoAPMS. The name is short for Automated Action Planning and Mission Safeguarding and the vision for this project is to provide an innovative and easily adaptable software framework for **automated and resilient robot mission management**.
 
-You want to know more about the purpose of this framework and how to get started? Check out the [next page](./why-autoapms). Otherwise navigate to one of the following chapters:
+You want to know more about the purpose of this framework and how to get started? Check out the [next page](./why-autoapms.md). Otherwise navigate to one of the following chapters:
 
 - [Installation](../installation/) - Installation guide for the development environment and different robot hardware.
 

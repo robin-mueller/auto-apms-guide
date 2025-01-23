@@ -7,7 +7,7 @@ order: 10
 For developing missions for UASs using [PX4 Autopilot](https://github.com/PX4/PX4-Autopilot), it is useful to set up the simulation environment provided by the software stack. For that, you need to download the resources introduced in the following sections.
 
 > [!TIP]
-> We also recommend to check out the VS Code tasks related to launching a simulation which are available with the [VS Code workspace template](./additional-software#visual-studio-code-workspace).
+> We also recommend to check out the VS Code tasks related to launching a simulation which are available with the [VS Code workspace template](./additional-software.md#visual-studio-code-workspace).
 
 ## PX4 Autopilot
 

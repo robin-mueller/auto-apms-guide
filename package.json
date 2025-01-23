@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "markdownlint-cli2": "^0.14.0",
+    "markdown-link-check": "^3.13.6",
     "vitepress": "^1.6.0",
     "vitepress-sidebar": "^1.27.1",
     "vitepress-plugin-group-icons": "^1.3.5",
@@ -10,7 +11,7 @@
     "dev": "vitepress dev",
     "build": "vitepress build",
     "preview": "vitepress preview",
-    "lint": "markdownlint-cli2 '**/*.md' '#node_modules'",
-    "lint-fix": "markdownlint-cli2 '**/*.md' '#node_modules' --fix"
+    "lint": "markdownlint-cli2 './src/*.md' && markdown-link-check './src' --progress",
+    "lint-fix": "markdownlint-cli2 './src/*.md' --fix"
   }
 }
