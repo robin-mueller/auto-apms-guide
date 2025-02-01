@@ -1,21 +1,24 @@
 import { defineConfig } from 'vitepress'
-import { generateSidebar } from 'vitepress-sidebar'
+import { withSidebar } from 'vitepress-sidebar';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 
-const vitepressSidebarOptions = {
+const vitePressSidebarOptions = {
     documentRootPath: 'src',
     useFolderLinkFromIndexFile: true,
     useFolderTitleFromIndexFile: true,
     useTitleFromFileHeading: true,
     useTitleFromFrontmatter: true,
-    collapsed: true,
+    collapseDepth: 2,
     sortMenusByFrontmatterOrder: true,
-    frontmatterTitleFieldName: 'sidebar'
+    manualSortFileNameByPriority: ['introduction', 'installation', 'usage', 'reference', 'fundamental-workflow.md', 'concepts', 'tutorials'],
+    frontmatterTitleFieldName: 'sidebar',
+    capitalizeFirst: true,
+    hyphenToSpace: true,
+    excludePattern: ['create_node_reference_markdown_output.md']
 }
 
-// https://vitepress.dev/reference/site-config
-export default defineConfig({
+const vitePressOptions = {
     lang: 'en-US',
     title: 'AutoAPMS',
     description: 'An open-source software framework for robot mission planning and safeguarding. Works with ROS 2 and PX4 Autopilot.',
@@ -37,9 +40,9 @@ export default defineConfig({
         ['link', { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/auto-apms-guide/logo/favicon-96x96.png' }],
         ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/auto-apms-guide/logo/favicon-16x16.png' }],
         ['link', { rel: 'manifest', href: '/auto-apms-guide/logo/manifest.json' }],
-        ['meta', { name: 'msapplication-TileColor', content: '#05b8cf' }],
+        ['meta', { name: 'msapplication-TileColor', content: '#1ca5bd' }],
         ['meta', { name: 'msapplication-TileImage', content: '/auto-apms-guide/logo/ms-icon-144x144.png' }],
-        ['meta', { name: 'theme-color', content: '#05b8cf' }],
+        ['meta', { name: 'theme-color', content: '#1ca5bd' }],
         ['meta', { property: 'og:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:locale', content: 'en' }],
@@ -59,7 +62,7 @@ export default defineConfig({
     ],
 
     srcDir: 'src',
-    srcExclude: ['**/readme.md', '**/README.md', '**/TODO.md'],
+    srcExclude: ['**/readme.md', '**/README.md', '**/TODO.md', '**/create_node_reference_markdown_output.md'],
 
     cleanUrls: true,
 
@@ -86,7 +89,6 @@ export default defineConfig({
             { icon: 'github', link: 'https://github.com/robin-mueller/auto-apms' }
         ],
 
-        sidebar: generateSidebar(vitepressSidebarOptions),
         outline: [2, 3],
 
         editLink: {
@@ -131,4 +133,7 @@ export default defineConfig({
             })
         ],
     }
-})
+}
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig(withSidebar(vitePressOptions, vitePressSidebarOptions))

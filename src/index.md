@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: User Guide
-      link: /intro
+      link: /introduction/about
     - theme: alt
       text: API Documentation
       link: https://robin-mueller.github.io/auto-apms

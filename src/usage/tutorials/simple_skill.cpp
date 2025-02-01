@@ -1,10 +1,10 @@
 // #region server
-#include "auto_apms_interfaces/action/example_simple_skill.hpp"
+#include "my_package_interfaces/action/example_simple_skill.hpp"
 #include "auto_apms_util/action_wrapper.hpp"
 
 namespace my_namespace 
 {
-using SimpleSkillActionType = auto_apms_interfaces::action::ExampleSimpleSkill;
+using SimpleSkillActionType = my_package_interfaces::action::ExampleSimpleSkill;
 
 class SimpleSkillServer : public auto_apms_util::ActionWrapper<SimpleSkillActionType>
 {
@@ -46,12 +46,12 @@ RCLCPP_COMPONENTS_REGISTER_NODE(my_namespace::SimpleSkillServer)
 // #endregion server
 
 // #region client
-#include "auto_apms_interfaces/action/example_simple_skill.hpp"
+#include "my_package_interfaces/action/example_simple_skill.hpp"
 #include "auto_apms_behavior_tree/node.hpp"
 
 namespace my_namespace
 {
-using SimpleSkillActionType = auto_apms_interfaces::action::ExampleSimpleSkill;
+using SimpleSkillActionType = my_package_interfaces::action::ExampleSimpleSkill;
 
 class SimpleSkillClient : public auto_apms_behavior_tree::core::RosActionNode<SimpleSkillActionType>
 {

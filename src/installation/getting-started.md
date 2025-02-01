@@ -1,9 +1,9 @@
 ---
-order: 10
+order: 0
 ---
-# Installation
+# Getting Started
 
-Learn how to download and install the software and get started with your first simulation. The subsections introduce you to additional software that you might be interested in when developing with AutoAPMS.
+Learn how to download and install the software and get started with your first simulation. Also make sure to check out the other sections! They introduce you to additional software that you might be interested in when developing with AutoAPMS.
 
 ## Hardware Compatibility
 
@@ -56,7 +56,7 @@ ros2 launch auto_apms_examples pyrobosim_hogwarts_launch.py
 # Press Ctrl+C to quit
 ```
 
-The actions of each robot you've seen are executed using behavior trees. This functionality is provided by the `auto_apms_behavior_tree` package. However, each robot is acting independently and they are note aware of their environment. Yet.
+The actions of each robot you've seen are executed using behavior trees. This functionality is provided by the `auto_apms_behavior_tree` package. However, each robot is acting independently and they are not aware of their environment. Yet.
 
 Now, we want to make the robots more intelligent and allow them to dynamically adjust their behavior when they encounter other robots inside one of the hallways. This is realized by implementing fallback mechanisms introduced by the `auto_apms_mission` package. To achieve that, you simply have to specify the following launch argument.
 
