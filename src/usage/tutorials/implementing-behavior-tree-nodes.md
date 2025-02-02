@@ -207,7 +207,7 @@ You may also use node manifest resource identities when specifying the `NODE_MAN
 
     The identities are formatted like `<package_name>::<metadata_id>` and refer to specific, previously installed node manifests available with the resource index of your ROS 2 workspace.
 
-If your providing a resource identity but no node manifest associated with `<metadata_id>` has been registered by the ROS 2 package `<package_name>`, CMake throws an error at configuration time. We showed how the `<metadata_id>` is determined in the table above.
+If you're providing a resource identity but no node manifest associated with `<metadata_id>` has been registered by the ROS 2 package `<package_name>`, CMake throws an error at configuration time.
 
 So after successfully [adding node manifests](#adding-node-manifests) one may use resource identities to populate the `NODE_MANIFEST` argument as shown in the following snippet:
 

@@ -1,7 +1,7 @@
 ---
 order: 30
 ---
-# Deploying a Behavior
+# Deploying Behaviors
 
 In this tutorial we're going to describe everything that you need to know when using AutoAPMS's [behavior tree executor](../concepts/behavior-tree-executor.md).
 

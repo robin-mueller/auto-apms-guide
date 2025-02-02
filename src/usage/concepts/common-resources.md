@@ -99,6 +99,35 @@ doc.mergeResource("my_package::my_behavior_tree::MyTreeName");
 
 ## Mission Configurations
 
+```yaml [mission_config.yaml]
+# Executed once on startup
+BRINGUP:
+  - <tree_resource_identity>
+  # ...
+
+# Nominal mission behaviors executed subsequently
+MISSION:
+  - <tree_resource_identity>
+  # ...
+
+# Contingency behaviors. Mission will be resumed after monitor returns FAILURE
+CONTINGENCY:
+  <tree_resource_identity>: <tree_resource_identity>  # Monitor_ID: Handler_ID
+  # ...
+
+# Emergency behaviors. Mission will be aborted when finished
+EMERGENCY:
+  <tree_resource_identity>: <tree_resource_identity>
+  # ...
+
+# Executed after nominal mission and potentially emergency handlers
+SHUTDOWN:
+  - <tree_resource_identity>
+  # ...
+```
+
+All of the shown keys except `MISSION` are optional.
+
 ::: info Learn more 🎓
 Visit the tutorial [Executing Missions: Configuring a Mission](../tutorials/executing-missions.md#configuring-a-mission) for more information about how mission configurations are created.
 :::
@@ -116,7 +145,7 @@ This is the full signature of a mission configuration's resource identity:
 
 ## Behavior Tree Build Handlers
 
-Behavior tree build handlers allow to integrate customized algorithms for creating behavior trees with AutoAPMS's [behavior tree executor](./behavior-tree-executor.md). They are used to define rules for answering the "build requests" formulated when [deploying a behavior](../tutorials/deploying-a-behavior.md).
+Behavior tree build handlers allow to integrate customized algorithms for creating behavior trees with AutoAPMS's [behavior tree executor](./behavior-tree-executor.md). They are used to define rules for answering the "build requests" formulated when [deploying behaviors](../tutorials/deploying-behaviors.md).
 
 AutoAPMS provides the following commonly used build handlers out of the box:
 
@@ -200,8 +229,8 @@ This is the full signature of a node manifest's resource identity:
 
 | How is `<metadata_id>` determined? | Rule |
 | :---: | :--- |
-| [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#auto-apms-behavior-tree-declare-nodes) | The same as the associated shared library target (first positional argument `target`). |
-| [`auto_apms_behavior_tree_declare_trees`](../../reference/cmake.md#auto-apms-behavior-tree-declare-trees) | File stem(s) of the behavior tree XML file(s) under the `paths` argument. |
+| [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#declare-nodes) | The same as the associated shared library target (first positional argument `target`). |
+| [`auto_apms_behavior_tree_declare_trees`](../../reference/cmake.md#declare-trees) | File stem(s) of the behavior tree XML file(s) under the `paths` argument. |
 
 #### Example
 
@@ -256,13 +285,50 @@ NodeManifest manifest2 = NodeManifest::fromResourceIdentity("my_package::my_beha
 
 ## Behavior Tree Node Models
 
-- Node model files for Groot2, how to use them
-- Node model classes for the builder API
-- Pitfalls when trying to load a model file (if possible, should be generated when declaring nodes instead of trees)
+Behavior tree node models are represented in two ways:
+
+- By a XML file usually created with `BT::writeTreeNodesModelXML`
+- By C++ classes representing individual nodes defined inside a `.hpp` file
+
+Those resources are automatically generated when the `NODE_MANIFEST` keyword argument of [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#declare-nodes) or [`auto_apms_behavior_tree_declare_trees`](../../reference/cmake.md#declare-trees) is given.
 
 ### Node Model XML File
 
+Typically used when [building behavior trees graphically](../tutorials/building-behavior-trees.md#graphical-approach).
+
+The XML file holds metadata for multiple nodes. This data enables to determine the type of each node as well as the names and types of the associated data ports. After the ROS 2 package was installed, the file can be found under
+
+::: tabs
+
+=== Normal Install
+
+`install`/`share`/`<my_package>`/`auto_apms`/`auto_apms_behavior_tree_core`/`metadata`
+
+=== Merge Install
+
+`install`/`<my_package>`/`share`/`<my_package>`/`auto_apms`/`auto_apms_behavior_tree_core`/`metadata`
+
+:::
+
+The XML schema looks something like this:
+
+```xml
+<root BTCPP_format="4">
+    <TreeNodesModel>
+        <NodeType ID="NodeRegistrationName">
+            <input_port name="port_name" type="std::string">Port description.</input_port>
+            <output_port name="another_port_name" type="bool">Port description.</input_port>
+        </NodeType>
+        <!-- ... -->
+    </TreeNodesModel>
+</root>
+```
+
 ### C++ Node Model Header
+
+Typically used when [building behavior trees programmatically](../tutorials/building-behavior-trees.md#programmatic-approach).
+
+The C++ node models can be passed as template arguments to specific methods of `TreeDocument`. They implement an API that complies with the node's entry in the node model XML file.
 
 ::: info Learn more 🎓
 Check out the usage example [Using `TreeDocument`: Inserting custom nodes](../tutorials/building-behavior-trees.md#usage-examples) for more information about how node models are created and may be used in a C++ source file.

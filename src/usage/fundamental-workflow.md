@@ -5,7 +5,7 @@ order: 0
 
 Users of AutoAPMS immensely benefit from adopting a unique system architecture and flexible concepts for developing robotic applications. We advocate the following design for real-time systems:
 
-![AutoAPMS System Architecture](./system-architecture.png)
+![AutoAPMS System Architecture](./system-architecture.gif)
 
 AutoAPMS's behavior engine applies the client-server model. This requires that there are robotic skills/capabilities offering the functionality required for achieving the user-defined goals. Thus, we distinguish between AutoAPMS's behavior domain and the application specific user domain. It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality. We utilize [behavior trees](./concepts/behavior-trees.md) to create clients based on the underlying interfaces and orchestrate missions.
 
@@ -21,7 +21,7 @@ When developing robotic applications according to the presented system architect
 
 3. **Execute the behavior tree** you created to realize your application.
 
-    🎓 [How to deploy a behavior](./tutorials/deploying-a-behavior.md)
+    🎓 [How to deploy a behavior](./tutorials/deploying-behaviors.md)
 
 4. **Configure a mission** that defines fallback behaviors for hazardous events.
 

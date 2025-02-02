@@ -83,7 +83,7 @@ We recommend storing your behavior tree files under a directory called `config`.
 
 This registers the behavior tree with the resource index (we call it "declaring a tree") and enables you to easily locate the corresponding XML file at runtime. You can refer to a declared tree using for example `TreeDocument::mergeResource` which is demonstrated [below](#using-treedocument).
 
-A behavior tree resource can also be used to [deploy the corresponding behavior](./deploying-a-behavior.md) using the command line or a launch file.
+A behavior tree resource can also be used to [deploy the corresponding behavior](./deploying-behaviors.md) using the command line or a launch file.
 
 ## Programmatic Approach
 

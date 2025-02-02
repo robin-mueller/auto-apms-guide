@@ -3,7 +3,7 @@ order: 0
 ---
 # Getting Started
 
-Learn how to download and install the software and get started with your first simulation. Also make sure to check out the other sections! They introduce you to additional software that you might be interested in when developing with AutoAPMS.
+Learn how to download and install the software and get started with your first simulation. Also make sure to check out [additional software](./additional-software.md) that you might be interested in when developing with AutoAPMS.
 
 ## Hardware Compatibility
 
