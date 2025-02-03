@@ -3,6 +3,8 @@ order: 30
 ---
 # Mission Architecture
 
+Allowing users to easily configure mission by hand using a simple YAML format.
+
 - Three tier architecture
 - Model based, hybrid control
 
