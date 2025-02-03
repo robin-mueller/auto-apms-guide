@@ -17,13 +17,13 @@ With AutoAPMS you've found a flexible, ROS2-based solution for designing robotic
 
 AutoAPMS provides developers of real-time systems with the following key features:
 
-- Tools and methods for designing cooperative systems
+- Convenient resource management integrating deeply with CMake
 - Modular, plugin-based approach for implementing robotic skills/tasks
-- User-friendly task planning system adopting the behavior tree paradigm
-- Standardized, highly configurable behavior tree executor
-- Powerful behavior tree builder API
-- Automated contingency and emergency management system
-- Useful command line tools for running and orchestrating missions
+- User-friendly behavior design adopting the behavior tree paradigm
+- Flexible, highly configurable behavior executor
+- Powerful C++ behavior tree builder API
+- Straightforward contingency and emergency management concept
+- Standardized interfaces and command line tools for running and orchestrating the operation
 
 ## What makes it special?
 
