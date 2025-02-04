@@ -81,7 +81,7 @@ const vitePressOptions = {
         },
 
         nav: [
-            { text: 'User Guide', link: '/introduction/welcome', activeMatch: '/\\S' },
+            { text: 'User Guide', link: '/introduction/about', activeMatch: '/\\S' },
             { text: 'API Docs', link: 'https://robin-mueller.github.io/auto-apms' }
         ],
 
