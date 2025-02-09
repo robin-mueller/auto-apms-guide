@@ -398,7 +398,7 @@ The `SimpleSkillBuildHandler` must be added to a shared library and registered w
 :::
 
 ::: info What are Global Blackboard Parameters?
-This example behavior tree showcases a very useful concept introduced by AutoAPMS: **Global Blackboard Parameters**. They are accessed using the `bb.`/`@` prefix and allow us to adjust the behavior without rebuilding the entire tree, thus makes it reusable. This concept fuses [ROS 2 Parameters](https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html) with the [Global Blackboard Idiom](https://www.behaviortree.dev/docs/tutorial-advanced/tutorial_16_global_blackboard). This is one of the reasons why AutoAPMS's adaption of the behavior tree paradigm is very well integrated with ROS 2.
+This example behavior tree showcases a very useful concept introduced by AutoAPMS: [Global Blackboard Parameters](../concepts/behavior-tree-executor.md#global-blackboard). They are accessed using the `bb.`/`@` prefix and allow us to adjust the behavior without rebuilding the entire tree, thus makes it reusable. This is one of the reasons why AutoAPMS's adaption of the behavior tree paradigm is very well integrated with ROS 2.
 :::
 
 Congratulations! 🎉 You are now familiar with the general workflow of building behavior trees.

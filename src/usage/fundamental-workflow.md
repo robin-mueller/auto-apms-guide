@@ -7,7 +7,7 @@ Users of AutoAPMS immensely benefit from adopting a unique system architecture a
 
 ![AutoAPMS System Architecture](./system-architecture.gif)
 
-AutoAPMS's behavior engine applies the client-server model. This requires that there are robotic skills/capabilities offering the functionality required for achieving the user-defined goals. Thus, we distinguish between AutoAPMS's behavior domain and the application specific user domain. It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality. We utilize [behavior trees](./concepts/behavior-trees.md) to create clients based on the underlying interfaces and orchestrate missions.
+AutoAPMS's behavior engine applies the client-server model. It's necessary that the system provides robotic skills/capabilities offering certain functions for achieving user-defined goals. We distinguish between AutoAPMS's behavior domain and the application specific user domain. It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality. We utilize [behavior trees](./concepts/behavior-trees.md) to create clients based on the underlying interfaces and orchestrate missions.
 
 When developing robotic applications according to the presented system architecture, the user should stick to this fundamental workflow:
 
@@ -17,11 +17,11 @@ When developing robotic applications according to the presented system architect
 
 2. Assemble those nodes by building a **behavior tree**.
 
-    🎓 [How to builld behavior trees](./tutorials/building-behavior-trees.md)
+    🎓 [How to build behavior trees](./tutorials/building-behavior-trees.md)
 
 3. **Execute the behavior tree** you created to realize your application.
 
-    🎓 [How to deploy a behavior](./tutorials/deploying-behaviors.md)
+    🎓 [How to deploy behaviors](./tutorials/deploying-behaviors.md)
 
 4. **Configure a mission** that defines fallback behaviors for hazardous events.
 

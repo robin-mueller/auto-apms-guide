@@ -95,7 +95,7 @@ This architecture offers great flexibility because it allows the user to not jus
 
 ## Global Blackboard
 
-BehaviorTree.CPP allows behavior tree nodes to access the top level blackboard by prepending `@` to the respective entry name. This feature is known as the [global blackboard idiom](https://www.behaviortree.dev/docs/tutorial-advanced/tutorial_16_global_blackboard). We expose the global blackboard to the executor's parameters so that the user may manipulate entries of the global blackboard remotely.
+BehaviorTree.CPP allows behavior tree nodes to access the top level blackboard by prepending `@` to the respective entry name. This feature is known as the [global blackboard idiom](https://www.behaviortree.dev/docs/tutorial-advanced/tutorial_16_global_blackboard). We expose the global blackboard to the executor's [ROS 2 Parameters](https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html) so that the user may manipulate entries of the global blackboard remotely.
 
 Global blackboard parameter names must be formatted like `bb.<entry_name>`. The `bb` prefix indicates that the parameter refers to an entry of the global blackboard with name `<entry_name>`.
 
