@@ -148,7 +148,7 @@ auto_apms_behavior_tree_declare_nodes(simple_skill_nodes # [!code highlight:3]
 # Install shared libraries to the standard directory
 install(
     TARGETS
-    custom_nodes
+    simple_skill_nodes
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     RUNTIME DESTINATION bin
@@ -176,7 +176,7 @@ The node manifest for the behavior tree we're going to build looks like this:
 
 ```yaml [config/simple_skill_node_manifest.yaml]
 SimpleSkillActionNode:
-  class_name: auto_apms_examples::SimpleSkillClient
+  class_name: my_namespace::SimpleSkillClient
   port: simple_skill
 
 HasParameter:
