@@ -12,6 +12,7 @@ AutoAPMS is currently only available on **Linux**.
 | ROS 2 Version | OS | Status |
 | :-------------: | :-----------: | :-----------: |
 | [Humble Hawksbill](https://docs.ros.org/en/humble/index.html) | [Ubuntu 22.04 (Jammy Jellyfish)](https://releases.ubuntu.com/jammy/) | [![ROS 2 Humble Test](https://github.com/robin-mueller/auto-apms/actions/workflows/humble.yaml/badge.svg)](https://github.com/robin-mueller/auto-apms/actions/workflows/humble.yaml) |
+| [Jazzy Jalisco](https://docs.ros.org/en/jazzy/index.html) | [Ubuntu 24.04 (Noble Numbat)](https://releases.ubuntu.com/noble/) | [![ROS 2 Jazzy Test](https://github.com/robin-mueller/auto-apms/actions/workflows/jazzy.yaml/badge.svg)](https://github.com/robin-mueller/auto-apms/actions/workflows/jazzy.yaml) |
 
 ## Setting up the Workspace
 
@@ -41,7 +42,6 @@ Then, build and install all of the source packages up to `auto_apms_examples`.
 > We highly recommend building using the `symlink-install` option since AutoAPMS extensively utilizes XML and YAML resources. This option installs symbolic links to those non-compiled source files meaning that you don't need to rebuild again and again when you're for example tweaking a behavior tree document file. Instead, your changes take effect immediately and you just need to restart your application.
 
 ```bash
-source /opt/ros/humble/setup.bash
 colcon build --packages-up-to auto_apms_examples --symlink-install
 ```
 
