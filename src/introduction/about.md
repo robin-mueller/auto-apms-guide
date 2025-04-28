@@ -9,7 +9,7 @@ sidebar: About the User Guide
 
 Welcome developers, engineers and ROS 2 enthusiasts! 🎉
 
-This is the official user guide and documentation for the open-source repository **AutoAPMS**. The name is short for Automated Action Planning and Mission Safeguarding. This software provides a powerful and streamlined toolchain for developing user-defined robotic behaviors. This documentation shows you how to apply the provided functionality to create **highly automated and resilient missions**.
+This is the official user guide and documentation for the open-source repository **AutoAPMS**. The name is short for *Automated Action Planning and Management System*. This software provides a powerful and streamlined toolchain for developing robotic behaviors. This documentation shows you how to apply the provided functionality to create **highly automated and resilient missions**.
 
 You want to know more about the features of this framework and how to get started? Check out the following pages:
 

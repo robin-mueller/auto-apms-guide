@@ -13,7 +13,7 @@ Install [Node.js](https://nodejs.org/en). We recommend the latest LTS version (a
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E sh -
 
 # Install Node.js
-sudo apt-get install nodejs -y
+sudo apt-get install nodejs npm -y
 
 # Install dependencies specified in package.json (Run in auto-apms-guide directory)
 npm install

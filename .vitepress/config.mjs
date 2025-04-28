@@ -21,7 +21,7 @@ const vitePressSidebarOptions = {
 const vitePressOptions = {
     lang: 'en-US',
     title: 'AutoAPMS',
-    description: 'An open-source software framework for robot mission planning and safeguarding. Works with ROS 2 and PX4 Autopilot.',
+    description: 'An open-source software framework for developing behavior-based robotic applications. Works with ROS 2 and PX4 Autopilot.',
     base: '/auto-apms-guide/',
 
     head: [

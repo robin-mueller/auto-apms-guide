@@ -1,12 +1,12 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
-titleTemplate: :title - Resilient Robot Mission Management
+titleTemplate: :title - Automated Action Planning and Management System
 
 hero:
   name: AutoAPMS
   text: Resilient Robot Mission Management
-  tagline: Smarter Missions with Safer Outcomes
+  tagline: Automated Action Planning and Management System for Robotics
   image:
     src: /logo/mainpage-icon.png
     width: 230
@@ -14,10 +14,10 @@ hero:
     - theme: brand
       text: User Guide
       link: /introduction/about
-    - theme: alt
+    - theme: brand
       text: API Documentation
       link: https://robin-mueller.github.io/auto-apms
-    - theme: alt
+    - theme: brand
       text: GitHub
       link: https://github.com/robin-mueller/auto-apms
 
