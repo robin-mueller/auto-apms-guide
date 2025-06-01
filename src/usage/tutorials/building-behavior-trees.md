@@ -54,11 +54,11 @@ Given that you [added node manifests](./implementing-behavior-tree-nodes.md#addi
 
 === Normal Install
 
-`install`/`share`/`<my_package>`/`auto_apms`/`auto_apms_behavior_tree_core`/`metadata`
+`install`/`<my_package>`/`share`/`<my_package>`/`auto_apms`/`auto_apms_behavior_tree_core`/`metadata`
 
 === Merge Install
 
-`install`/`<my_package>`/`share`/`<my_package>`/`auto_apms`/`auto_apms_behavior_tree_core`/`metadata`
+`install`/`share`/`<my_package>`/`auto_apms`/`auto_apms_behavior_tree_core`/`metadata`
 
 :::
 
