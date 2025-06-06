@@ -1223,7 +1223,7 @@
 | **z** | `double` | ❌ | Override vector entry Z |
 | **y** | `double` | ❌ | Override vector entry Y |
 | **x** | `double` | ❌ | Override vector entry X |
-| **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | ❌ | Target position as a row vector (separated by ;) |
+| **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | ❌ | Target position as a row vector (separated by ';') |
 | **frame** | `std::string` | global | Reference frame: 'global' (Latitude, longitude, altitude (AMSL)) or 'local' (North, east, down from start) |
 
 ### Land
