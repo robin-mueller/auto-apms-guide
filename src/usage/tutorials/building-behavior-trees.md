@@ -62,6 +62,12 @@ Given that you [added node manifests](./implementing-behavior-tree-nodes.md#addi
 
 :::
 
+::: info You can also inspect the build directory
+When building with `symlink-install` enabled, the install directory only contains symbolic links to the node model files. The originally generated files reside in
+
+`build`/`<my_package>`/`auto_apms_behavior_tree_core`
+:::
+
 Inside this directory, you'll find files named like `node_model_<metadata_id>.xml`. Select the one that is associated with your use case and "Open" it. If you are not sure which `<metadata_id>` is the correct one, read the guide on [referring to node manifests](./implementing-behavior-tree-nodes.md#referring-to-node-manifests). It explains how the suffix for the node model XML files is determined.
 
 You'll notice that Groot2 has added the corresponding nodes to the list of "Models" on the lower left. You may drag and drop any of these nodes to the workspace area and use them as you'd like. Make sure to understand the [general concept of behavior trees](../concepts/behavior-trees.md) before you start assembling nodes.
@@ -78,7 +84,7 @@ auto_apms_behavior_tree_declare_trees(
 ```
 
 ::: tip Convention 📜
-We recommend storing your behavior tree files under a directory called `config`. However, you can put them wherever you want, you just have to adjust the file paths you pass to `auto_apms_behavior_tree_declare_trees` accordingly.
+We recommend storing your behavior tree files under a directory called `config` or `tree`. However, you can put them wherever you want, you just have to adjust the file paths you pass to `auto_apms_behavior_tree_declare_trees` accordingly.
 :::
 
 This registers the behavior tree with the resource index (we call it "declaring a tree") and enables you to easily locate the corresponding XML file at runtime. You can refer to a declared tree using for example `TreeDocument::mergeResource` which is demonstrated [below](#using-treedocument).

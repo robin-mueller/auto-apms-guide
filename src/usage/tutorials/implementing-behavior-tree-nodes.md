@@ -146,10 +146,6 @@ auto_apms_behavior_tree_declare_nodes(custom_nodes
 ```
 
 ```cmake [CMakeLists.txt (When declaring trees)]
-auto_apms_behavior_tree_declare_nodes(custom_nodes
-    "my_namespace::MyCustomRosNode" 
-    "my_namespace::MyCustomLocalNode"
-)
 auto_apms_behavior_tree_declare_trees(
     "config/my_behavior_tree.xml"
     "config/another_behavior_tree.xml"
@@ -225,7 +221,7 @@ auto_apms_behavior_tree_declare_nodes(custom_nodes
 )
 # ...
 # Elsewhere inside the same CMakeLists.txt or the one of any other package
-auto_apms_behavior_tree_declare_nodes(custom_nodes
+auto_apms_behavior_tree_declare_nodes(more_nodes
     # ...    
     NODE_MANIFEST
     "my_package::custom_nodes" # [!code highlight]
@@ -238,29 +234,21 @@ project(my_package)
 auto_apms_behavior_tree_declare_nodes(custom_nodes
     "my_namespace::MyCustomRosNode" 
     "my_namespace::MyCustomLocalNode"
-)
-auto_apms_behavior_tree_declare_trees(
-    "config/my_behavior_tree.xml"
-    "config/another_behavior_tree.xml"
     NODE_MANIFEST  # You must specify at least one
     "config/my_node_manifest.yaml"
     "config/another_node_manifest.yaml"
 )
 # ...
 # Elsewhere inside the same CMakeLists.txt or the one of any other package
-auto_apms_behavior_tree_declare_nodes(custom_nodes
-    # ...    
+auto_apms_behavior_tree_declare_trees(
+    # ...
     NODE_MANIFEST
-    "my_package::my_behavior_tree" # [!code highlight]
-)
-# OR
-auto_apms_behavior_tree_declare_nodes(custom_nodes
-    # ...    
-    NODE_MANIFEST
-    "my_package::another_behavior_tree" # [!code highlight]
+    "my_package::custom_nodes" # [!code highlight]
 )
 ```
 
+::: tip Within the same package
+If you want to use nodes you have previously declared **inside the same CMakeLists.txt** you can conveniently write `${PROJECT_NAME}::<metadata_id>`. So referring to the example above, it would be `${PROJECT_NAME}::custom_nodes`.
 :::
 
 If you initially passed multiple node manifest files to one of the mentioned CMake macros as it's the case with this example, they are automatically concatenated. When using the corresponding resource identity, **you implicitly refer to all manifest files given to the respective macro**.

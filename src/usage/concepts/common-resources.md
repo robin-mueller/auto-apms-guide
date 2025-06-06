@@ -310,6 +310,12 @@ The XML file holds metadata for multiple nodes. This data enables to determine t
 
 :::
 
+::: info You can also inspect the build directory
+When building with `symlink-install` enabled, the install directory only contains symbolic links to the node model files. The originally generated files reside in
+
+`build`/`<my_package>`/`auto_apms_behavior_tree_core`
+:::
+
 The XML schema looks something like this:
 
 ```xml
