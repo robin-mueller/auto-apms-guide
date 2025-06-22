@@ -190,6 +190,12 @@ MyCustomNodeRegistrationName:  # Registration name of the node
   request_timeout: 2
   allow_unreachable: false
   logger_level: INFO
+  extra:  # Optional: Allows for specifying custom registration options
+    custom_map:
+      my_parameter: 1
+      my_list:
+        - a
+        - b
 
 AnotherCoolNodeName:
   class_name: another_namespace::AnotherCoolNodeClass
@@ -205,6 +211,7 @@ AnotherCoolNodeName:
 | `request_timeout` | Optional | `double` | *Only relevant for ROS 2 interface nodes.* Period [s] (measured from sending a goal request) after the node aborts waiting for a server response. |
 | `allow_unreachable` | Optional | `bool` | *Only relevant for ROS 2 interface nodes.* Flag whether to tolerate if the action/service is unreachable when trying to create the client. If set to `true`, a warning is logged. Otherwise, an exception is raised. |
 | `logger_level` | Optional | `std::string` | *Only relevant for ROS 2 interface nodes.* Minimum severity level enabled for logging using the ROS 2 Logger API. |
+| `extra` | Optional | `YAML::Node` | Flexible YAML node which allows providing additional and customized registration options to the behavior tree node implementation. May contain any arbitrary YAML structure. |
 
 You should understand that registration options are directly associated with a particular registration name (key of the root YAML map).
 
