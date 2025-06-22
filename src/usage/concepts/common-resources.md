@@ -344,5 +344,5 @@ Typically used when [building behavior trees programmatically](../tutorials/buil
 The C++ node models can be passed as template arguments to specific methods of `TreeDocument`. They implement an API that complies with the node's entry in the node model XML file.
 
 ::: info Learn more 🎓
-Check out the usage example [Using `TreeDocument`: Inserting custom nodes](../tutorials/building-behavior-trees.md#usage-examples) for more information about how node models are created and may be used in a C++ source file.
+Check out the usage example [Using `TreeDocument`: Inserting custom nodes](../tutorials/building-behavior-trees.md#inserting-custom-nodes) for more information about how node models are created and may be used in a C++ source file.
 :::

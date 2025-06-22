@@ -138,9 +138,7 @@ Initially, the `doc` holds the content of an empty behavior tree document file:
 </root>
 ```
 
-#### Usage Examples
-
-::: details Adding an existing behavior tree
+#### Adding an existing behavior tree
 
 To start off, you might want to load a behavior tree that you previously declared using `auto_apms_behavior_tree_declare_trees` and add it to the document. This can be done using the corresponding [resource identity](../concepts/common-resources.md#tree-identity). However, you can also add a tree without querying the resource index. There are multiple ways to achieve the same thing:
 
@@ -165,9 +163,7 @@ TreeDocument::TreeElement tree = doc.newTreeFromFile("/path/to/behavior_tree.xml
 TreeDocument::TreeElement tree = doc.newTreeFromResource("my_package::my_behavior_tree::MyTreeName").makeRoot();
 ```
 
-:::
-
-::: details Creating a new behavior tree
+#### Creating a new behavior tree
 
 You may as well start from scratch and create your behavior tree by manually inserting any behavior tree nodes you want:
 
@@ -201,9 +197,7 @@ sequence.insertNode("ScriptCondition").setPorts({{"code", "true"}});
 
 Here you can choose if you want to incorporate [node models](../concepts/common-resources.md#behavior-tree-node-models) or not. We generally recommend to do so wherever possible, because it allows verifying the behavior tree's structure at compile time. Additionally, we provide getters and setters for all data ports. Your IDE (e.g. VSCode) will also be able to provide you with convenient type hints and usage suggestions.
 
-:::
-
-::: details Inserting custom nodes
+#### Inserting custom nodes
 
 Until now, we have only showed you how to add [standard nodes](../../reference/behavior-tree-nodes.md) provided by the `auto_apms_behavior_tree` package to your behavior tree. However, this principle also applies for any behavior tree nodes you implement yourself.
 
@@ -282,7 +276,7 @@ doc.registerNodes(auto_apms_behavior_tree::core::NodeManifest::fromResourceIdent
 sequence.insertNode("MyCustomNode");
 ```
 
-::: danger Watch out for naming collisions!
+::: warning Watch out for naming collisions!
 
 In this snippet we brought both `my_namespace::model` and `auto_apms_behavior_tree::model` into the same scope with the `using namespace` directive. While it is convenient and safe in this case, you must generally be aware that there can be naming collisions when writing source code like this. There can be duplicate node model class names if a ROS 2 package defines a node manifest which contains any registration names already assigned by other packages and generates a model header using manifest.
 
