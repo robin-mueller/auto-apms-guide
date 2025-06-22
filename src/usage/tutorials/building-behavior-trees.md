@@ -195,6 +195,8 @@ sequence.insertNode("AlwaysSuccess");
 sequence.insertNode("ScriptCondition").setPorts({{"code", "true"}});
 ```
 
+:::
+
 Here you can choose if you want to incorporate [node models](../concepts/common-resources.md#behavior-tree-node-models) or not. We generally recommend to do so wherever possible, because it allows verifying the behavior tree's structure at compile time. Additionally, we provide getters and setters for all data ports. Your IDE (e.g. VSCode) will also be able to provide you with convenient type hints and usage suggestions.
 
 #### Inserting custom nodes
@@ -275,6 +277,8 @@ sequence.insertNode("MyCustomNode", options);
 doc.registerNodes(auto_apms_behavior_tree::core::NodeManifest::fromResourceIdentity("my_package::custom_nodes"));
 sequence.insertNode("MyCustomNode");
 ```
+
+:::
 
 ::: warning Watch out for naming collisions!
 
