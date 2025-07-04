@@ -1155,7 +1155,7 @@
 
 | Input Name | Type | Default Value | Description |
 | :--- | :---: | :---: | :--- |
-| **wait_until_ready_to_arm** | `bool` | true | Wait for the UAV to be ready for arming. If false and UAV is not ready to arm, will be rejected. |
+| **wait_until_ready_to_arm** | `bool` | false | Wait for the UAV to be ready for arming. If false and UAV is not ready to arm, will be rejected. |
 
 ### Disarm
 
