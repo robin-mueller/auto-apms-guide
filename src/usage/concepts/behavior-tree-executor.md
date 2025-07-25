@@ -22,7 +22,7 @@ using StartTreeExecutor = auto_apms_interfaces::action::StartTreeExecutor;
 
 **This action allows starting the execution of a specific behavior tree.**
 
-In the request, the user must formulate which behavior tree is to be executed by providing `build_request`. Optionally, `build_handler` may be specified to determine which build handler must be used to interpret `build_request` (If empty, the one that is currently loaded will be used). Depending on the implementation of the build handler, `node_manifest` and `root_tree` may be required for registering the corresponding behavior tree nodes respectively to define the entry point for execution.`build_request`, `node_manifest` and `root_tree` are passed to [`TreeBuildHandler::setBuildRequest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#ac4c4887fcd65b024a89445009cbe15b4).
+In the request, the user must formulate which behavior tree is to be executed by providing `build_request`. Optionally, `build_handler` may be specified to determine which build handler must be used to interpret `build_request` (If empty, the one that is currently loaded will be used). Depending on the implementation of the build handler, `entrypoint` and `node_manifest` may be required for defining the entry point for execution and/or registering the corresponding behavior tree nodes.`build_request`, `entrypoint` and `node_manifest` are passed to [`TreeBuildHandler::setBuildRequest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#ac4c4887fcd65b024a89445009cbe15b4).
 
 Only a single `StartTreeExecutor` goal is allowed to be executed at a time.
 
@@ -32,9 +32,8 @@ Only a single `StartTreeExecutor` goal is allowed to be executed at a time.
 | :---: | :---: | :---: | :--- |
 | **build_request** | `std::string` | ❌ | String that encodes information about which behavior tree to execute. It must be formatted in a suitable way so that the underlying build handler is able to interpret it correctly. The user must be aware of which format is accepted by which build handler and always create appropriate requests. Otherwise, the build handler may throw an error and the action goal will be rejected. If the build handler doesn't implement that level of validation, it's undefined behavior. |
 | **build_handler** | `std::string` | "" | Fully qualified class name of a declared behavior tree build handler plugin to be used for interpreting `build_request`. If empty, the one that is currently loaded by the executor will be used. May also be `none` for requesting to "unload" the current build handler (This requires derived executors to be able to build the behavior tree without relying on a build handler). |
-| **root_tree** | `std::string` | "" | Name of the behavior tree to be considered the entry point of execution. This field may be empty if the underlying build handler is able to determine the root tree using `build_request` alone. Otherwise, the build handler may use this information appropriately when it is passed to `TreeBuildHandler::setBuildRequest`. |
+| **entrypoint** | `std::string` | "" | Single point of entry for execution. This field may be empty if the underlying build handler is able to determine the entrypoint only through `build_request`. Otherwise, the build handler may use this information appropriately when it is passed to `TreeBuildHandler::setBuildRequest`. |
 | **node_manifest** | `std::string` | "" | User-defined node manifest (encoded) specifying how to register all of the behavior tree nodes required by `build_request`. This field may be empty if the underlying build handler is able to independently perform the node registration. Otherwise, the build handler may use this information appropriately when it is passed to `TreeBuildHandler::setBuildRequest`. |
-| **node_overrides** | `std::string` | "" | User-defined node manifest (encoded) specifying optional registration parameters for previously registered nodes supposed to be replaced by other implementations. The executor uses this information to override node registration names after `TreeBuildHandler::buildTree` was called i.e. the behavior tree was created and before the execution routine is started. |
 | **attach** | `bool` | `true` | Flag for determining the execution mode. If `true` (attached mode), the action will attach to the execution routine, run for as long as it is alive and return a goal result encapsulating the final status of the executed behavior tree. If `false`, the action will return immediately after the execution has been started allowing the client to do work asynchronously while the behavior tree is being executed. |
 | **clear_blackboard** | `bool` | `true` | Flag for determining whether to clear the executor's global behavior tree blackboard before starting the execution or not. If `true` |
 
@@ -112,7 +111,7 @@ ros2 param get "<executor_name>" "bb.<entry_name>"
 
 # Set initial blackboard entry
 ros2 run auto_apms_behavior_tree tree_executor --ros-args -p "bb.<entry_name>":="<value>"
-ros2 run auto_apms_behavior_tree run_tree "<build_request>" --ros-args -p "bb.<entry_name>":="<value>"
+ros2 run auto_apms_behavior_tree run_behavior "<build_request>" --ros-args -p "bb.<entry_name>":="<value>"
 ```
 
 ```py [launch.py]
@@ -131,7 +130,7 @@ def generate_launch_description():
             ),
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 arguments=["<build_request>"],
                 parameters=[{
                     "bb.<entry_name>": "<value>"  # Set initial blackboard entry
@@ -166,7 +165,7 @@ ros2 param get "<executor_name>" "enum.<enum_name>"
 
 # Set initial scripting enum
 ros2 run auto_apms_behavior_tree tree_executor --ros-args -p "enum.<enum_name>":="<value>"
-ros2 run auto_apms_behavior_tree run_tree "<build_request>" --ros-args -p "enum.<enum_name>":="<value>"
+ros2 run auto_apms_behavior_tree run_behavior "<build_request>" --ros-args -p "enum.<enum_name>":="<value>"
 ```
 
 ```py [launch.py]
@@ -185,7 +184,7 @@ def generate_launch_description():
             ),
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 arguments=["<build_request>"],
                 parameters=[{
                     "enum.<enum_name>": "<value>"  # Set initial scripting enum

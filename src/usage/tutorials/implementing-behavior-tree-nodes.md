@@ -88,26 +88,26 @@ find_package(auto_apms_behavior_tree REQUIRED)
 
 # Create a shared library that contains all your nodes
 add_library(custom_nodes SHARED
-    "src/custom_nodes.cpp"  # Replace with your custom path
+  "src/custom_nodes.cpp"  # Replace with your custom path
 )
-ament_target_dependencies(custom_nodes
-    my_package_interfaces
-    auto_apms_behavior_tree
+target_link_libraries(custom_nodes PUBLIC
+  ${my_package_interfaces_TARGETS}
+  auto_apms_behavior_tree::auto_apms_behavior_tree
 )
 
 # Declare your custom behavior tree nodes
 auto_apms_behavior_tree_declare_nodes(custom_nodes # [!code highlight:4]
-    "my_namespace::MyCustomRosNode" 
-    "my_namespace::MyCustomLocalNode"
+  "my_namespace::MyCustomRosNode" 
+  "my_namespace::MyCustomLocalNode"
 )
 
 # Install the shared library to the standard directory
 install(
-    TARGETS
-    custom_nodes
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
+  TARGETS
+  custom_nodes
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()
@@ -137,28 +137,28 @@ Let's look at what the user must add to the CMakeLists.txt to provide registrati
 
 ```cmake [CMakeLists.txt (When declaring nodes)]
 auto_apms_behavior_tree_declare_nodes(custom_nodes
-    "my_namespace::MyCustomRosNode" 
-    "my_namespace::MyCustomLocalNode"
-    NODE_MANIFEST  # You must specify at least one [!code ++:3]
-    "config/my_node_manifest.yaml"
-    "config/another_node_manifest.yaml"
+  "my_namespace::MyCustomRosNode" 
+  "my_namespace::MyCustomLocalNode"
+  NODE_MANIFEST  # You must specify at least one [!code ++:3]
+  "config/my_node_manifest.yaml"
+  "config/another_node_manifest.yaml"
 )
 ```
 
 ```cmake [CMakeLists.txt (When declaring trees)]
 auto_apms_behavior_tree_declare_trees(
-    "config/my_behavior_tree.xml"
-    "config/another_behavior_tree.xml"
-    NODE_MANIFEST  # You must specify at least one [!code ++:3]
-    "config/my_node_manifest.yaml"
-    "config/another_node_manifest.yaml"
+  "behavior/my_behavior_tree.xml"
+  "behavior/another_behavior_tree.xml"
+  NODE_MANIFEST  # You must specify at least one [!code ++:3]
+  "config/my_node_manifest.yaml"
+  "config/another_node_manifest.yaml"
 )
 ```
 
 :::
 
 ::: tip Convention 📜
-We recommend storing your node manifest and behavior tree files under a directory called `config`. However, you can put them wherever you want, you just have to adjust the paths you pass to the CMake macros accordingly.
+We recommend storing your node manifest files under a directory called `config`. However, you can put them wherever you want, you just have to adjust the paths you pass to the CMake macros accordingly.
 :::
 
 As you can see, registering node manifests with your workspace's resource index is supported by both `auto_apms_behavior_tree_declare_nodes` and `auto_apms_behavior_tree_declare_trees`. We've already used the former macro when declaring our custom node. The latter is required when registering yet another resource: The actual behavior tree source file. But more about that in another tutorial. It's pretty obvious that the resource system of ROS 2 is invaluable for AutoAPMS.
@@ -213,18 +213,18 @@ So after successfully [adding node manifests](#adding-node-manifests) one may us
 project(my_package)
 # ...
 auto_apms_behavior_tree_declare_nodes(custom_nodes
-    "my_namespace::MyCustomRosNode" 
-    "my_namespace::MyCustomLocalNode"
-    NODE_MANIFEST  # You must specify at least one
-    "config/my_node_manifest.yaml"
-    "config/another_node_manifest.yaml"
+  "my_namespace::MyCustomRosNode" 
+  "my_namespace::MyCustomLocalNode"
+  NODE_MANIFEST  # You must specify at least one
+  "config/my_node_manifest.yaml"
+  "config/another_node_manifest.yaml"
 )
 # ...
 # Elsewhere inside the same CMakeLists.txt or the one of any other package
 auto_apms_behavior_tree_declare_nodes(more_nodes
-    # ...    
-    NODE_MANIFEST
-    "my_package::custom_nodes" # [!code highlight]
+  # ...    
+  NODE_MANIFEST
+  "my_package::custom_nodes" # [!code highlight]
 )
 ```
 
@@ -232,18 +232,18 @@ auto_apms_behavior_tree_declare_nodes(more_nodes
 project(my_package)
 # ...
 auto_apms_behavior_tree_declare_nodes(custom_nodes
-    "my_namespace::MyCustomRosNode" 
-    "my_namespace::MyCustomLocalNode"
-    NODE_MANIFEST  # You must specify at least one
-    "config/my_node_manifest.yaml"
-    "config/another_node_manifest.yaml"
+  "my_namespace::MyCustomRosNode" 
+  "my_namespace::MyCustomLocalNode"
+  NODE_MANIFEST  # You must specify at least one
+  "config/my_node_manifest.yaml"
+  "config/another_node_manifest.yaml"
 )
 # ...
 # Elsewhere inside the same CMakeLists.txt or the one of any other package
 auto_apms_behavior_tree_declare_trees(
-    # ...
-    NODE_MANIFEST
-    "my_package::custom_nodes" # [!code highlight]
+  # ...
+  NODE_MANIFEST
+  "my_package::custom_nodes" # [!code highlight]
 )
 ```
 

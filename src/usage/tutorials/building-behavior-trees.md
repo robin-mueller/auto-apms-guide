@@ -31,7 +31,7 @@ The visual editor we recommend is called [Groot2](https://www.behaviortree.dev/g
 Groot2 allows you to manage all your behavior tree files in one place. To start building a behavior tree file, you need to create a new `.xml` file. You can do that manually or run this convenient command that automatically writes an empty behavior tree to the given file.
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree new_tree "config/my_behavior_tree.xml"
+ros2 run auto_apms_behavior_tree new_tree "behavior/my_behavior_tree.xml"
 ```
 
 ::: tip
@@ -78,13 +78,13 @@ To actually distribute your behavior tree within your ROS 2 workspace, you must 
 find_package(auto_apms_behavior_tree REQUIRED)
 # ...
 auto_apms_behavior_tree_declare_trees(
-    "config/my_behavior_tree.xml"  # You must provide at least one XML file
-    # ...
+  "behavior/my_behavior_tree.xml"  # You must provide at least one XML file
+  # ...
 )
 ```
 
 ::: tip Convention 📜
-We recommend storing your behavior tree files under a directory called `config` or `tree`. However, you can put them wherever you want, you just have to adjust the file paths you pass to `auto_apms_behavior_tree_declare_trees` accordingly.
+We recommend storing your behavior tree files under a directory called `behavior`. However, you can put them wherever you want, you just have to adjust the file paths you pass to `auto_apms_behavior_tree_declare_trees` accordingly.
 :::
 
 This registers the behavior tree with the resource index (we call it "declaring a tree") and enables you to easily locate the corresponding XML file at runtime. You can refer to a declared tree using for example `TreeDocument::mergeResource` which is demonstrated [below](#using-treedocument).
@@ -222,11 +222,11 @@ In the following minimal example we assume, that the user implements `my_namespa
 ```cmake [CMakeLists.txt]
 # We assume that custom_nodes and my_source_target are already defined
 auto_apms_behavior_tree_declare_nodes(custom_nodes
-    "my_namespace::MyCustomNodeClass"
-    NODE_MANIFEST
-    "config/node_manifest.yaml"
-    NODE_MODEL_HEADER_TARGET
-    my_source_target
+  "my_namespace::MyCustomNodeClass"
+  NODE_MANIFEST
+  "config/node_manifest.yaml"
+  NODE_MODEL_HEADER_TARGET
+  my_source_target
 )
 ```
 
@@ -356,24 +356,25 @@ find_package(auto_apms_behavior_tree REQUIRED)
  
 # Create a shared library that contains the build handler
 add_library(my_build_handler_library_target SHARED
-    "src/my_build_handler.cpp"  # Add the source file
+  "src/my_build_handler.cpp"  # Add the source file
 )
-ament_target_dependencies(my_build_handler_library_target
-    auto_apms_behavior_tree  # The library must link against auto_apms_behavior_tree
+target_link_libraries(my_build_handler_library_target PUBLIC
+  # The library must link against auto_apms_behavior_tree
+  auto_apms_behavior_tree::auto_apms_behavior_tree
 )
  
 # Declare your custom build handler
 auto_apms_behavior_tree_declare_build_handlers(my_build_handler_library_target
-    "my_namespace::MyCustomBuildHandler"
+  "my_namespace::MyCustomBuildHandler"
 )
  
 # Install the shared library to the standard directory
 install(
-    TARGETS
-    my_build_handler_library_target
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
+  TARGETS
+  my_build_handler_library_target
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()

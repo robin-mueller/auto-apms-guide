@@ -49,29 +49,29 @@ find_package(auto_apms_util REQUIRED)
 
 # Create shared library
 add_library(simple_skill_server SHARED
-    "src/simple_skill_server.cpp"  # Replace with your path
+  "src/simple_skill_server.cpp"  # Replace with your path
 )
-ament_target_dependencies(simple_skill_server
-    rclcpp_components
-    my_package_interfaces
-    auto_apms_util
+target_link_libraries(simple_skill_server PUBLIC
+  rclcpp_components::component
+  ${my_package_interfaces_TARGETS}
+  auto_apms_util::auto_apms_util
 )
 
 # Register server component
 rclcpp_components_register_node(simple_skill_server # [!code highlight:4]
-    PLUGIN "my_namespace::SimpleSkillServer"
-    EXECUTABLE "simple_skill_server"
+PLUGIN "my_namespace::SimpleSkillServer"
+  EXECUTABLE "simple_skill_server"
 )
 # Allows you to simply start the server by running
 # ros2 run <package_name> simple_skill_server
 
 # Install the shared library to the standard directory
 install(
-    TARGETS
-    simple_skill_server
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
+  TARGETS
+  simple_skill_server
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()
@@ -89,26 +89,26 @@ find_package(auto_apms_util REQUIRED)
 add_library(simple_skill_server SHARED
     "src/simple_skill_server.cpp"  # Replace with your path
 )
-ament_target_dependencies(simple_skill_server
-    rclcpp_components
-    my_package_interfaces
-    auto_apms_util
+target_link_libraries(simple_skill_server PUBLIC
+  rclcpp_components::component
+  ${my_package_interfaces_TARGETS}
+  auto_apms_util::auto_apms_util
 )
 
 # Register server component
 rclcpp_components_register_nodes(simple_skill_server # [!code highlight:3]
-    "my_namespace::SimpleSkillServer"
+  "my_namespace::SimpleSkillServer"
 )
 # No executable file is generated. You must manually do that
 # or write a launch script that loads this ROS 2 node component
 
 # Install shared libraries to the standard directory
 install(
-    TARGETS
-    simple_skill_server
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
+  TARGETS
+  simple_skill_server
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()
@@ -133,25 +133,25 @@ find_package(auto_apms_behavior_tree REQUIRED)
 
 # Create shared library for the node
 add_library(simple_skill_nodes SHARED
-    "src/simple_skill_client.cpp"
+  "src/simple_skill_client.cpp"
 )
-ament_target_dependencies(simple_skill_nodes
-    my_package_interfaces
-    auto_apms_behavior_tree
+target_link_libraries(simple_skill_nodes PUBLIC
+  ${my_package_interfaces_TARGETS}
+  auto_apms_behavior_tree::auto_apms_behavior_tree
 )
 
 # Declare client behavior tree node
 auto_apms_behavior_tree_declare_nodes(simple_skill_nodes # [!code highlight:3]
-    "my_namespace::SimpleSkillClient"
+  "my_namespace::SimpleSkillClient"
 )
 
 # Install shared libraries to the standard directory
 install(
-    TARGETS
-    simple_skill_nodes
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
+  TARGETS
+  simple_skill_nodes
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()
@@ -215,32 +215,32 @@ find_package(auto_apms_behavior_tree REQUIRED)
 
 # Create shared library for the node
 add_library(simple_skill_nodes SHARED
-    "src/simple_skill_client.cpp"
+  "src/simple_skill_client.cpp"
 )
-ament_target_dependencies(simple_skill_nodes
-    my_package_interfaces
-    auto_apms_behavior_tree
+target_link_libraries(simple_skill_nodes PUBLIC
+  ${my_package_interfaces_TARGETS}
+  auto_apms_behavior_tree::auto_apms_behavior_tree
 )
 
 # Declare client behavior tree node
 auto_apms_behavior_tree_declare_nodes(simple_skill_nodes
-    "my_namespace::SimpleSkillClient"
+  "my_namespace::SimpleSkillClient"
 )
 
 # Declare simple skill tree
 auto_apms_behavior_tree_declare_trees( # [!code ++:5]
-    "config/simple_skill_tree.xml"
-    NODE_MANIFEST
-    "config/simple_skill_node_manifest.yaml"
+  "behavior/simple_skill_tree.xml"
+  NODE_MANIFEST
+  "config/simple_skill_node_manifest.yaml"
 )
 
 # Install shared libraries to the standard directory
 install(
-    TARGETS
-    custom_nodes
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
+  TARGETS
+  custom_nodes
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()
@@ -259,28 +259,28 @@ find_package(auto_apms_behavior_tree REQUIRED)
 
 # Create shared library for the node
 add_library(simple_skill_nodes SHARED
-    "src/simple_skill_client.cpp"
+  "src/simple_skill_client.cpp"
 )
-ament_target_dependencies(simple_skill_nodes
-    my_package_interfaces
-    auto_apms_behavior_tree
+target_link_libraries(simple_skill_nodes PUBLIC
+  ${my_package_interfaces_TARGETS}
+  auto_apms_behavior_tree::auto_apms_behavior_tree
 )
 
 # Create another shared library for the build handler
 add_library(simple_skill_build_handler SHARED # [!code ++:6]
     "src/simple_skill_build_handler.cpp"
 )
-ament_target_dependencies(simple_skill_build_handler
-    auto_apms_behavior_tree
+target_link_libraries(simple_skill_build_handler PUBLIC
+  auto_apms_behavior_tree::auto_apms_behavior_tree
 )
 
 # Declare client behavior tree node
 auto_apms_behavior_tree_declare_nodes(simple_skill_nodes
-    "my_namespace::SimpleSkillClient"
-    NODE_MANIFEST # [!code ++:4]
-    "config/simple_skill_node_manifest.yaml"
-    NODE_MODEL_HEADER_TARGET  # Optional: Generate models for custom nodes
-    simple_skill_build_handler
+  "my_namespace::SimpleSkillClient"
+  NODE_MANIFEST # [!code ++:4]
+  "config/simple_skill_node_manifest.yaml"
+  NODE_MODEL_HEADER_TARGET  # Optional: Generate models for custom nodes
+  simple_skill_build_handler
 )
 
 # We can omit auto_apms_behavior_tree_declare_trees in this example
@@ -288,17 +288,17 @@ auto_apms_behavior_tree_declare_nodes(simple_skill_nodes
 
 # Declare the behavior tree build handler that will provide the tree
 auto_apms_behavior_tree_declare_build_handlers(simple_skill_build_handler # [!code ++:3]
-    "my_namespace::SimpleSkillBuildHandler"
+  "my_namespace::SimpleSkillBuildHandler"
 )
 
 # Install shared libraries to the standard directory
 install(
-    TARGETS
-    simple_skill_nodes
-    simple_skill_build_handler # [!code ++]
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-    RUNTIME DESTINATION bin
+  TARGETS
+  simple_skill_nodes
+  simple_skill_build_handler # [!code ++]
+  LIBRARY DESTINATION lib
+  ARCHIVE DESTINATION lib
+  RUNTIME DESTINATION bin
 )
 
 ament_package()
@@ -331,7 +331,7 @@ For demonstration purposes, we implement this behavior using both the graphical 
 The graphical representation of behavior trees is based on the XML format. So to define a behavior incorporating our simple skill, we must create a new `.xml` file from scratch. You can do that manually or run this convenient command that automatically writes an empty behavior tree to the given file.
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree new_tree "config/simple_skill_tree.xml"
+ros2 run auto_apms_behavior_tree new_tree "behavior/simple_skill_tree.xml"
 ```
 
 > [!TIP]
@@ -347,7 +347,7 @@ The graphical approach allows the user to quickly and intuitively configure the 
 
 ![Example Simple Skill Behavior Tree](./simple_skill_tree.png)
 
-```xml [config/simple_skill_tree.xml]
+```xml [behavior/simple_skill_tree.xml]
 <?xml version="1.0" encoding="UTF-8"?>
 <root BTCPP_format="4"
       main_tree_to_execute="SimpleSkillDemo">
@@ -411,7 +411,7 @@ Finally, we're going to demonstrate how our simple skill and the behavior tree w
 colcon build --packages-up-to my_package --symlink-install
 ```
 
-AutoAPMS conveniently provides an executable called `run_tree` which we will use as shown in [Deploying Behaviors](./deploying-behaviors.md). To run the simple skill example, execute the following steps:
+AutoAPMS conveniently provides an executable called `run_behavior` which we will use as shown in [Deploying Behaviors](./deploying-behaviors.md). To run the simple skill example, execute the following steps:
 
 ::: tabs key:approach
 
@@ -420,7 +420,7 @@ AutoAPMS conveniently provides an executable called `run_tree` which we will use
 If you decided to create a behavior tree XML file using Groot2 (theoretically you could also do so manually), your behavior tree should be declared using the CMake macro `auto_apms_behavior_tree_declare_trees`. This allows it to be discovered at runtime. By default, `TreeExecutorNode` loads the `TreeFromResourceBuildHandler` when it is started, so we may execute any previously declared behavior trees by providing the corresponding [resource identity](../concepts/common-resources.md#tree-identity):
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree run_tree "<package_name>::<tree_file_stem>::<tree_name>"
+ros2 run auto_apms_behavior_tree run_behavior "<package_name>::<tree_file_stem>::<tree_name>"
 ```
 
 > [!TIP]
@@ -430,7 +430,7 @@ ros2 run auto_apms_behavior_tree run_tree "<package_name>::<tree_file_stem>::<tr
 
 <h3>Run the Example (Graphical approach)</h3>
 
-Let us demonstrate the intended usage of `run_tree` for the behavior tree we created applying the **graphical approach**. AutoAPMS provides [`SimpleSkillServer`](#server), [`SimpleSkillClient`](#client) and the example tree called `SimpleSkillDemo` with the package `auto_apms_examples`. Other than executing the tree, you must of course make sure that the server providing our simple skill is started as well.
+Let us demonstrate the intended usage of `run_behavior` for the behavior tree we created applying the **graphical approach**. AutoAPMS provides [`SimpleSkillServer`](#server), [`SimpleSkillClient`](#client) and the example tree called `SimpleSkillDemo` with the package `auto_apms_examples`. Other than executing the tree, you must of course make sure that the server providing our simple skill is started as well.
 
 <h4>Using only the terminal</h4>
 
@@ -443,7 +443,7 @@ ros2 run auto_apms_examples simple_skill_server
 Afterwards, create a new terminal and start executing the behavior tree:
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree run_tree auto_apms_examples::simple_skill_tree::SimpleSkillDemo
+ros2 run auto_apms_behavior_tree run_behavior auto_apms_examples::simple_skill_tree::SimpleSkillDemo
 ```
 
 <h4>Using a launch file</h4>
@@ -465,7 +465,7 @@ def generate_launch_description():
             # Spawn the behavior tree executor for the simple skill tree
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 arguments=["auto_apms_examples::simple_skill_tree::SimpleSkillDemo"]
             )
         ]
@@ -481,7 +481,7 @@ ros2 launch auto_apms_examples simple_skill_launch.py approach:=graphical
 Remember that we configured the behavior tree so that we can adjust the behavior according to the parameters `bb.msg` and `bb.n_times`? They can be specified like any other ROS 2 parameter by either using [the command line](https://docs.ros.org/en/humble/How-To-Guides/Node-arguments.html#passing-ros-arguments-to-nodes-via-the-command-line) or [a launch file](https://docs.ros.org/en/humble/How-To-Guides/Launch-file-different-formats.html#). For example, run this:
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree run_tree auto_apms_examples::simple_skill_tree::SimpleSkillDemo --ros-args -p bb.msg:="Custom message" -p bb.n_times:=10
+ros2 run auto_apms_behavior_tree run_behavior auto_apms_examples::simple_skill_tree::SimpleSkillDemo --ros-args -p bb.msg:="Custom message" -p bb.n_times:=10
 ```
 
 Or add the parameters inside the launch file:
@@ -501,7 +501,7 @@ def generate_launch_description():
             # Spawn the behavior tree executor for the simple skill tree
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 arguments=["auto_apms_examples::simple_skill_tree::SimpleSkillDemo"],
                 parameters=[{"bb.msg": "Custom message", "bb.n_times": 10}]  # [!code ++]
             )
@@ -519,7 +519,7 @@ The user can set the `build_handler` parameter for `TreeExecutorNode` like any o
 
 ### Run the Example (Programmatic approach)
 
-Let us demonstrate the intended usage of `run_tree` for the behavior tree we created applying the **programmatic approach**. AutoAPMS provides [`SimpleSkillServer`](#server), [`SimpleSkillClient`](#client) and the example build handler called `SimpleSkillBuildHandler` with the package `auto_apms_examples`. Other than executing the tree, you must of course make sure that the server providing our simple skill is started as well.
+Let us demonstrate the intended usage of `run_behavior` for the behavior tree we created applying the **programmatic approach**. AutoAPMS provides [`SimpleSkillServer`](#server), [`SimpleSkillClient`](#client) and the example build handler called `SimpleSkillBuildHandler` with the package `auto_apms_examples`. Other than executing the tree, you must of course make sure that the server providing our simple skill is started as well.
 
 <h4>Using only the terminal</h4>
 
@@ -532,7 +532,7 @@ ros2 run auto_apms_examples simple_skill_server
 Afterwards, create a new terminal and start executing the behavior tree:
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree run_tree --ros-args -p build_handler:=auto_apms_examples::SimpleSkillBuildHandler
+ros2 run auto_apms_behavior_tree run_behavior --ros-args -p build_handler:=auto_apms_examples::SimpleSkillBuildHandler
 ```
 
 <h4>Using a launch file</h4>
@@ -554,7 +554,7 @@ def generate_launch_description():
             # Spawn the behavior tree executor for the simple skill tree
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 parameters=[
                     {
                         "build_handler": "auto_apms_examples::SimpleSkillBuildHandler"
@@ -574,7 +574,7 @@ ros2 launch auto_apms_examples simple_skill_launch.py approach:=programmatic
 Remember that we configured the behavior tree so that we can adjust the behavior according to the parameters `bb.msg` and `bb.n_times`? They can be specified just like we did with `build_handler`. For example, run this:
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree run_tree --ros-args -p build_handler:=auto_apms_examples::SimpleSkillBuildHandler -p bb.msg:="Custom message" -p bb.n_times:=10
+ros2 run auto_apms_behavior_tree run_behavior --ros-args -p build_handler:=auto_apms_examples::SimpleSkillBuildHandler -p bb.msg:="Custom message" -p bb.n_times:=10
 ```
 
 Or add the parameters inside the launch file:
@@ -594,7 +594,7 @@ def generate_launch_description():
             # Spawn the behavior tree executor for the simple skill tree
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 parameters=[
                     {
                         "build_handler": "auto_apms_examples::SimpleSkillBuildHandler",

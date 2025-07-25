@@ -81,12 +81,12 @@ def generate_launch_description():
 
 :::
 
-The package `auto_apms_behavior_tree` additionally offers an executable called `run_tree` which automatically spawns the executor and starts executing a specific behavior tree directly afterwards. It implements a custom runtime and handles SIGINT signals appropriately. Use it like this:
+The package `auto_apms_behavior_tree` additionally offers an executable called `run_behavior` which automatically spawns the executor and starts executing a specific behavior tree directly afterwards. It implements a custom runtime and handles SIGINT signals appropriately. Use it like this:
 
 ::: code-group
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree run_tree -h  # Prints help information
+ros2 run auto_apms_behavior_tree run_behavior -h  # Prints help information
 ```
 
 ```py [launch.py]
@@ -98,7 +98,7 @@ def generate_launch_description():
         [
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 arguments=["-h"]  # Prints help information
             )
         ]
@@ -112,7 +112,7 @@ It accepts one argument: The build request for the underlying build handler. By 
 ::: code-group
 
 ```bash [Terminal]
-ros2 run auto_apms_behavior_tree run_tree "<build_request>" --ros-args -p build_handler:=my_namespace::MyBuildHandlerClass
+ros2 run auto_apms_behavior_tree run_behavior "<build_request>" --ros-args -p build_handler:=my_namespace::MyBuildHandlerClass
 ```
 
 ```py [launch.py]
@@ -124,7 +124,7 @@ def generate_launch_description():
         [
             Node(
                 package="auto_apms_behavior_tree",
-                executable="run_tree",
+                executable="run_behavior",
                 arguments=["<build_request>"],
                 parameters=[{
                     "build_handler": "my_namespace::MyBuildHandlerClass"
@@ -137,7 +137,7 @@ def generate_launch_description():
 :::
 
 ::: info
-If you cannot use `run_tree` for some reason (e.g. when applying ROS 2 composition), you should first spawn the node and then, in a separate step, send a [`StartTreeExecutor`](../concepts/behavior-tree-executor.md#starttreeexecutor) action goal.
+If you cannot use `run_behavior` for some reason (e.g. when applying ROS 2 composition), you should first spawn the node and then, in a separate step, send a [`StartTreeExecutor`](../concepts/behavior-tree-executor.md#starttreeexecutor) action goal.
 
 As a last resort, you can also pass a build request as the first command line argument of `tree_executor` which populates the `arguments` member of `rclcpp::NodeOptions`. This will also cause the executor to automatically start ticking the behavior tree but the runtime doesn't handle interrupt signals very well.
 :::

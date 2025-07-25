@@ -60,9 +60,9 @@ Given the following configuration of a package called `my_package`:
 project(my_package)
 # ...
 auto_apms_behavior_tree_declare_trees(
-    "config/my_behavior_tree.xml"
-    "config/another_behavior_tree.xml"
-    # ...
+  "behavior/my_behavior_tree.xml"
+  "behavior/another_behavior_tree.xml"
+  # ...
 )
 ```
 
@@ -247,15 +247,15 @@ Given the following configuration of a package called `my_package`:
 project(my_package)
 # ...
 auto_apms_behavior_tree_declare_nodes(behavior_tree_nodes
-    # ...
-    NODE_MANIFEST
-    "config/my_node_manifest.yaml"
+  # ...
+  NODE_MANIFEST
+  "config/my_node_manifest.yaml"
 )
 # ...
 auto_apms_behavior_tree_declare_trees(
-    "config/my_behavior_tree.xml"
-    NODE_MANIFEST
-    "config/my_node_manifest.yaml"
+  "behavior/my_behavior_tree.xml"
+  NODE_MANIFEST
+  "config/my_node_manifest.yaml"
 )
 ```
 
@@ -265,17 +265,17 @@ The available node manifest resources can be queried like this:
 
 ```cmake [CMakeLists.txt]
 auto_apms_behavior_tree_declare_nodes(another_target
-    # ...
-    NODE_MANIFEST
-    "my_package::behavior_tree_nodes"
-    "my_package::my_behavior_tree"
+  # ...
+  NODE_MANIFEST
+  "my_package::behavior_tree_nodes"
+  "my_package::my_behavior_tree"
 )
 # OR
 auto_apms_behavior_tree_declare_trees(
-    # ...
-    NODE_MANIFEST
-    "my_package::behavior_tree_nodes"
-    "my_package::my_behavior_tree"
+  # ...
+  NODE_MANIFEST
+  "my_package::behavior_tree_nodes"
+  "my_package::my_behavior_tree"
 )
 ```
 
