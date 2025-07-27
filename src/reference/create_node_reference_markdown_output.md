@@ -3,47 +3,47 @@
 
 | Registration Name | Class Name | Package |
 | :--- | :---: | :---: |
-| [AlwaysFailure](#alwaysfailure) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [AlwaysSuccess](#alwayssuccess) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [AsyncFallback](#asyncfallback) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [AsyncSequence](#asyncsequence) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Delay](#delay) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Fallback](#fallback) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [ForceFailure](#forcefailure) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [ForceSuccess](#forcesuccess) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [IfThenElse](#ifthenelse) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Inverter](#inverter) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [KeepRunningUntilFailure](#keeprunninguntilfailure) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [LoopBool](#loopbool) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [LoopDouble](#loopdouble) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [LoopInt](#loopint) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [LoopString](#loopstring) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Parallel](#parallel) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [ParallelAll](#parallelall) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Precondition](#precondition) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [ReactiveFallback](#reactivefallback) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [ReactiveSequence](#reactivesequence) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Repeat](#repeat) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [RetryUntilSuccessful](#retryuntilsuccessful) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [RunOnce](#runonce) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Script](#script) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [ScriptCondition](#scriptcondition) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Sequence](#sequence) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [SequenceWithMemory](#sequencewithmemory) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [SetBlackboard](#setblackboard) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [SkipUnlessUpdated](#skipunlessupdated) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Sleep](#sleep) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [SubTree](#subtree) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Switch2](#switch2) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Switch3](#switch3) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Switch4](#switch4) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Switch5](#switch5) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Switch6](#switch6) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [Timeout](#timeout) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [UnsetBlackboard](#unsetblackboard) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [WaitValueUpdate](#waitvalueupdate) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [WasEntryUpdated](#wasentryupdated) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
-| [WhileDoElse](#whiledoelse) | `❌` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [AlwaysFailure](#alwaysfailure) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [AlwaysSuccess](#alwayssuccess) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [AsyncFallback](#asyncfallback) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [AsyncSequence](#asyncsequence) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Delay](#delay) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Fallback](#fallback) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [ForceFailure](#forcefailure) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [ForceSuccess](#forcesuccess) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [IfThenElse](#ifthenelse) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Inverter](#inverter) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [KeepRunningUntilFailure](#keeprunninguntilfailure) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [LoopBool](#loopbool) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [LoopDouble](#loopdouble) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [LoopInt](#loopint) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [LoopString](#loopstring) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Parallel](#parallel) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [ParallelAll](#parallelall) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Precondition](#precondition) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [ReactiveFallback](#reactivefallback) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [ReactiveSequence](#reactivesequence) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Repeat](#repeat) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [RetryUntilSuccessful](#retryuntilsuccessful) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [RunOnce](#runonce) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Script](#script) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [ScriptCondition](#scriptcondition) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Sequence](#sequence) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [SequenceWithMemory](#sequencewithmemory) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [SetBlackboard](#setblackboard) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [SkipUnlessUpdated](#skipunlessupdated) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Sleep](#sleep) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [SubTree](#subtree) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Switch2](#switch2) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Switch3](#switch3) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Switch4](#switch4) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Switch5](#switch5) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Switch6](#switch6) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [Timeout](#timeout) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [UnsetBlackboard](#unsetblackboard) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [WaitValueUpdate](#waitvalueupdate) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [WasEntryUpdated](#wasentryupdated) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
+| [WhileDoElse](#whiledoelse) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
 | [Error](#error) | `auto_apms_behavior_tree::ThrowException` | auto_apms_behavior_tree |
 | [GetParameter](#getparameter) | `auto_apms_behavior_tree::GetParameter` | auto_apms_behavior_tree |
 | [GetParameterBool](#getparameterbool) | `auto_apms_behavior_tree::GetParameterBool` | auto_apms_behavior_tree |
@@ -79,22 +79,12 @@
 | [PlaceObject](#placeobject) | `auto_apms_simulation::PlaceObject` | auto_apms_simulation |
 | [RobotSharesCurrentLocation](#robotsharescurrentlocation) | `auto_apms_simulation::RobotSharesCurrentLocation` | auto_apms_simulation |
 | [SetLocationState](#setlocationstate) | `auto_apms_simulation::SetLocationState` | auto_apms_simulation |
-| [Arm](#arm) | `auto_apms_px4::ArmAction` | auto_apms_px4 |
-| [Disarm](#disarm) | `auto_apms_px4::DisarmAction` | auto_apms_px4 |
-| [EnableHold](#enablehold) | `auto_apms_px4::EnableHoldAction` | auto_apms_px4 |
-| [GetGlobalPosition](#getglobalposition) | `auto_apms_px4::GetPosition<GlobalPositionMsg>` | auto_apms_px4 |
-| [GetLocalPosition](#getlocalposition) | `auto_apms_px4::GetPosition<LocalPositionMsg>` | auto_apms_px4 |
-| [GoTo](#goto) | `auto_apms_px4::GoToAction` | auto_apms_px4 |
-| [Land](#land) | `auto_apms_px4::LandAction` | auto_apms_px4 |
-| [Mission](#mission) | `auto_apms_px4::MissionAction` | auto_apms_px4 |
-| [RTL](#rtl) | `auto_apms_px4::RTLAction` | auto_apms_px4 |
-| [Takeoff](#takeoff) | `auto_apms_px4::TakeoffAction` | auto_apms_px4 |
 
 ## auto_apms_behavior_tree (BehaviorTree.CPP)
 
 ### AlwaysFailure
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::AlwaysFailure`
 
 **Node Type:** `Action`
 
@@ -102,7 +92,7 @@
 
 ### AlwaysSuccess
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::AlwaysSuccess`
 
 **Node Type:** `Action`
 
@@ -110,7 +100,7 @@
 
 ### AsyncFallback
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::AsyncFallback`
 
 **Node Type:** `Control`
 
@@ -118,7 +108,7 @@
 
 ### AsyncSequence
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::AsyncSequence`
 
 **Node Type:** `Control`
 
@@ -126,7 +116,7 @@
 
 ### Delay
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Delay`
 
 **Node Type:** `Decorator`
 
@@ -138,7 +128,7 @@
 
 ### Fallback
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Fallback`
 
 **Node Type:** `Control`
 
@@ -146,7 +136,7 @@
 
 ### ForceFailure
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::ForceFailure`
 
 **Node Type:** `Decorator`
 
@@ -154,7 +144,7 @@
 
 ### ForceSuccess
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::ForceSuccess`
 
 **Node Type:** `Decorator`
 
@@ -162,7 +152,7 @@
 
 ### IfThenElse
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::IfThenElse`
 
 **Node Type:** `Control`
 
@@ -170,7 +160,7 @@
 
 ### Inverter
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Inverter`
 
 **Node Type:** `Decorator`
 
@@ -178,7 +168,7 @@
 
 ### KeepRunningUntilFailure
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::KeepRunningUntilFailure`
 
 **Node Type:** `Decorator`
 
@@ -186,7 +176,7 @@
 
 ### LoopBool
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::LoopBool`
 
 **Node Type:** `Decorator`
 
@@ -210,7 +200,7 @@
 
 ### LoopDouble
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::LoopDouble`
 
 **Node Type:** `Decorator`
 
@@ -234,7 +224,7 @@
 
 ### LoopInt
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::LoopInt`
 
 **Node Type:** `Decorator`
 
@@ -258,7 +248,7 @@
 
 ### LoopString
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::LoopString`
 
 **Node Type:** `Decorator`
 
@@ -282,7 +272,7 @@
 
 ### Parallel
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Parallel`
 
 **Node Type:** `Control`
 
@@ -295,7 +285,7 @@
 
 ### ParallelAll
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::ParallelAll`
 
 **Node Type:** `Control`
 
@@ -307,7 +297,7 @@
 
 ### Precondition
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Precondition`
 
 **Node Type:** `Decorator`
 
@@ -320,7 +310,7 @@
 
 ### ReactiveFallback
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::ReactiveFallback`
 
 **Node Type:** `Control`
 
@@ -328,7 +318,7 @@
 
 ### ReactiveSequence
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::ReactiveSequence`
 
 **Node Type:** `Control`
 
@@ -336,7 +326,7 @@
 
 ### Repeat
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Repeat`
 
 **Node Type:** `Decorator`
 
@@ -348,7 +338,7 @@
 
 ### RetryUntilSuccessful
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::RetryUntilSuccessful`
 
 **Node Type:** `Decorator`
 
@@ -360,7 +350,7 @@
 
 ### RunOnce
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::RunOnce`
 
 **Node Type:** `Decorator`
 
@@ -372,7 +362,7 @@
 
 ### Script
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Script`
 
 **Node Type:** `Action`
 
@@ -384,7 +374,7 @@
 
 ### ScriptCondition
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::ScriptCondition`
 
 **Node Type:** `Condition`
 
@@ -396,7 +386,7 @@
 
 ### Sequence
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Sequence`
 
 **Node Type:** `Control`
 
@@ -404,7 +394,7 @@
 
 ### SequenceWithMemory
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::SequenceWithMemory`
 
 **Node Type:** `Control`
 
@@ -412,7 +402,7 @@
 
 ### SetBlackboard
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::SetBlackboard`
 
 **Node Type:** `Action`
 
@@ -430,7 +420,7 @@
 
 ### SkipUnlessUpdated
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::SkipUnlessUpdated`
 
 **Node Type:** `Decorator`
 
@@ -442,7 +432,7 @@
 
 ### Sleep
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Sleep`
 
 **Node Type:** `Action`
 
@@ -454,7 +444,7 @@
 
 ### SubTree
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::SubTree`
 
 **Node Type:** `SubTree`
 
@@ -466,7 +456,7 @@
 
 ### Switch2
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Switch2`
 
 **Node Type:** `Control`
 
@@ -480,7 +470,7 @@
 
 ### Switch3
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Switch3`
 
 **Node Type:** `Control`
 
@@ -495,7 +485,7 @@
 
 ### Switch4
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Switch4`
 
 **Node Type:** `Control`
 
@@ -511,7 +501,7 @@
 
 ### Switch5
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Switch5`
 
 **Node Type:** `Control`
 
@@ -528,7 +518,7 @@
 
 ### Switch6
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Switch6`
 
 **Node Type:** `Control`
 
@@ -546,7 +536,7 @@
 
 ### Timeout
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::Timeout`
 
 **Node Type:** `Decorator`
 
@@ -558,7 +548,7 @@
 
 ### UnsetBlackboard
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::UnsetBlackboard`
 
 **Node Type:** `Action`
 
@@ -570,7 +560,7 @@
 
 ### WaitValueUpdate
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::WaitValueUpdate`
 
 **Node Type:** `Decorator`
 
@@ -582,7 +572,7 @@
 
 ### WasEntryUpdated
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::WasEntryUpdated`
 
 **Node Type:** `Action`
 
@@ -594,7 +584,7 @@
 
 ### WhileDoElse
 
-**Class:** `❌`
+**C++ Model:** `auto_apms_behavior_tree::WhileDoElse`
 
 **Node Type:** `Control`
 
@@ -604,7 +594,9 @@
 
 ### Error
 
-**Class:** `auto_apms_behavior_tree::ThrowException`
+**Plugin Class:** `auto_apms_behavior_tree::ThrowException`
+
+**C++ Model:** `auto_apms_behavior_tree::Error`
 
 **Node Type:** `Action`
 
@@ -616,7 +608,9 @@
 
 ### GetParameter
 
-**Class:** `auto_apms_behavior_tree::GetParameter`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameter`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameter`
 
 **Node Type:** `Action`
 
@@ -635,7 +629,9 @@
 
 ### GetParameterBool
 
-**Class:** `auto_apms_behavior_tree::GetParameterBool`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterBool`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterBool`
 
 **Node Type:** `Action`
 
@@ -654,7 +650,9 @@
 
 ### GetParameterBoolVec
 
-**Class:** `auto_apms_behavior_tree::GetParameterBoolVec`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterBoolVec`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterBoolVec`
 
 **Node Type:** `Action`
 
@@ -673,7 +671,9 @@
 
 ### GetParameterByteVec
 
-**Class:** `auto_apms_behavior_tree::GetParameterByteVec`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterByteVec`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterByteVec`
 
 **Node Type:** `Action`
 
@@ -692,7 +692,9 @@
 
 ### GetParameterDouble
 
-**Class:** `auto_apms_behavior_tree::GetParameterDouble`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterDouble`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterDouble`
 
 **Node Type:** `Action`
 
@@ -711,7 +713,9 @@
 
 ### GetParameterDoubleVec
 
-**Class:** `auto_apms_behavior_tree::GetParameterDoubleVec`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterDoubleVec`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterDoubleVec`
 
 **Node Type:** `Action`
 
@@ -730,7 +734,9 @@
 
 ### GetParameterInt
 
-**Class:** `auto_apms_behavior_tree::GetParameterInt`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterInt`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterInt`
 
 **Node Type:** `Action`
 
@@ -749,7 +755,9 @@
 
 ### GetParameterIntVec
 
-**Class:** `auto_apms_behavior_tree::GetParameterIntVec`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterIntVec`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterIntVec`
 
 **Node Type:** `Action`
 
@@ -768,7 +776,9 @@
 
 ### GetParameterString
 
-**Class:** `auto_apms_behavior_tree::GetParameterString`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterString`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterString`
 
 **Node Type:** `Action`
 
@@ -787,7 +797,9 @@
 
 ### GetParameterStringVec
 
-**Class:** `auto_apms_behavior_tree::GetParameterStringVec`
+**Plugin Class:** `auto_apms_behavior_tree::GetParameterStringVec`
+
+**C++ Model:** `auto_apms_behavior_tree::GetParameterStringVec`
 
 **Node Type:** `Action`
 
@@ -806,7 +818,9 @@
 
 ### HaltExecutor
 
-**Class:** `auto_apms_behavior_tree::HaltExecutor`
+**Plugin Class:** `auto_apms_behavior_tree::HaltExecutor`
+
+**C++ Model:** `auto_apms_behavior_tree::HaltExecutor`
 
 **Node Type:** `Action`
 
@@ -818,7 +832,9 @@
 
 ### HasParameter
 
-**Class:** `auto_apms_behavior_tree::HasParameter`
+**Plugin Class:** `auto_apms_behavior_tree::HasParameter`
+
+**C++ Model:** `auto_apms_behavior_tree::HasParameter`
 
 **Node Type:** `Action`
 
@@ -831,7 +847,9 @@
 
 ### Logger
 
-**Class:** `auto_apms_behavior_tree::Logger`
+**Plugin Class:** `auto_apms_behavior_tree::Logger`
+
+**C++ Model:** `auto_apms_behavior_tree::Logger`
 
 **Node Type:** `Action`
 
@@ -844,7 +862,9 @@
 
 ### PauseExecutor
 
-**Class:** `auto_apms_behavior_tree::PauseExecutor`
+**Plugin Class:** `auto_apms_behavior_tree::PauseExecutor`
+
+**C++ Model:** `auto_apms_behavior_tree::PauseExecutor`
 
 **Node Type:** `Action`
 
@@ -856,7 +876,9 @@
 
 ### ResumeExecutor
 
-**Class:** `auto_apms_behavior_tree::ResumeExecutor`
+**Plugin Class:** `auto_apms_behavior_tree::ResumeExecutor`
+
+**C++ Model:** `auto_apms_behavior_tree::ResumeExecutor`
 
 **Node Type:** `Action`
 
@@ -868,7 +890,9 @@
 
 ### SetParameter
 
-**Class:** `auto_apms_behavior_tree::SetParameter`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameter`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameter`
 
 **Node Type:** `Action`
 
@@ -882,7 +906,9 @@
 
 ### SetParameterBool
 
-**Class:** `auto_apms_behavior_tree::SetParameterBool`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterBool`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterBool`
 
 **Node Type:** `Action`
 
@@ -896,7 +922,9 @@
 
 ### SetParameterBoolVec
 
-**Class:** `auto_apms_behavior_tree::SetParameterBoolVec`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterBoolVec`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterBoolVec`
 
 **Node Type:** `Action`
 
@@ -910,7 +938,9 @@
 
 ### SetParameterByteVec
 
-**Class:** `auto_apms_behavior_tree::SetParameterByteVec`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterByteVec`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterByteVec`
 
 **Node Type:** `Action`
 
@@ -924,7 +954,9 @@
 
 ### SetParameterDouble
 
-**Class:** `auto_apms_behavior_tree::SetParameterDouble`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterDouble`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterDouble`
 
 **Node Type:** `Action`
 
@@ -938,7 +970,9 @@
 
 ### SetParameterDoubleVec
 
-**Class:** `auto_apms_behavior_tree::SetParameterDoubleVec`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterDoubleVec`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterDoubleVec`
 
 **Node Type:** `Action`
 
@@ -952,7 +986,9 @@
 
 ### SetParameterInt
 
-**Class:** `auto_apms_behavior_tree::SetParameterInt`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterInt`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterInt`
 
 **Node Type:** `Action`
 
@@ -966,7 +1002,9 @@
 
 ### SetParameterIntVec
 
-**Class:** `auto_apms_behavior_tree::SetParameterIntVec`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterIntVec`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterIntVec`
 
 **Node Type:** `Action`
 
@@ -980,7 +1018,9 @@
 
 ### SetParameterString
 
-**Class:** `auto_apms_behavior_tree::SetParameterString`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterString`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterString`
 
 **Node Type:** `Action`
 
@@ -994,7 +1034,9 @@
 
 ### SetParameterStringVec
 
-**Class:** `auto_apms_behavior_tree::SetParameterStringVec`
+**Plugin Class:** `auto_apms_behavior_tree::SetParameterStringVec`
+
+**C++ Model:** `auto_apms_behavior_tree::SetParameterStringVec`
 
 **Node Type:** `Action`
 
@@ -1008,7 +1050,9 @@
 
 ### StartExecutor
 
-**Class:** `auto_apms_behavior_tree::StartExecutor`
+**Plugin Class:** `auto_apms_behavior_tree::StartExecutor`
+
+**C++ Model:** `auto_apms_behavior_tree::StartExecutor`
 
 **Node Type:** `Action`
 
@@ -1019,15 +1063,16 @@
 | **executor** | `std::string` | ❌ | Name of the executor responsible for building and running the specified behavior tree. |
 | **build_request** | `std::string` | ❌ | String passed to the tree build handler defining which tree is to be built. |
 | **build_handler** | `std::string` |  | Fully qualified class name of the build handler that is supposed to take care of the request. If empty, use the current one. |
-| **root_tree** | `std::string` |  | Name of the root tree. If empty, let the build handler determine the root tree. |
+| **entrypoint** | `std::string` |  | Entrypoint for the behavior. If empty, let the build handler determine the entrypoint. |
 | **node_manifest** | `std::string` |  | YAML/JSON formatted string encoding the name and the registration options for the tree nodes supposed to be loaded before building the tree. |
-| **node_overrides** | `std::string` |  | YAML/JSON formatted string encoding the name and the registration options for any tree nodes supposed to override previously loaded ones. |
 | **clear_blackboard** | `bool` | true | Boolean flag wether to clear the existing blackboard entries before the execution starts or not. |
 | **attach** | `bool` | true | Boolean flag wether to attach to the execution process or start in detached mode. |
 
 ### TerminateExecutor
 
-**Class:** `auto_apms_behavior_tree::TerminateExecutor`
+**Plugin Class:** `auto_apms_behavior_tree::TerminateExecutor`
+
+**C++ Model:** `auto_apms_behavior_tree::TerminateExecutor`
 
 **Node Type:** `Action`
 
@@ -1041,7 +1086,9 @@
 
 ### GetRobotState
 
-**Class:** `auto_apms_simulation::GetRobotState`
+**Plugin Class:** `auto_apms_simulation::GetRobotState`
+
+**C++ Model:** `auto_apms_simulation::GetRobotState`
 
 **Node Type:** `Condition`
 
@@ -1060,7 +1107,9 @@
 
 ### IsLocationOccupied
 
-**Class:** `auto_apms_simulation::IsLocationOccupied`
+**Plugin Class:** `auto_apms_simulation::IsLocationOccupied`
+
+**C++ Model:** `auto_apms_simulation::IsLocationOccupied`
 
 **Node Type:** `Action`
 
@@ -1074,7 +1123,9 @@
 
 ### NavigateToLocation
 
-**Class:** `auto_apms_simulation::NavigateToLocation`
+**Plugin Class:** `auto_apms_simulation::NavigateToLocation`
+
+**C++ Model:** `auto_apms_simulation::NavigateToLocation`
 
 **Node Type:** `Action`
 
@@ -1087,7 +1138,9 @@
 
 ### PickObject
 
-**Class:** `auto_apms_simulation::PickObject`
+**Plugin Class:** `auto_apms_simulation::PickObject`
+
+**C++ Model:** `auto_apms_simulation::PickObject`
 
 **Node Type:** `Action`
 
@@ -1100,7 +1153,9 @@
 
 ### PlaceObject
 
-**Class:** `auto_apms_simulation::PlaceObject`
+**Plugin Class:** `auto_apms_simulation::PlaceObject`
+
+**C++ Model:** `auto_apms_simulation::PlaceObject`
 
 **Node Type:** `Action`
 
@@ -1112,7 +1167,9 @@
 
 ### RobotSharesCurrentLocation
 
-**Class:** `auto_apms_simulation::RobotSharesCurrentLocation`
+**Plugin Class:** `auto_apms_simulation::RobotSharesCurrentLocation`
+
+**C++ Model:** `auto_apms_simulation::RobotSharesCurrentLocation`
 
 **Node Type:** `Action`
 
@@ -1131,7 +1188,9 @@
 
 ### SetLocationState
 
-**Class:** `auto_apms_simulation::SetLocationState`
+**Plugin Class:** `auto_apms_simulation::SetLocationState`
+
+**C++ Model:** `auto_apms_simulation::SetLocationState`
 
 **Node Type:** `Action`
 
@@ -1142,126 +1201,3 @@
 | **open** | `bool` | true | Open/Close the location. |
 | **location** | `std::string` | ❌ | Name of the location. |
 | **lock** | `bool` | false | Lock/Unlock the location. |
-
-## auto_apms_px4
-
-### Arm
-
-**Class:** `auto_apms_px4::ArmAction`
-
-**Node Type:** `Action`
-
-#### Input Ports
-
-| Input Name | Type | Default Value | Description |
-| :--- | :---: | :---: | :--- |
-| **wait_until_ready_to_arm** | `bool` | false | Wait for the UAV to be ready for arming. If false and UAV is not ready to arm, will be rejected. |
-
-### Disarm
-
-**Class:** `auto_apms_px4::DisarmAction`
-
-**Node Type:** `Action`
-
-*This node doesn't have any ports.*
-
-### EnableHold
-
-**Class:** `auto_apms_px4::EnableHoldAction`
-
-**Node Type:** `Action`
-
-*This node doesn't have any ports.*
-
-### GetGlobalPosition
-
-**Class:** `auto_apms_px4::GetPosition<GlobalPositionMsg>`
-
-**Node Type:** `Condition`
-
-#### Output Ports
-
-| Output Name | Type | Default Value | Description |
-| :--- | :---: | :---: | :--- |
-| **alt** | `double` | {alt} | Current altitude in meter (AMSL) |
-| **lon** | `double` | {lon} | Current longitude in degree [°] |
-| **lat** | `double` | {lat} | Current latitude in degree [°] |
-| **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | {pos_vec} | Current global position vector (latitude [°], longitude [°], altitude AMSL [m]) |
-
-### GetLocalPosition
-
-**Class:** `auto_apms_px4::GetPosition<LocalPositionMsg>`
-
-**Node Type:** `Condition`
-
-#### Output Ports
-
-| Output Name | Type | Default Value | Description |
-| :--- | :---: | :---: | :--- |
-| **down** | `double` | {down} | Current down [m] relative to origin |
-| **east** | `double` | {east} | Current east [m] relative to origin |
-| **north** | `double` | {north} | Current north [m] relative to origin |
-| **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | {pos_vec} | Current local position vector (north [m], east [m], down [m]) |
-
-### GoTo
-
-**Class:** `auto_apms_px4::GoToAction`
-
-**Node Type:** `Action`
-
-#### Input Ports
-
-| Input Name | Type | Default Value | Description |
-| :--- | :---: | :---: | :--- |
-| **reached_thresh_yaw** | `double` | 7.000000 | Maximum heading error [°] under which the position is considered reached |
-| **reached_thresh_vel** | `double` | 0.300000 | Maximum velocity error [m/s] under which the position is considered reached |
-| **reached_thresh_pos** | `double` | 0.500000 | Maximum position error [m] under which the position is considered reached |
-| **max_heading_rate** | `double` | 30.000000 | Maximum heading rate [°/s] |
-| **max_vertical_vel** | `double` | 5.000000 | Maximum vertical velocity [m/s] |
-| **max_horizontal_vel** | `double` | 10.000000 | Maximum horizontal velocity [m/s] |
-| **yaw** | `double` | ❌ | Desired yaw position in degree from north (heading) [-180°, 180) |
-| **z** | `double` | ❌ | Override vector entry Z |
-| **y** | `double` | ❌ | Override vector entry Y |
-| **x** | `double` | ❌ | Override vector entry X |
-| **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | ❌ | Target position as a row vector (separated by ';') |
-| **frame** | `std::string` | global | Reference frame: 'global' (Latitude, longitude, altitude (AMSL)) or 'local' (North, east, down from start) |
-
-### Land
-
-**Class:** `auto_apms_px4::LandAction`
-
-**Node Type:** `Action`
-
-*This node doesn't have any ports.*
-
-### Mission
-
-**Class:** `auto_apms_px4::MissionAction`
-
-**Node Type:** `Action`
-
-#### Input Ports
-
-| Input Name | Type | Default Value | Description |
-| :--- | :---: | :---: | :--- |
-| **do_restart** | `bool` | false | Wether to restart (true) or resume (false) the mission. |
-
-### RTL
-
-**Class:** `auto_apms_px4::RTLAction`
-
-**Node Type:** `Action`
-
-*This node doesn't have any ports.*
-
-### Takeoff
-
-**Class:** `auto_apms_px4::TakeoffAction`
-
-**Node Type:** `Action`
-
-#### Input Ports
-
-| Input Name | Type | Default Value | Description |
-| :--- | :---: | :---: | :--- |
-| **alt** | `double` | ❌ | Target takeoff altitude in meter (AMSL) |
