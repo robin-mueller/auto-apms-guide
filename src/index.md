@@ -5,7 +5,7 @@ titleTemplate: :title - Automated Action Planning and Management System
 
 hero:
   name: AutoAPMS
-  text: Resilient Robot Mission Management
+  text: Streamlining Behaviors in ROS 2
   tagline: Automated Action Planning and Management System for Robotics
   image:
     src: /logo/mainpage-icon.png

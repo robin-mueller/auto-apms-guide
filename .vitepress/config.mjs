@@ -46,7 +46,7 @@ const vitePressOptions = {
         ['meta', { property: 'og:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:locale', content: 'en' }],
-        ['meta', { property: 'og:title', content: 'AutoAPMS - Resilient Robot Mission Management' }],
+        ['meta', { property: 'og:title', content: 'AutoAPMS - Automated Action Planning and Management System' }],
         ['meta', { property: 'og:site_name', content: 'AutoAPMS' }],
         ['meta', { property: 'og:image', content: 'https://robin-mueller.github.io/auto-apms-guide/logo/logo-og.png' }],
         ['meta', { property: 'og:image:width', content: '1306' }],
@@ -54,7 +54,7 @@ const vitePressOptions = {
         ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
         ['meta', { property: 'twitter:domain', content: 'robin-mueller.github.io' }],
         ['meta', { property: 'twitter:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
-        ['meta', { name: 'twitter:title', content: 'AutoAPMS - Resilient Robot Mission Management' }],
+        ['meta', { name: 'twitter:title', content: 'AutoAPMS - Automated Action Planning and Management System' }],
         ['meta', { name: 'twitter:image', content: 'https://robin-mueller.github.io/auto-apms-guide/logo/logo-og.png' }],
 
         // Google Search Console
