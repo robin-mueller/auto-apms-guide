@@ -358,7 +358,7 @@
 
 | Input Name | Type | Default Value | Description |
 | :--- | :---: | :---: | :--- |
-| **then_skip** | `bool` | true | If true, skip after the first execution, otherwise return the same NodeStatus returned once bu the child. |
+| **then_skip** | `bool` | true | If true, skip after the first execution, otherwise return the same NodeStatus returned once by the child. |
 
 ### Script
 
@@ -410,7 +410,7 @@
 
 | Input Name | Type | Default Value | Description |
 | :--- | :---: | :---: | :--- |
-| **value** | `BT::AnyTypeAllowed` | ❌ | Value to be written int othe output_key |
+| **value** | `BT::AnyTypeAllowed` | ❌ | Value to be written into the output_key |
 
 #### Bidirectional Ports
 
