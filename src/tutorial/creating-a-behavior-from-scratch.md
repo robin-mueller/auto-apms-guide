@@ -248,7 +248,7 @@ ament_package()
 
 === Programmatic Approach
 
-You need to create a separate shared library that contains source code for a so-called [behavior tree build handler](../concept/common-resources.md#behavior-tree-build-handlers). We recommend passing the target to the `NODE_MODEL_HEADER_TARGET` argument of `auto_apms_behavior_tree_declare_nodes` to be able to incorporate [node models](../concept/common-resources.md#c-node-model-header). Additionally, you must make sure to specify the name of the build handler class using `auto_apms_behavior_tree_declare_build_handlers` and install the extra library.
+You need to create a separate shared library that contains source code for a so-called [behavior build handler](../concept/common-resources.md#behavior-build-handlers). We recommend passing the target to the `NODE_MODEL_HEADER_TARGET` argument of `auto_apms_behavior_tree_declare_nodes` to be able to incorporate [node models](../concept/common-resources.md#c-node-model-header). Additionally, you must make sure to specify the name of the build handler class using `auto_apms_behavior_tree_declare_build_handlers` and install the extra library.
 
 ```cmake:line-numbers [CMakeLists.txt]
 project(my_package)
@@ -284,9 +284,9 @@ auto_apms_behavior_tree_declare_nodes(simple_skill_nodes
 )
 
 # We can omit auto_apms_behavior_tree_declare_trees in this example
-# Instead, we implement a behavior tree build handler plugin
+# Instead, we implement a behavior build handler plugin
 
-# Declare the behavior tree build handler that will provide the tree
+# Declare the behavior build handler that will provide the tree
 auto_apms_behavior_tree_declare_build_handlers(simple_skill_build_handler # [!code ++:3]
   "my_namespace::SimpleSkillBuildHandler"
 )
@@ -307,7 +307,7 @@ ament_package()
 :::
 
 ::: tip Learn more 🎓
-If you don't fully understand the CMakeLists.txt for the programmatic approach and want more detailed information about behavior tree build handlers, refer to the tutorial [Building Behavior Trees: Programmatic Approach](./building-behavior-trees.md#programmatic-approach).
+If you don't fully understand the CMakeLists.txt for the programmatic approach and want more detailed information about behavior build handlers, refer to the tutorial [Building Behavior Trees: Programmatic Approach](./building-behavior-trees.md#programmatic-approach).
 :::
 
 ### Build the Behavior Tree
@@ -398,7 +398,7 @@ The `SimpleSkillBuildHandler` must be added to a shared library and registered w
 :::
 
 ::: info What are Global Blackboard Parameters?
-This example behavior tree showcases a very useful concept introduced by AutoAPMS: [Global Blackboard Parameters](../concept/behavior-tree-executor.md#global-blackboard). They are accessed using the `bb.`/`@` prefix and allow us to adjust the behavior without rebuilding the entire tree, thus makes it reusable. This is one of the reasons why AutoAPMS's adaption of the behavior tree paradigm is very well integrated with ROS 2.
+This example behavior tree showcases a very useful concept introduced by AutoAPMS: [Global Blackboard Parameters](../concept/behavior-executor.md#global-blackboard). They are accessed using the `bb.`/`@` prefix and allow us to adjust the behavior without rebuilding the entire tree, thus makes it reusable. This is one of the reasons why AutoAPMS's adaption of the behavior tree paradigm is very well integrated with ROS 2.
 :::
 
 Congratulations! 🎉 You are now familiar with the general workflow of building behavior trees.

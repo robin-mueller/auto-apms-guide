@@ -13,7 +13,7 @@ This page provides the most relevant information for all behavior related resour
 
 *Low-level:*
 
-- [Behavior Tree Build Handlers](#behavior-tree-build-handlers)
+- [Behavior Build Handlers](#behavior-build-handlers)
 - [Behavior Tree Node Manifests](#behavior-tree-node-manifests)
 - [Behavior Tree Node Models](#behavior-tree-node-models)
 
@@ -143,9 +143,9 @@ This is the full signature of a mission configuration's resource identity:
 | `<package_name>` | Name of the ROS 2 package that registers the resource. |
 | `<config_file_stem>` | Name of the mission configuration YAML file (without extension) that contains the data. |
 
-## Behavior Tree Build Handlers
+## Behavior Build Handlers
 
-Behavior tree build handlers allow to integrate customized algorithms for creating behavior trees with AutoAPMS's [behavior tree executor](./behavior-tree-executor.md). They are used to define rules for answering the "build requests" formulated when [deploying behaviors](../tutorial/deploying-behaviors.md).
+Behavior build handlers allow to integrate customized algorithms for creating behavior trees with AutoAPMS's [behavior executor](./behavior-executor.md). They are used to define rules for answering the "build requests" formulated when [deploying behaviors](../tutorial/deploying-behaviors.md).
 
 AutoAPMS provides the following commonly used build handlers out of the box:
 

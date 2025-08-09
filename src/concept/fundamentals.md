@@ -1,13 +1,25 @@
 ---
 order: 0
 ---
-# Fundamental Workflow
+# Fundamentals
 
-Users of AutoAPMS immensely benefit from adopting a unique system architecture and flexible concepts for developing robotic applications. We advocate the following design for real-time systems:
+Before starting with the tutorials you should make yourself familiar with the fundamental concepts. This page outlines the most important definitions and design decisions you need to know about.
+
+## Behavior Definition
+
+- extensible by design
+- categories
+- resource registering and required information
+
+## Task-Level Control
+
+Users of AutoAPMS benefit from adopting a unique system architecture and flexible abstractions for developing robotic applications. We design the task-level control layer for robotic systems as follows:
 
 ![AutoAPMS System Architecture](./system-architecture.gif)
 
 AutoAPMS's behavior engine applies the client-server model. It's necessary that the system provides robotic skills/capabilities offering certain functions for achieving user-defined goals. We distinguish between AutoAPMS's behavior domain and the application specific user domain. It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality. We utilize [behavior trees](./behavior-trees.md) to create clients based on the underlying interfaces and orchestrate missions.
+
+## Development Workflow
 
 When developing robotic applications according to the presented system architecture, the user should stick to this fundamental workflow:
 
@@ -23,7 +35,7 @@ When developing robotic applications according to the presented system architect
 
     🎓 [How to deploy behaviors](../tutorial/deploying-behaviors.md)
 
-4. **Configure a mission** that defines fallback behaviors for hazardous events.
+4. Optional: **Configure a mission** that defines fallback behaviors for hazardous events.
 
     🎓 [How to execute missions](../tutorial/executing-missions.md)
 

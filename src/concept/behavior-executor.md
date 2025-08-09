@@ -1,9 +1,13 @@
 ---
 order: 20
 ---
-# Behavior Tree Executor
+# Behavior Executor
 
-Commonly required functionality for executing behavior trees within the ROS 2 context is provided by [`TreeExecutorNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeExecutorNode.html). This flexible ROS 2 node offers a universal interface compatible with any behavior tree which complies with [our definitions](./behavior-trees.md). It implements the behavior tree build handler concept allowing the user to define how the executor is supposed to create the desired behavior tree.
+The behavior executor or sometimes also referred to as behavior engine is a core concept of this project. Thanks to the generic [definition of behaviors](./fundamentals.md#behavior-definition) in AutoAPMS, it can be flexibly used to execute various categories of behaviors.
+
+Internally, the executor relies on behavior trees for task planning. Each request for starting a behavior leads to a behavior tree being created. It's up to the [build handler](#behavior-build-handler) to interpret the incoming request and build the behavior tree accordingly.
+
+The behavior executor is represented by the [`TreeExecutorNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeExecutorNode.html) class. This central ROS 2 node offers a universal interface for dynamically deploying behaviors at runtime.
 
 ## ROS 2 Interfaces
 
@@ -31,7 +35,7 @@ Only a single `StartTreeExecutor` goal is allowed to be executed at a time.
 | Name | Type | Default | Description |
 | :---: | :---: | :---: | :--- |
 | **build_request** | `std::string` | ❌ | String that encodes information about which behavior tree to execute. It must be formatted in a suitable way so that the underlying build handler is able to interpret it correctly. The user must be aware of which format is accepted by which build handler and always create appropriate requests. Otherwise, the build handler may throw an error and the action goal will be rejected. If the build handler doesn't implement that level of validation, it's undefined behavior. |
-| **build_handler** | `std::string` | "" | Fully qualified class name of a declared behavior tree build handler plugin to be used for interpreting `build_request`. If empty, the one that is currently loaded by the executor will be used. May also be `none` for requesting to "unload" the current build handler (This requires derived executors to be able to build the behavior tree without relying on a build handler). |
+| **build_handler** | `std::string` | "" | Fully qualified class name of a declared behavior build handler plugin to be used for interpreting `build_request`. If empty, the one that is currently loaded by the executor will be used. May also be `none` for requesting to "unload" the current build handler (This requires derived executors to be able to build the behavior tree without relying on a build handler). |
 | **entrypoint** | `std::string` | "" | Single point of entry for execution. This field may be empty if the underlying build handler is able to determine the entrypoint only through `build_request`. Otherwise, the build handler may use this information appropriately when it is passed to `TreeBuildHandler::setBuildRequest`. |
 | **node_manifest** | `std::string` | "" | User-defined node manifest (encoded) specifying how to register all of the behavior tree nodes required by `build_request`. This field may be empty if the underlying build handler is able to independently perform the node registration. Otherwise, the build handler may use this information appropriately when it is passed to `TreeBuildHandler::setBuildRequest`. |
 | **attach** | `bool` | `true` | Flag for determining the execution mode. If `true` (attached mode), the action will attach to the execution routine, run for as long as it is alive and return a goal result encapsulating the final status of the executed behavior tree. If `false`, the action will return immediately after the execution has been started allowing the client to do work asynchronously while the behavior tree is being executed. |
@@ -74,9 +78,11 @@ The possible enumeration are defined as constants in the action interface defini
 | `COMMAND_HALT` | 3 | Halt the behavior tree. This causes the execution routine to invoke `BT::Tree::haltTree` which stops the currently running behavior tree node. Afterwards, the executor is kept busy and the tree won't be ticked until `COMMAND_RESUME` is received. |
 | `COMMAND_TERMINATE` | 4 | Halt the behavior tree and terminate the execution routine. If accepted, the executor invokes `BT::Tree::haltTree` and ultimately resets the execution routine. This enables the executor to accept new [`StartTreeExecutor`](#starttreeexecutor) goals. |
 
-## Behavior Tree Build Handler
+## Behavior Build Handler
 
-AutoAPMS introduces the concept of behavior tree build handlers which allows the user to write C++ algorithms for creating behavior trees according to certain rules. Users must inherit from `TreeBuildHandler` and override the following two virtual methods:
+AutoAPMS introduces the concept of so-called behavior build handlers which allows the user to write C++ algorithms for creating behavior trees according to certain rules. Typically, a behavior build handler is compatible with a specific behavior category. This association is usually made when [registering behaviors](../reference/cmake.md#register-behavior) in CMake. However, it is also possible to overrule the default configuration at runtime.
+
+The base class for all build handlers is `TreeBuildHandler` and each implementation is defined by the following two virtual methods:
 
 - [`TreeBuildHandler::setBuildRequest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#ac4c4887fcd65b024a89445009cbe15b4)
 
@@ -111,7 +117,6 @@ ros2 param get "<executor_name>" "bb.<entry_name>"
 
 # Set initial blackboard entry
 ros2 run auto_apms_behavior_tree tree_executor --ros-args -p "bb.<entry_name>":="<value>"
-ros2 run auto_apms_behavior_tree run_behavior "<build_request>" --ros-args -p "bb.<entry_name>":="<value>"
 ```
 
 ```py [launch.py]
@@ -124,14 +129,6 @@ def generate_launch_description():
             Node(
                 package="auto_apms_behavior_tree",
                 executable="tree_executor",
-                parameters=[{
-                    "bb.<entry_name>": "<value>"  # Set initial blackboard entry
-                }]
-            ),
-            Node(
-                package="auto_apms_behavior_tree",
-                executable="run_behavior",
-                arguments=["<build_request>"],
                 parameters=[{
                     "bb.<entry_name>": "<value>"  # Set initial blackboard entry
                 }]
@@ -165,7 +162,6 @@ ros2 param get "<executor_name>" "enum.<enum_name>"
 
 # Set initial scripting enum
 ros2 run auto_apms_behavior_tree tree_executor --ros-args -p "enum.<enum_name>":="<value>"
-ros2 run auto_apms_behavior_tree run_behavior "<build_request>" --ros-args -p "enum.<enum_name>":="<value>"
 ```
 
 ```py [launch.py]
@@ -178,14 +174,6 @@ def generate_launch_description():
             Node(
                 package="auto_apms_behavior_tree",
                 executable="tree_executor",
-                parameters=[{
-                    "enum.<enum_name>": "<value>"  # Set initial scripting enum
-                }]
-            ),
-            Node(
-                package="auto_apms_behavior_tree",
-                executable="run_behavior",
-                arguments=["<build_request>"],
                 parameters=[{
                     "enum.<enum_name>": "<value>"  # Set initial scripting enum
                 }]
@@ -216,12 +204,12 @@ state_change_logger: false
 
 | Parameter Name | Type | Description |
 | :---: | :---: | :--- |
-| **build_handler** | `string` | Fully qualified class name of the behavior tree build handler responsible for creating trees if not overridden by the `StartTreeExecutor` action goal. |
+| **build_handler** | `string` | Fully qualified class name of the behavior build handler responsible for creating trees if not overridden by the `StartTreeExecutor` action goal. |
 | **tick_rate** | `double` | Interval [s] at which the behavior tree is being ticked. |
-| **allow_other_build_handlers** | `bool` (Read only) | Option whether to allow dynamic loading/unloading of behavior tree build handler plugins. |
+| **allow_other_build_handlers** | `bool` (Read only) | Option whether to allow dynamic loading/unloading of behavior build handler plugins. |
 | **allow_dynamic_scripting_enums** | `bool` | Option whether to allow dynamically changing scripting enum parameters. |
 | **allow_dynamic_blackboard** | `bool` | Option whether to allow dynamically changing blackboard parameters. |
-| **build_handler_exclude_packages** | `string_array` (Read only) | List of package names to exclude when searching for behavior tree build handler plugins. |
+| **build_handler_exclude_packages** | `string_array` (Read only) | List of package names to exclude when searching for behavior build handler plugins. |
 | **node_exclude_packages** | `string_array` (Read only) | List of package names to exclude when searching for behavior tree node plugins. |
 | **groot2_port** | `int` | Server port for the Groot2 publisher. `-1` means that it won't be created. |
 | **state_change_logger** | `bool` | Flag whether to allow the behavior tree state observer to write to rosout. |

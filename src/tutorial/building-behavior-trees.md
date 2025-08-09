@@ -3,7 +3,7 @@ order: 20
 ---
 # Building Behavior Trees
 
-Behavior trees are composed of nodes that can be considered clients to a specific function. They may for example request to execute a skill/task in order to query information or perform an action. So before you're able to build custom behavior trees, you must implement ROS 2 nodes that act as servers for the required functionality. Refer to our [guidelines](../concept/fundamental-workflow.md#_1-implementing-skills) for implementing these.
+Behavior trees are composed of nodes that can be considered clients to a specific function. They may for example request to execute a skill/task in order to query information or perform an action. So before you're able to build custom behavior trees, you must implement ROS 2 nodes that act as servers for the required functionality. Refer to our [guidelines](../concept/fundamentals.md#_1-implementing-skills) for implementing these.
 
 AutoAPMS comes with various [standard behavior tree nodes](../reference/behavior-tree-nodes.md) out of the box. As described by the previous tutorial, we also provide a powerful toolchain that allows users to [implement custom behavior tree nodes](./implementing-behavior-tree-nodes.md) according to the needs of the their respective applications.
 
@@ -107,7 +107,7 @@ This approach requires you to be familiar with AutoAPMS's behavior tree builder 
 
 - [`TreeBuildHandler`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html)
 
-  Introduces a plugin-based approach for implementing specialized algorithms for building behavior trees. When deploying behaviors, users may dynamically load plugins created by inheriting from this class to customize how the [behavior tree executor](../concept/behavior-tree-executor.md) interprets incoming build requests.
+  Introduces a plugin-based approach for implementing specialized algorithms for building behavior trees. When deploying behaviors, users may dynamically load plugins created by inheriting from this class to customize how the [behavior tree executor](../concept/behavior-executor.md) interprets incoming build requests.
 
 Both classes are essential for the programmatic approach. In the following, we'll elaborate common use cases. If you want to see a full example that applies the programmatic approach for building a specific behavior tree, refer to [Creating a Behavior Tree From Scratch: Build the Behavior Tree](./creating-a-behavior-from-scratch.md#build-the-behavior-tree).
 
@@ -288,9 +288,9 @@ In this snippet we brought both `my_namespace::model` and `auto_apms_behavior_tr
 
 ### Using `TreeBuildHandler`
 
-The package `auto_apms_behavior_tree` comes with standard behavior tree build handlers. You can learn more about how to use them [here](../concept/common-resources.md#behavior-tree-build-handlers). In the following, we want to explain how you implement build handlers yourself.
+The package `auto_apms_behavior_tree` comes with standard behavior build handlers. You can learn more about how to use them [here](../concept/common-resources.md#behavior-build-handlers). In the following, we want to explain how you implement build handlers yourself.
 
-Similar to how it's done with custom behavior tree nodes, one must register custom behavior tree build handlers with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
+Similar to how it's done with custom behavior tree nodes, one must register custom behavior build handlers with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
 
 1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
 

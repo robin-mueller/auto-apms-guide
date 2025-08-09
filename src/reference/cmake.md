@@ -79,7 +79,7 @@ auto_apms_behavior_tree_register_behavior(<build_request>
 | Argument | Required/Optional | Description |
 | :--- | :---: | :--- |
 | `build_request` | Required (Positional) | Relative path to a file containing a behavior definition or a simple string. This argument determines the build request given to the behavior build handler provided with `BUILD_HANDLER`. **The user must make sure that the given build handler is able to interpret the given request**. |
-| `BUILD_HANDLER` | Required | Fully qualified class name of the [behavior tree build handler](../concept/common-resources.md#behavior-tree-build-handlers) that should be used by default to interpret the given behaviors. |
+| `BUILD_HANDLER` | Required | Fully qualified class name of the [behavior build handler](../concept/common-resources.md#behavior-build-handlers) that should be used by default to interpret the given behaviors. |
 | `CATEGORY` | Optional (Single-Value-Keyword) | Category name to which the behaviors belong. If omitted, the default category is used. |
 | `ALIAS` | Optional (Single-Value-Keyword) | Name for the behavior resource. If omitted, the file stem respectively the simple string is used as a behavior's alias. |
 | `ENTRYPOINT` | Optional (Single-Value-Keyword) | Single point of entry for behavior execution. For behavior trees, this usually is the name of the root tree, but for other types of behaviors, this may be populated differently. |
@@ -136,9 +136,9 @@ Visit the tutorial [Building Behavior Trees: Graphical Approach](../tutorial/bui
 
 ## `auto_apms_behavior_tree_declare_build_handlers` {#declare-build-handlers}
 
-**Add behavior tree build handler plugins to the resource index.**
+**Add behavior build handler plugins to the resource index.**
 
-This macro must be called to make behavior tree build handlers available at runtime. They may be loaded using `TreeBuildHandlerLoader` (a subclass of `pluginlib::ClassLoader`).
+This macro must be called to make behavior build handlers available at runtime. They may be loaded using `TreeBuildHandlerLoader` (a subclass of `pluginlib::ClassLoader`).
 
 ### Signature
 
@@ -152,7 +152,7 @@ All classes passed to `class_names` must also be made discoverable using the C++
 
 | Argument | Required/Optional | Description |
 | :--- | :---: | :--- |
-| `target` | Required (Positional) | Shared library target implementing the behavior tree build handlers declared under `class_names`. |
+| `target` | Required (Positional) | Shared library target implementing the behavior build handlers declared under `class_names`. |
 | `class_names` | Optional (Multi-Value-Keyword) | The unique, fully qualified names of classes inheriting from `TreeBuildHandler` being declared with this macro call and associated with the shared library target. |
 
 ### Example

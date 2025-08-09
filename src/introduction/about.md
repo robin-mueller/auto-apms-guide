@@ -9,7 +9,11 @@ sidebar: About this Guide
 
 Welcome developers, engineers and ROS 2 enthusiasts! 🎉
 
-This is the official user guide and documentation for the open-source repository **AutoAPMS**. The name is short for *Automated Action Planning and Management System*. This software provides a powerful and streamlined toolchain for developing robotic behaviors. This documentation shows you how to apply the provided functionality to create **highly automated and resilient missions**.
+This is the official user guide and documentation for **AutoAPMS**: An *automated action planning and management system* for ROS 2.
+
+AutoAPMS is a **heavily extensible** development framework for **behavior-based ROS 2 applications**. It provides a **highly modular integration of behavior trees**, implements a **powerful execution engine** and offers **convenient CLI tooling** for deploying behaviors with ease.
+
+The intention of this project is to make it significantly more user-friendly and less error prone to develop autonomous robotics with behavior trees. The core packages are written in C++ and a supplementary Python API exposes high-level features for scripting.
 
 You want to know more about the features of this framework and how to get started? Check out the following pages:
 
@@ -21,7 +25,7 @@ You want to know more about the features of this framework and how to get starte
 
     Install your development environment and get started.
 
-- 🎓 [Learn the basics](../concept/fundamental-workflow.md)
+- 🎓 [Learn the basics](../concept/fundamentals.md)
 
     Learn how to create and execute behaviors/missions.
 
