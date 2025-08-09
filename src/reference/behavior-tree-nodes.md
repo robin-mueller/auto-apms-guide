@@ -8,7 +8,7 @@ Here is an extensive list of all behavior tree nodes that are available out of t
 
 We also include the documentation of those nodes that natively come with [BehaviorTree.CPP](https://github.com/BehaviorTree/BehaviorTree.CPP) so you have a better overview.
 
-There's a [C++ node model class](../usage/concepts/common-resources.md#behavior-tree-node-models) available for all of the registration names mentioned below. You can include them like so:
+There's a [C++ node model class](../concept/common-resources.md#behavior-tree-node-models) available for all of the registration names mentioned below. You can include them like so:
 
 ```cpp
 #include "auto_apms_behavior_tree/behavior_tree_nodes.hpp"

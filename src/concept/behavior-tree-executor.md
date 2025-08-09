@@ -98,7 +98,7 @@ BehaviorTree.CPP allows behavior tree nodes to access the top level blackboard b
 
 Global blackboard parameter names must be formatted like `bb.<entry_name>`. The `bb` prefix indicates that the parameter refers to an entry of the global blackboard with name `<entry_name>`.
 
-You may initialize global blackboard parameters as any other ROS 2 parameter when [deploying behaviors](../tutorials/deploying-behaviors.md). It's also possible to query/manipulate them while the executor is spinning. Here are some common use cases:
+You may initialize global blackboard parameters as any other ROS 2 parameter when [deploying behaviors](../tutorial/deploying-behaviors.md). It's also possible to query/manipulate them while the executor is spinning. Here are some common use cases:
 
 ::: code-group
 

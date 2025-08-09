@@ -11,7 +11,7 @@ const vitePressSidebarOptions = {
     useTitleFromFrontmatter: true,
     collapseDepth: 2,
     sortMenusByFrontmatterOrder: true,
-    manualSortFileNameByPriority: ['introduction', 'installation', 'usage', 'reference', 'fundamental-workflow.md', 'concepts', 'tutorials'],
+    manualSortFileNameByPriority: ['introduction', 'concept', 'tutorial', 'reference'],
     frontmatterTitleFieldName: 'sidebar',
     capitalizeFirst: true,
     hyphenToSpace: true,

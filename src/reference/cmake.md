@@ -52,7 +52,7 @@ auto_apms_behavior_tree_declare_nodes(my_target
 ```
 
 ::: info Learn more 🎓
-Visit the tutorial [Implementing Custom Behavior Tree Nodes](../usage/tutorials/implementing-behavior-tree-nodes.md) for more information.
+Visit the tutorial [Implementing Custom Behavior Tree Nodes](../tutorial/implementing-behavior-tree-nodes.md) for more information.
 :::
 
 ## `auto_apms_behavior_tree_register_behavior` {#register-behavior}
@@ -79,7 +79,7 @@ auto_apms_behavior_tree_register_behavior(<build_request>
 | Argument | Required/Optional | Description |
 | :--- | :---: | :--- |
 | `build_request` | Required (Positional) | Relative path to a file containing a behavior definition or a simple string. This argument determines the build request given to the behavior build handler provided with `BUILD_HANDLER`. **The user must make sure that the given build handler is able to interpret the given request**. |
-| `BUILD_HANDLER` | Required | Fully qualified class name of the [behavior tree build handler](../usage/concepts/common-resources.md#behavior-tree-build-handlers) that should be used by default to interpret the given behaviors. |
+| `BUILD_HANDLER` | Required | Fully qualified class name of the [behavior tree build handler](../concept/common-resources.md#behavior-tree-build-handlers) that should be used by default to interpret the given behaviors. |
 | `CATEGORY` | Optional (Single-Value-Keyword) | Category name to which the behaviors belong. If omitted, the default category is used. |
 | `ALIAS` | Optional (Single-Value-Keyword) | Name for the behavior resource. If omitted, the file stem respectively the simple string is used as a behavior's alias. |
 | `ENTRYPOINT` | Optional (Single-Value-Keyword) | Single point of entry for behavior execution. For behavior trees, this usually is the name of the root tree, but for other types of behaviors, this may be populated differently. |
@@ -101,7 +101,7 @@ auto_apms_behavior_tree_register_behavior(
 
 **Make behavior trees available to the ROS 2 workspace by adding the corresponding behavior tree XML and node manifest YAML files to the resource index.**
 
-This is a specialization of [auto_apms_behavior_tree_register_behavior](#register-behavior) for behavior trees. It provides a standardized way of registering behavior tree resources and allows the user to refer to them using a unique [resource identity](../usage/concepts/common-resources.md#tree-identity).
+This is a specialization of [auto_apms_behavior_tree_register_behavior](#register-behavior) for behavior trees. It provides a standardized way of registering behavior tree resources and allows the user to refer to them using a unique [resource identity](../concept/common-resources.md#tree-identity).
 
 ### Signature
 
@@ -131,7 +131,7 @@ auto_apms_behavior_tree_declare_trees(
 ```
 
 ::: info Learn more 🎓
-Visit the tutorial [Building Behavior Trees: Graphical Approach](../usage/tutorials/building-behavior-trees.md#graphical-approach) for more information.
+Visit the tutorial [Building Behavior Trees: Graphical Approach](../tutorial/building-behavior-trees.md#graphical-approach) for more information.
 :::
 
 ## `auto_apms_behavior_tree_declare_build_handlers` {#declare-build-handlers}
@@ -167,14 +167,14 @@ auto_apms_behavior_tree_declare_build_handlers(my_target
 ```
 
 ::: info Learn more 🎓
-Visit the tutorial [Building Behavior Trees: Using `TreeBuildHandler`](../usage/tutorials/building-behavior-trees.md#using-treebuildhandler) for more information.
+Visit the tutorial [Building Behavior Trees: Using `TreeBuildHandler`](../tutorial/building-behavior-trees.md#using-treebuildhandler) for more information.
 :::
 
 ## `auto_apms_mission_register_missions` {#register-missions}
 
 **Register mission configuration files with the resource index.**
 
-This allows the user to refer to one of the registered mission configuration file using a [resource identity](../usage/concepts/common-resources.md#mission-config-identity)
+This allows the user to refer to one of the registered mission configuration file using a [resource identity](../concept/common-resources.md#mission-config-identity)
 
 ### Signature
 
@@ -198,5 +198,5 @@ auto_apms_mission_register_missions(
 ```
 
 ::: info Learn more 🎓
-Visit the tutorial [Executing Missions](../usage/tutorials/executing-missions.md) for more information.
+Visit the tutorial [Executing Missions](../tutorial/executing-missions.md) for more information.
 :::

@@ -3,7 +3,7 @@ order: 30
 ---
 # Deploying Behaviors
 
-In this tutorial we're going to describe everything that you need to know when using AutoAPMS's [behavior tree executor](../concepts/behavior-tree-executor.md).
+In this tutorial we're going to describe everything that you need to know when using AutoAPMS's [behavior tree executor](../concept/behavior-tree-executor.md).
 
 For deploying a behavior you need to [build a behavior tree](./building-behavior-trees.md) beforehand. Read the corresponding tutorial if you're not familiar with this process.
 
@@ -12,13 +12,13 @@ For deploying a behavior you need to [build a behavior tree](./building-behavior
 To define how the executor builds the behavior tree to be executed, you must tell it which build handler implementation to use. This can be done by in two ways:
 
 - Setting the executor's ROS 2 parameter named `build_handler`.
-- Using the `build_handler` field of a [`StartTreeExecutor`](../concepts/behavior-tree-executor.md#starttreeexecutor) action goal.
+- Using the `build_handler` field of a [`StartTreeExecutor`](../concept/behavior-tree-executor.md#starttreeexecutor) action goal.
 
-The user is expected to provide a resource identity in order to specify the build handler to be used. Visit [this page](../concepts/common-resources.md#behavior-tree-build-handlers) to learn more about build handler resources and the standard implementations we provide.
+The user is expected to provide a resource identity in order to specify the build handler to be used. Visit [this page](../concept/common-resources.md#behavior-tree-build-handlers) to learn more about build handler resources and the standard implementations we provide.
 
 ## Spinning the Executor
 
-Users may spawn the behavior tree executor as it's done with any other ROS 2 node. We provide a minimal executable called `tree_executor` which simply spins the node. It can be used from the terminal or inside a [ROS 2 launch file](https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Creating-Launch-Files.html) like this:
+Users may spawn the behavior tree executor as it's done with any other ROS 2 node. We provide a minimal executable called `tree_executor` which simply spins the node. It can be used from the terminal or inside a [ROS 2 launch file](https://docs.ros.org/en/humble/tutorial/Intermediate/Launch/Creating-Launch-Files.html) like this:
 
 ::: code-group
 
@@ -107,7 +107,7 @@ def generate_launch_description():
 
 :::
 
-It accepts one argument: The build request for the underlying build handler. By default, you can simply pass a [behavior tree resource identity](../concepts/common-resources.md#behavior-trees) and the corresponding behavior tree will be executed immediately. This is because the behavior executor loads `TreeFromResourceBuildHandler` on startup. You can customize which build handler should be loaded initially by setting the corresponding ROS 2 parameter like this:
+It accepts one argument: The build request for the underlying build handler. By default, you can simply pass a [behavior tree resource identity](../concept/common-resources.md#behavior-trees) and the corresponding behavior tree will be executed immediately. This is because the behavior executor loads `TreeFromResourceBuildHandler` on startup. You can customize which build handler should be loaded initially by setting the corresponding ROS 2 parameter like this:
 
 ::: code-group
 
@@ -137,7 +137,7 @@ def generate_launch_description():
 :::
 
 ::: info
-If you cannot use `run_behavior` for some reason (e.g. when applying ROS 2 composition), you should first spawn the node and then, in a separate step, send a [`StartTreeExecutor`](../concepts/behavior-tree-executor.md#starttreeexecutor) action goal.
+If you cannot use `run_behavior` for some reason (e.g. when applying ROS 2 composition), you should first spawn the node and then, in a separate step, send a [`StartTreeExecutor`](../concept/behavior-tree-executor.md#starttreeexecutor) action goal.
 
 As a last resort, you can also pass a build request as the first command line argument of `tree_executor` which populates the `arguments` member of `rclcpp::NodeOptions`. This will also cause the executor to automatically start ticking the behavior tree but the runtime doesn't handle interrupt signals very well.
 :::
@@ -146,27 +146,27 @@ As a last resort, you can also pass a build request as the first command line ar
 
 Users may communicate with a spinning executor node by creating ROS 2 action clients and sending goals to the corresponding actions:
 
-- [`StartTreeExecutor`](../concepts/behavior-tree-executor.md#starttreeexecutor)
-- [`CommandTreeExecutor`](../concepts/behavior-tree-executor.md#commandtreeexecutor)
+- [`StartTreeExecutor`](../concept/behavior-tree-executor.md#starttreeexecutor)
+- [`CommandTreeExecutor`](../concept/behavior-tree-executor.md#commandtreeexecutor)
 
 The former action allows to initiate the execution of a particular behavior tree and the latter offers a way to interrupt/restart this process.
 
 We conveniently provide behavior tree nodes associated with these actions:
 
-- [`StartExecutor`](../../reference/behavior-tree-nodes.md#startexecutor)
-- [`ResumeExecutor`](../../reference/behavior-tree-nodes.md#resumeexecutor)
-- [`PauseExecutor`](../../reference/behavior-tree-nodes.md#pauseexecutor)
-- [`HaltExecutor`](../../reference/behavior-tree-nodes.md#haltexecutor)
-- [`TerminateExecutor`](../../reference/behavior-tree-nodes.md#terminateexecutor)
+- [`StartExecutor`](../reference/behavior-tree-nodes.md#startexecutor)
+- [`ResumeExecutor`](../reference/behavior-tree-nodes.md#resumeexecutor)
+- [`PauseExecutor`](../reference/behavior-tree-nodes.md#pauseexecutor)
+- [`HaltExecutor`](../reference/behavior-tree-nodes.md#haltexecutor)
+- [`TerminateExecutor`](../reference/behavior-tree-nodes.md#terminateexecutor)
 
-Since a behavior tree executor implements the same standard interfaces as any other ROS 2 node, it's also possible to query or manipulate parameters at runtime. Besides the statically declared [executor parameters](../concepts/behavior-tree-executor.md#configuration-parameters) you may additionally use [scripting enum parameters](../concepts/behavior-tree-executor.md#scripting-enums) or [global blackboard parameters](../concepts/behavior-tree-executor.md#global-blackboard).
+Since a behavior tree executor implements the same standard interfaces as any other ROS 2 node, it's also possible to query or manipulate parameters at runtime. Besides the statically declared [executor parameters](../concept/behavior-tree-executor.md#configuration-parameters) you may additionally use [scripting enum parameters](../concept/behavior-tree-executor.md#scripting-enums) or [global blackboard parameters](../concept/behavior-tree-executor.md#global-blackboard).
 
 The following nodes allow for interacting with ROS 2 parameters from within a behavior tree:
 
-- [`HasParameter`](../../reference/behavior-tree-nodes.md#hasparameter)
-- [`GetParameter`](../../reference/behavior-tree-nodes.md#getparameter)
+- [`HasParameter`](../reference/behavior-tree-nodes.md#hasparameter)
+- [`GetParameter`](../reference/behavior-tree-nodes.md#getparameter)
 - `GetParameter<TypeName>` (implemented for each ROS 2 parameter type)
-- [`SetParameter`](../../reference/behavior-tree-nodes.md#setparameter)
+- [`SetParameter`](../reference/behavior-tree-nodes.md#setparameter)
 - `SetParameter<TypeName>` (implemented for each ROS 2 parameter type)
 
 ## Nesting Behaviors

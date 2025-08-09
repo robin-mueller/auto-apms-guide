@@ -3,9 +3,9 @@ order: 20
 ---
 # Building Behavior Trees
 
-Behavior trees are composed of nodes that can be considered clients to a specific function. They may for example request to execute a skill/task in order to query information or perform an action. So before you're able to build custom behavior trees, you must implement ROS 2 nodes that act as servers for the required functionality. Refer to our [guidelines](../fundamental-workflow.md#_1-implementing-skills) for implementing these.
+Behavior trees are composed of nodes that can be considered clients to a specific function. They may for example request to execute a skill/task in order to query information or perform an action. So before you're able to build custom behavior trees, you must implement ROS 2 nodes that act as servers for the required functionality. Refer to our [guidelines](../concept/fundamental-workflow.md#_1-implementing-skills) for implementing these.
 
-AutoAPMS comes with various [standard behavior tree nodes](../../reference/behavior-tree-nodes.md) out of the box. As described by the previous tutorial, we also provide a powerful toolchain that allows users to [implement custom behavior tree nodes](./implementing-behavior-tree-nodes.md) according to the needs of the their respective applications.
+AutoAPMS comes with various [standard behavior tree nodes](../reference/behavior-tree-nodes.md) out of the box. As described by the previous tutorial, we also provide a powerful toolchain that allows users to [implement custom behavior tree nodes](./implementing-behavior-tree-nodes.md) according to the needs of the their respective applications.
 
 This tutorial aims to demonstrate how users can actually build behavior trees and incorporate behavior tree nodes to achieve any arbitrary, application specific goal. In general, behavior trees can be created using two different approaches:
 
@@ -46,7 +46,7 @@ Let's launch the Groot2 application and open/create a behavior tree file called 
 
 ![Groot2 Home](./groot2_home.png)
 
-Groot2 allows to build behavior trees by dragging and dropping node icons. However, you must explicitly tell the application how your custom nodes are called, which type they have and what data ports they implement. This is what [behavior tree node model XML files](../concepts/common-resources.md#node-model-xml-file) are used for. These files hold information about custom nodes that you want to use in Groot2 for creating a specific behavior. They must manually be loaded using the "Import Node Models" button marked in red.
+Groot2 allows to build behavior trees by dragging and dropping node icons. However, you must explicitly tell the application how your custom nodes are called, which type they have and what data ports they implement. This is what [behavior tree node model XML files](../concept/common-resources.md#node-model-xml-file) are used for. These files hold information about custom nodes that you want to use in Groot2 for creating a specific behavior. They must manually be loaded using the "Import Node Models" button marked in red.
 
 Given that you [added node manifests](./implementing-behavior-tree-nodes.md#adding-node-manifests) and built the corresponding package, CMake already created the node model files we require and installed it to your ROS 2 workspace. What you have to do now is to click the "Import Node Models" button, find the share directory of the package that contains your custom nodes and navigate to AutoAPMS's behavior tree node metadata directory:
 
@@ -70,7 +70,7 @@ When building with `symlink-install` enabled, the install directory only contain
 
 Inside this directory, you'll find files named like `node_model_<metadata_id>.xml`. Select the one that is associated with your use case and "Open" it. If you are not sure which `<metadata_id>` is the correct one, read the guide on [referring to node manifests](./implementing-behavior-tree-nodes.md#referring-to-node-manifests). It explains how the suffix for the node model XML files is determined.
 
-You'll notice that Groot2 has added the corresponding nodes to the list of "Models" on the lower left. You may drag and drop any of these nodes to the workspace area and use them as you'd like. Make sure to understand the [general concept of behavior trees](../concepts/behavior-trees.md) before you start assembling nodes.
+You'll notice that Groot2 has added the corresponding nodes to the list of "Models" on the lower left. You may drag and drop any of these nodes to the workspace area and use them as you'd like. Make sure to understand the [general concept of behavior trees](../concept/behavior-trees.md) before you start assembling nodes.
 
 To actually distribute your behavior tree within your ROS 2 workspace, you must add the following to the CMakeLists.txt of the corresponding package:
 
@@ -107,7 +107,7 @@ This approach requires you to be familiar with AutoAPMS's behavior tree builder 
 
 - [`TreeBuildHandler`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html)
 
-  Introduces a plugin-based approach for implementing specialized algorithms for building behavior trees. When deploying behaviors, users may dynamically load plugins created by inheriting from this class to customize how the [behavior tree executor](../concepts/behavior-tree-executor.md) interprets incoming build requests.
+  Introduces a plugin-based approach for implementing specialized algorithms for building behavior trees. When deploying behaviors, users may dynamically load plugins created by inheriting from this class to customize how the [behavior tree executor](../concept/behavior-tree-executor.md) interprets incoming build requests.
 
 Both classes are essential for the programmatic approach. In the following, we'll elaborate common use cases. If you want to see a full example that applies the programmatic approach for building a specific behavior tree, refer to [Creating a Behavior Tree From Scratch: Build the Behavior Tree](./creating-a-behavior-from-scratch.md#build-the-behavior-tree).
 
@@ -140,7 +140,7 @@ Initially, the `doc` holds the content of an empty behavior tree document file:
 
 #### Adding an existing behavior tree
 
-To start off, you might want to load a behavior tree that you previously declared using `auto_apms_behavior_tree_declare_trees` and add it to the document. This can be done using the corresponding [resource identity](../concepts/common-resources.md#tree-identity). However, you can also add a tree without querying the resource index. There are multiple ways to achieve the same thing:
+To start off, you might want to load a behavior tree that you previously declared using `auto_apms_behavior_tree_declare_trees` and add it to the document. This can be done using the corresponding [resource identity](../concept/common-resources.md#tree-identity). However, you can also add a tree without querying the resource index. There are multiple ways to achieve the same thing:
 
 ```cpp:line-numbers=8
 // If you have only a single tree, the <root> element can be dropped
@@ -197,11 +197,11 @@ sequence.insertNode("ScriptCondition").setPorts({{"code", "true"}});
 
 :::
 
-Here you can choose if you want to incorporate [node models](../concepts/common-resources.md#behavior-tree-node-models) or not. We generally recommend to do so wherever possible, because it allows verifying the behavior tree's structure at compile time. Additionally, we provide getters and setters for all data ports. Your IDE (e.g. VSCode) will also be able to provide you with convenient type hints and usage suggestions.
+Here you can choose if you want to incorporate [node models](../concept/common-resources.md#behavior-tree-node-models) or not. We generally recommend to do so wherever possible, because it allows verifying the behavior tree's structure at compile time. Additionally, we provide getters and setters for all data ports. Your IDE (e.g. VSCode) will also be able to provide you with convenient type hints and usage suggestions.
 
 #### Inserting custom nodes
 
-Until now, we have only showed you how to add [standard nodes](../../reference/behavior-tree-nodes.md) provided by the `auto_apms_behavior_tree` package to your behavior tree. However, this principle also applies for any behavior tree nodes you implement yourself.
+Until now, we have only showed you how to add [standard nodes](../reference/behavior-tree-nodes.md) provided by the `auto_apms_behavior_tree` package to your behavior tree. However, this principle also applies for any behavior tree nodes you implement yourself.
 
 `TreeDocument` automatically checks whether the registration name of a specific node is available, when you try to insert it. At construction time, your workspace is parsed for corresponding resources using the `NodeRegistrationLoader` passed to the constructor. If you try to insert any nodes that the loader doesn't know about, an error is raised.
 
@@ -209,7 +209,7 @@ Therefore, you must provide [registration options](./implementing-behavior-tree-
 
 To be able to insert user-defined nodes you must make sure that the CMakeLists.txt of your package fulfills the following requirements:
 
-- Custom nodes must be declared using [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#declare-nodes). Otherwise, `NodeRegistrationLoader` will not be able to find the corresponding plugin classes.
+- Custom nodes must be declared using [`auto_apms_behavior_tree_declare_nodes`](../reference/cmake.md#declare-nodes). Otherwise, `NodeRegistrationLoader` will not be able to find the corresponding plugin classes.
 
 - The `NODE_MANIFEST` keyword argument must be used to provide one or more node manifests that define which registration options go for which registration name. **The list of available registration names is determined by the given node manifests.**
 
@@ -288,13 +288,13 @@ In this snippet we brought both `my_namespace::model` and `auto_apms_behavior_tr
 
 ### Using `TreeBuildHandler`
 
-The package `auto_apms_behavior_tree` comes with standard behavior tree build handlers. You can learn more about how to use them [here](../concepts/common-resources.md#behavior-tree-build-handlers). In the following, we want to explain how you implement build handlers yourself.
+The package `auto_apms_behavior_tree` comes with standard behavior tree build handlers. You can learn more about how to use them [here](../concept/common-resources.md#behavior-tree-build-handlers). In the following, we want to explain how you implement build handlers yourself.
 
 Similar to how it's done with custom behavior tree nodes, one must register custom behavior tree build handlers with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
 
 1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
 
-2. Call the CMake macro [`auto_apms_behavior_tree_declare_build_handlers`](../../reference/cmake.md#declare-build-handlers) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
+2. Call the CMake macro [`auto_apms_behavior_tree_declare_build_handlers`](../reference/cmake.md#declare-build-handlers) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
 
 Here's an example:
 

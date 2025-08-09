@@ -5,7 +5,7 @@ order: 10
 
 Once the robot's skill set has been defined, we must create a way to actually use them. It's common practice in ROS 2 to distribute functionality using the client-server model. Let's assume that we've already created the server of a particular function by implementing a skill using ROS's `rclcpp::Node`. The next step is to allow programs to access that skill using a specific [ROS 2 interface](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) inside a corresponding client structure.
 
-AutoAPMS advocates using [behavior trees](../concepts/behavior-trees.md) for triggering skills. They are composed of nodes designed to be exactly what we search for: Function handles for specific algorithms. We provide various [standard behavior tree nodes](../../reference/behavior-tree-nodes.md) that you may use for creating your behavior.
+AutoAPMS advocates using [behavior trees](../concept/behavior-trees.md) for triggering skills. They are composed of nodes designed to be exactly what we search for: Function handles for specific algorithms. We provide various [standard behavior tree nodes](../reference/behavior-tree-nodes.md) that you may use for creating your behavior.
 
 For functionality that is directly associated with custom skills, you must implement your own nodes. If your custom nodes require to use ROS 2 interfaces, you should inherit from one of the following classes:
 
@@ -33,7 +33,7 @@ We provide a straightforward approach for registering custom behavior tree nodes
 
 1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131) inside the `.cpp` source file. You may call it multiple times for all your custom node classes.
 
-2. Call the CMake macro [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#declare-nodes) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
+2. Call the CMake macro [`auto_apms_behavior_tree_declare_nodes`](../reference/cmake.md#declare-nodes) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
 
 Here's an example:
 
@@ -125,7 +125,7 @@ With the previous step, your custom nodes become available with the `ament_index
 
 If you're familiar with BehaviorTree.CPP, you'll probably know about [`BT::BehaviorTreeFactory`](https://github.com/BehaviorTree/BehaviorTree.CPP/blob/master/include/behaviortree_cpp/bt_factory.h). Every behavior tree node must be instantiated using this class. To achieve that, the user is required to "register a node" using specific methods that allow for configuring the values of the arguments passed to the respective constructor. Internally, the behavior tree factory holds a map of callbacks that invoke the `BT::TreeNode::Instantiate` [factory method](https://refactoring.guru/design-patterns/factory-method). Among other things, this concept allows to decouple the low-level node implementation domain from the high-level behavior tree representation and is characteristic for model-driven software development.
 
-When directly using `BT::BehaviorTreeFactory`, there are multiple ways of registering nodes. With AutoAPMS, we provide an alternative, unified approach for doing so by introducing so-called [node manifests](../concepts/common-resources.md#behavior-tree-node-manifests). These are simple YAML files which specify the **registration options** for each node that is declared as described in the previous section. Follow the link for more information about the structure of the file.
+When directly using `BT::BehaviorTreeFactory`, there are multiple ways of registering nodes. With AutoAPMS, we provide an alternative, unified approach for doing so by introducing so-called [node manifests](../concept/common-resources.md#behavior-tree-node-manifests). These are simple YAML files which specify the **registration options** for each node that is declared as described in the previous section. Follow the link for more information about the structure of the file.
 
 AutoAPMS only requires the user to create a `.yaml` file, configure the node manifest and add it to the `ament_index` using certain CMake macros. No extra C++ source code is required for registering your custom nodes. This process is fully automated by the [`TreeDocument`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html) class. Thus, [building behavior trees](./building-behavior-trees.md) is significantly simpler when using AutoAPMS.
 
@@ -171,9 +171,9 @@ By specifying the optional `NODE_MANIFEST` keyword argument, the following steps
     Duplicate behavior tree nodes are not allowed, so CMake also verifies in this step that all registration names provided by the given node manifests are unique. When specifying multiple arguments under the `NODE_MANIFEST` keyword, you must make sure that the given node manifests don't use registration names more than once.
     :::
 
-2. A [node model XML file](../concepts/common-resources.md#node-model-xml-file) is generated. It will be installed under `auto_apms`/`auto_apms_behavior_tree_core`/`metadata`/`node_model_<metadata_id>.xml` respective to the package's share directory.
+2. A [node model XML file](../concept/common-resources.md#node-model-xml-file) is generated. It will be installed under `auto_apms`/`auto_apms_behavior_tree_core`/`metadata`/`node_model_<metadata_id>.xml` respective to the package's share directory.
 
-3. Only for `auto_apms_behavior_tree_declare_nodes`: If the `NODE_MODEL_HEADER_TARGET` keyword argument is given as well, a [C++ node model header file](../concepts/common-resources.md#c-node-model-header) is generated.
+3. Only for `auto_apms_behavior_tree_declare_nodes`: If the `NODE_MODEL_HEADER_TARGET` keyword argument is given as well, a [C++ node model header file](../concept/common-resources.md#c-node-model-header) is generated.
 
 When any of the given node manifests or any of the associated C++ source files (i.e. the shared libraries that contain the required behavior tree node classes) are modified, steps `2.` and `3.` will be executed again the next time the package is being built. Step `1.` is executed in every build cycle.
 
@@ -183,7 +183,7 @@ The recommended way of adding node manifests to a ROS 2 workspace is to use `aut
 
 ## Referring to Node Manifests
 
-Once you've added node manifests using one of the methods described above, it's possible to directly refer to them using a `<metadata_id>`. Understanding [how this identifier is determined](../concepts/common-resources.md#node-manifest-identity) is crucial for the following. It is set depending on which CMake macro you call.
+Once you've added node manifests using one of the methods described above, it's possible to directly refer to them using a `<metadata_id>`. Understanding [how this identifier is determined](../concept/common-resources.md#node-manifest-identity) is crucial for the following. It is set depending on which CMake macro you call.
 
 When using `auto_apms_behavior_tree_declare_nodes`, it is determined by the name of the shared library target passed as the first positional argument.
 
@@ -195,7 +195,7 @@ You may also use node manifest resource identities when specifying the `NODE_MAN
 
     **This is required for initially adding resources.**
 
-    The file paths must be relative to `CMAKE_CURRENT_SOURCE_DIR` and the content of the file must comply with the [node manifest YAML format](../concepts/common-resources.md#behavior-tree-node-manifests)
+    The file paths must be relative to `CMAKE_CURRENT_SOURCE_DIR` and the content of the file must comply with the [node manifest YAML format](../concept/common-resources.md#behavior-tree-node-manifests)
 
 - Using one or more unique **resource identities**.
 

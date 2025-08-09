@@ -1,5 +1,5 @@
 ---
-order: 0
+order: 10
 sidebar: Behavior Trees
 ---
 # About Behavior Trees
@@ -25,7 +25,7 @@ Status | Meaning
 **RUNNING** | The node needs more time to determine the final result. This enables asynchronous execution.
 **SKIPPED** | Special status for indicating that the parent node should not tick this node and proceed to the next one.
 
-With these definitions you are able to create complex task plans. For example the behavior tree from the [installation example](../../installation/getting-started.md#launch-an-example) looks like this:
+With these definitions you are able to create complex task plans. For example the behavior tree from the [installation example](../introduction/getting-started.md#launch-an-example) looks like this:
 
 ![Example behavior tree](./gryffindor_tree.png)
 
@@ -70,4 +70,4 @@ It can also be represented using a specific [XML schema](https://www.behaviortre
 </root>
 ```
 
-Now that you know what we mean when talking about behavior trees, visit the tutorial [Building Behavior Trees](../tutorials/building-behavior-trees.md) for getting started with creating them yourself.
+Now that you know what we mean when talking about behavior trees, visit the tutorial [Building Behavior Trees](../tutorial/building-behavior-trees.md) for getting started with creating them yourself.

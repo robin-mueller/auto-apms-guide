@@ -1,5 +1,5 @@
 ---
-order: 30
+order: 40
 ---
 # Common Resources
 <!-- markdownlint-disable MD024 -->  
@@ -34,10 +34,10 @@ and looks similar to this:
 </root>
 ```
 
-Behavior tree resources are created using [`auto_apms_behavior_tree_declare_trees`](../../reference/cmake.md#declare-trees).
+Behavior tree resources are created using [`auto_apms_behavior_tree_declare_trees`](../reference/cmake.md#declare-trees).
 
 ::: info Learn more 🎓
-Visit the tutorial [Building Behavior Trees: Graphical Approach](../tutorials/building-behavior-trees.md#graphical-approach) for more information about how behavior tree resources are created.
+Visit the tutorial [Building Behavior Trees: Graphical Approach](../tutorial/building-behavior-trees.md#graphical-approach) for more information about how behavior tree resources are created.
 :::
 
 ### Resource Identity Format {#tree-identity}
@@ -129,7 +129,7 @@ SHUTDOWN:
 All of the shown keys except `MISSION` are optional.
 
 ::: info Learn more 🎓
-Visit the tutorial [Executing Missions: Configuring a Mission](../tutorials/executing-missions.md#configuring-a-mission) for more information about how mission configurations are created.
+Visit the tutorial [Executing Missions: Configuring a Mission](../tutorial/executing-missions.md#configuring-a-mission) for more information about how mission configurations are created.
 :::
 
 ### Resource Identity Format {#mission-config-identity}
@@ -145,7 +145,7 @@ This is the full signature of a mission configuration's resource identity:
 
 ## Behavior Tree Build Handlers
 
-Behavior tree build handlers allow to integrate customized algorithms for creating behavior trees with AutoAPMS's [behavior tree executor](./behavior-tree-executor.md). They are used to define rules for answering the "build requests" formulated when [deploying behaviors](../tutorials/deploying-behaviors.md).
+Behavior tree build handlers allow to integrate customized algorithms for creating behavior trees with AutoAPMS's [behavior tree executor](./behavior-tree-executor.md). They are used to define rules for answering the "build requests" formulated when [deploying behaviors](../tutorial/deploying-behaviors.md).
 
 AutoAPMS provides the following commonly used build handlers out of the box:
 
@@ -162,7 +162,7 @@ AutoAPMS provides the following commonly used build handlers out of the box:
     The user must encode the behavior tree to be created using the [XML format](https://www.behaviortree.dev/docs/learn-the-basics/xml_format). The **build request is expected to be the XML string**. This build handler additionally requires the user to specify a node manifest for all the nodes used inside the tree.
 
 ::: info Learn more 🎓
-Visit the tutorial [Building Behavior Trees: Using `TreeBuildHandler`](../tutorials/building-behavior-trees.md#using-treebuildhandler) to learn how to implement your own abstractions.
+Visit the tutorial [Building Behavior Trees: Using `TreeBuildHandler`](../tutorial/building-behavior-trees.md#using-treebuildhandler) to learn how to implement your own abstractions.
 :::
 
 ### Resource Identity Format {#build-handler-identity}
@@ -217,10 +217,10 @@ You should understand that registration options are directly associated with a p
 
 You may include an arbitrary number of nodes in a node manifest. It's also possible to use the same implementation (specify the same node class name) for different registration names. However, all node registration names within a node manifest must be unique (the YAML specification doesn't allow duplicate map keys anyways).
 
-Only the `class_name` option is required. The example above shows the default values that will be used if any optional parameters are omitted. The node classes referred to by `class_name` must have been declared using [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#auto-apms-behavior-tree-declare-nodes) before the node manifest is parsed (specifying the node manifest in the same macro call is ok).
+Only the `class_name` option is required. The example above shows the default values that will be used if any optional parameters are omitted. The node classes referred to by `class_name` must have been declared using [`auto_apms_behavior_tree_declare_nodes`](../reference/cmake.md#auto-apms-behavior-tree-declare-nodes) before the node manifest is parsed (specifying the node manifest in the same macro call is ok).
 
 ::: info Learn more 🎓
-Visit the tutorial [Implementing Behavior Tree Nodes: Adding Node Manifests](../tutorials/implementing-behavior-tree-nodes.md#adding-node-manifests) for more information about how to register a node manifest with the resource index.
+Visit the tutorial [Implementing Behavior Tree Nodes: Adding Node Manifests](../tutorial/implementing-behavior-tree-nodes.md#adding-node-manifests) for more information about how to register a node manifest with the resource index.
 :::
 
 ### Resource Identity Format {#node-manifest-identity}
@@ -236,8 +236,8 @@ This is the full signature of a node manifest's resource identity:
 
 | How is `<metadata_id>` determined? | Rule |
 | :---: | :--- |
-| [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#declare-nodes) | The same as the associated shared library target (first positional argument `target`). |
-| [`auto_apms_behavior_tree_declare_trees`](../../reference/cmake.md#declare-trees) | File stem(s) of the behavior tree XML file(s) under the `paths` argument. |
+| [`auto_apms_behavior_tree_declare_nodes`](../reference/cmake.md#declare-nodes) | The same as the associated shared library target (first positional argument `target`). |
+| [`auto_apms_behavior_tree_declare_trees`](../reference/cmake.md#declare-trees) | File stem(s) of the behavior tree XML file(s) under the `paths` argument. |
 
 #### Example
 
@@ -297,11 +297,11 @@ Behavior tree node models are represented in two ways:
 - By a XML file usually created with `BT::writeTreeNodesModelXML`
 - By C++ classes representing individual nodes defined inside a `.hpp` file
 
-Those resources are automatically generated when the `NODE_MANIFEST` keyword argument of [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#declare-nodes) or [`auto_apms_behavior_tree_declare_trees`](../../reference/cmake.md#declare-trees) is given.
+Those resources are automatically generated when the `NODE_MANIFEST` keyword argument of [`auto_apms_behavior_tree_declare_nodes`](../reference/cmake.md#declare-nodes) or [`auto_apms_behavior_tree_declare_trees`](../reference/cmake.md#declare-trees) is given.
 
 ### Node Model XML File
 
-Typically used when [building behavior trees graphically](../tutorials/building-behavior-trees.md#graphical-approach).
+Typically used when [building behavior trees graphically](../tutorial/building-behavior-trees.md#graphical-approach).
 
 The XML file holds metadata for multiple nodes. This data enables to determine the type of each node as well as the names and types of the associated data ports. After the ROS 2 package was installed, the file can be found under
 
@@ -339,10 +339,10 @@ The XML schema looks something like this:
 
 ### C++ Node Model Header
 
-Typically used when [building behavior trees programmatically](../tutorials/building-behavior-trees.md#programmatic-approach).
+Typically used when [building behavior trees programmatically](../tutorial/building-behavior-trees.md#programmatic-approach).
 
 The C++ node models can be passed as template arguments to specific methods of `TreeDocument`. They implement an API that complies with the node's entry in the node model XML file.
 
 ::: info Learn more 🎓
-Check out the usage example [Using `TreeDocument`: Inserting custom nodes](../tutorials/building-behavior-trees.md#inserting-custom-nodes) for more information about how node models are created and may be used in a C++ source file.
+Check out the usage example [Using `TreeDocument`: Inserting custom nodes](../tutorial/building-behavior-trees.md#inserting-custom-nodes) for more information about how node models are created and may be used in a C++ source file.
 :::

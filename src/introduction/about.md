@@ -1,7 +1,7 @@
 ---
 order: 0
 title: User Guide
-sidebar: About the User Guide
+sidebar: About this Guide
 ---
 # User Guide for AutoAPMS
 
@@ -17,15 +17,15 @@ You want to know more about the features of this framework and how to get starte
 
     Read about the motivation behind AutoAPMS and its benefits.
 
-- ⚙️ [Install AutoAPMS to your workspace](../installation/getting-started.md)
+- ⚙️ [Install AutoAPMS to your workspace](./getting-started.md)
 
     Install your development environment and get started.
 
-- 🎓 [Learn the basics](../usage/fundamental-workflow.md)
+- 🎓 [Learn the basics](../concept/fundamental-workflow.md)
 
     Learn how to create and execute behaviors/missions.
 
-- 🚀 [Create your first behavior](../usage/tutorials/creating-a-behavior-from-scratch.md)
+- 🚀 [Create your first behavior](../tutorial/creating-a-behavior-from-scratch.md)
 
     Get familiar with the software by following this step-by-step guide.
 

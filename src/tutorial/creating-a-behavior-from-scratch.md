@@ -12,7 +12,7 @@ The full source code of the following examples can be found in the GitHub reposi
 
 ## Implement a Simple Skill
 
-We're going to create a simple skill that repeatedly prints a given text to the terminal. To achieve this using AutoAPMS and ROS 2, we need to implement an action server that performs the task of writing to the terminal and a separate client that is supposed to send a message specifying the goal of the action. You could approach this development task by sticking to the [official ROS 2 tutorial for writing an action](https://docs.ros.org/en/humble/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html). However, we'd like to show you a more streamlined and modular approach enabled by AutoAPMS.
+We're going to create a simple skill that repeatedly prints a given text to the terminal. To achieve this using AutoAPMS and ROS 2, we need to implement an action server that performs the task of writing to the terminal and a separate client that is supposed to send a message specifying the goal of the action. You could approach this development task by sticking to the [official ROS 2 tutorial for writing an action](https://docs.ros.org/en/humble/tutorial/Intermediate/Writing-an-Action-Server-Client/Cpp.html). However, we'd like to show you a more streamlined and modular approach enabled by AutoAPMS.
 
 ### Action Interface
 
@@ -162,7 +162,7 @@ We use the term "declare a node" instead of "register a node" to avoid confusing
   Type  | C++ | CMake
 --- | --- | ---
 **Server** | [`RCLCPP_COMPONENTS_REGISTER_NODE`](https://docs.ros.org/en/humble/p/rclcpp_components/generated/define_register__node__macro_8hpp_1a544e598f1116a756e7440b8ce8bc5296.html#c.RCLCPP_COMPONENTS_REGISTER_NODE) | [`rclcpp_components_register_node`](https://github.com/ros2/rclcpp/blob/humble/rclcpp_components/cmake/rclcpp_components_register_node.cmake) [`rclcpp_components_register_nodes`](https://github.com/ros2/rclcpp/blob/humble/rclcpp_components/cmake/rclcpp_components_register_nodes.cmake)
-**Client** | [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131) | [`auto_apms_behavior_tree_declare_nodes`](../../reference/cmake.md#auto-apms-behavior-tree-declare-nodes)
+**Client** | [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131) | [`auto_apms_behavior_tree_declare_nodes`](../reference/cmake.md#auto-apms-behavior-tree-declare-nodes)
 
 ## Create a Behavior
 
@@ -170,7 +170,7 @@ With both server and client implemented, we are done writing the low-level sourc
 
 ### Configure a Node Manifest
 
-As you know, behavior trees are composed of nodes. When using AutoAPMS, all behavior tree nodes are plugins (except for the builtin/native nodes statically implemented by BehaviorTree.CPP) are loaded at runtime when the tree is created. To specify which node classes to load and how to instantiate them, you must specify so-called **registration options**. To reproduce this example, you don't need to know the details about this concept. Nevertheless, feel encouraged to check out the concept page for [node manifests](../concepts/common-resources.md#behavior-tree-node-manifests).
+As you know, behavior trees are composed of nodes. When using AutoAPMS, all behavior tree nodes are plugins (except for the builtin/native nodes statically implemented by BehaviorTree.CPP) are loaded at runtime when the tree is created. To specify which node classes to load and how to instantiate them, you must specify so-called **registration options**. To reproduce this example, you don't need to know the details about this concept. Nevertheless, feel encouraged to check out the concept page for [node manifests](../concept/common-resources.md#behavior-tree-node-manifests).
 
 The node manifest for the behavior tree we're going to build looks like this:
 
@@ -192,7 +192,7 @@ We want to include two custom nodes in our behavior tree:
 
 - **HasParameter**
 
-  We additionally want to incorporate a node that allows us to determine if the tree executor defines a certain ROS 2 parameter, because want to support dynamically setting the message to be printed. This node is one of many [standard nodes](../../reference/behavior-tree-nodes.md) provided by the package `auto_apms_behavior_tree`.
+  We additionally want to incorporate a node that allows us to determine if the tree executor defines a certain ROS 2 parameter, because want to support dynamically setting the message to be printed. This node is one of many [standard nodes](../reference/behavior-tree-nodes.md) provided by the package `auto_apms_behavior_tree`.
 
 Before we're able to build our behavior tree, we must make sure that our node manifest will be available at runtime. This is achieved by registering one more `ament_index` resource using the `NODE_MANIFEST` argument accepted by the CMake macros `auto_apms_behavior_tree_declare_nodes` and `auto_apms_behavior_tree_declare_trees`. The following section defines the corresponding CMakeLists.txt. Visit the designated tutorial towards [adding node manifests](./implementing-behavior-tree-nodes.md#adding-node-manifests) to learn more about the details.
 
@@ -248,7 +248,7 @@ ament_package()
 
 === Programmatic Approach
 
-You need to create a separate shared library that contains source code for a so-called [behavior tree build handler](../concepts/common-resources.md#behavior-tree-build-handlers). We recommend passing the target to the `NODE_MODEL_HEADER_TARGET` argument of `auto_apms_behavior_tree_declare_nodes` to be able to incorporate [node models](../concepts/common-resources.md#c-node-model-header). Additionally, you must make sure to specify the name of the build handler class using `auto_apms_behavior_tree_declare_build_handlers` and install the extra library.
+You need to create a separate shared library that contains source code for a so-called [behavior tree build handler](../concept/common-resources.md#behavior-tree-build-handlers). We recommend passing the target to the `NODE_MODEL_HEADER_TARGET` argument of `auto_apms_behavior_tree_declare_nodes` to be able to incorporate [node models](../concept/common-resources.md#c-node-model-header). Additionally, you must make sure to specify the name of the build handler class using `auto_apms_behavior_tree_declare_build_handlers` and install the extra library.
 
 ```cmake:line-numbers [CMakeLists.txt]
 project(my_package)
@@ -398,14 +398,14 @@ The `SimpleSkillBuildHandler` must be added to a shared library and registered w
 :::
 
 ::: info What are Global Blackboard Parameters?
-This example behavior tree showcases a very useful concept introduced by AutoAPMS: [Global Blackboard Parameters](../concepts/behavior-tree-executor.md#global-blackboard). They are accessed using the `bb.`/`@` prefix and allow us to adjust the behavior without rebuilding the entire tree, thus makes it reusable. This is one of the reasons why AutoAPMS's adaption of the behavior tree paradigm is very well integrated with ROS 2.
+This example behavior tree showcases a very useful concept introduced by AutoAPMS: [Global Blackboard Parameters](../concept/behavior-tree-executor.md#global-blackboard). They are accessed using the `bb.`/`@` prefix and allow us to adjust the behavior without rebuilding the entire tree, thus makes it reusable. This is one of the reasons why AutoAPMS's adaption of the behavior tree paradigm is very well integrated with ROS 2.
 :::
 
 Congratulations! 🎉 You are now familiar with the general workflow of building behavior trees.
 
 ## Deploy the Behavior
 
-Finally, we're going to demonstrate how our simple skill and the behavior tree we've just created can be deployed. Make sure that you [build and install AutoAPMS](../../installation/getting-started.md#setting-up-the-workspace) and your custom package which contains the source code for the example described above (we called it `my_package` before).
+Finally, we're going to demonstrate how our simple skill and the behavior tree we've just created can be deployed. Make sure that you [build and install AutoAPMS](../introduction/getting-started.md#setting-up-the-workspace) and your custom package which contains the source code for the example described above (we called it `my_package` before).
 
 ```bash [Terminal]
 colcon build --packages-up-to my_package --symlink-install
@@ -417,7 +417,7 @@ AutoAPMS conveniently provides an executable called `run_behavior` which we will
 
 == Graphical Approach
 
-If you decided to create a behavior tree XML file using Groot2 (theoretically you could also do so manually), your behavior tree should be declared using the CMake macro `auto_apms_behavior_tree_declare_trees`. This allows it to be discovered at runtime. By default, `TreeExecutorNode` loads the `TreeFromResourceBuildHandler` when it is started, so we may execute any previously declared behavior trees by providing the corresponding [resource identity](../concepts/common-resources.md#tree-identity):
+If you decided to create a behavior tree XML file using Groot2 (theoretically you could also do so manually), your behavior tree should be declared using the CMake macro `auto_apms_behavior_tree_declare_trees`. This allows it to be discovered at runtime. By default, `TreeExecutorNode` loads the `TreeFromResourceBuildHandler` when it is started, so we may execute any previously declared behavior trees by providing the corresponding [resource identity](../concept/common-resources.md#tree-identity):
 
 ```bash [Terminal]
 ros2 run auto_apms_behavior_tree run_behavior "<package_name>::<tree_file_stem>::<tree_name>"
