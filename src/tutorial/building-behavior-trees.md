@@ -292,7 +292,7 @@ The package `auto_apms_behavior_tree` comes with standard behavior build handler
 
 Similar to how it's done with custom behavior tree nodes, one must register custom behavior build handlers with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
 
-1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
+1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga9e4ca44bb2265ef63f68487c01d32d92) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
 
 2. Call the CMake macro [`auto_apms_behavior_tree_register_build_handlers`](../reference/cmake.md#register-build-handlers) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
 

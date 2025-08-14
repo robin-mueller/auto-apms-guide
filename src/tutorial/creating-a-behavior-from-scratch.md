@@ -162,7 +162,7 @@ By "registering a node" we expose the class as a plugin resource and make it dis
   Type  | C++ | CMake
 --- | --- | ---
 **Server** | [`RCLCPP_COMPONENTS_REGISTER_NODE`](https://docs.ros.org/en/humble/p/rclcpp_components/generated/define_register__node__macro_8hpp_1a544e598f1116a756e7440b8ce8bc5296.html#c.RCLCPP_COMPONENTS_REGISTER_NODE) | [`rclcpp_components_register_node`](https://github.com/ros2/rclcpp/blob/humble/rclcpp_components/cmake/rclcpp_components_register_node.cmake) [`rclcpp_components_register_nodes`](https://github.com/ros2/rclcpp/blob/humble/rclcpp_components/cmake/rclcpp_components_register_nodes.cmake)
-**Client** | [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131) | [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#auto-apms-behavior-tree-register-nodes)
+**Client** | [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08) | [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#auto-apms-behavior-tree-register-nodes)
 
 ## Create a Behavior
 

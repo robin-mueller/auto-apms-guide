@@ -31,7 +31,7 @@ AutoAPMS introduces a modular, plugin-based approach for distributing node imple
 
 We provide a straightforward approach for registering custom behavior tree nodes with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
 
-1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131) inside the `.cpp` source file. You may call it multiple times for all your custom node classes.
+1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08) inside the `.cpp` source file. You may call it multiple times for all your custom node classes.
 
 2. Call the CMake macro [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#register-nodes) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
 

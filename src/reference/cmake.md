@@ -23,7 +23,7 @@ auto_apms_behavior_tree_register_nodes(<target> <class_names>...
 ```
 
 ::: warning
-All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131).
+All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08).
 
 This approach was inspired by [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html).
 :::
@@ -147,7 +147,7 @@ auto_apms_behavior_tree_register_build_handlers(<target> <class_names>...)
 ```
 
 ::: warning
-All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9).
+All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga9e4ca44bb2265ef63f68487c01d32d92).
 :::
 
 | Argument | Required/Optional | Description |
