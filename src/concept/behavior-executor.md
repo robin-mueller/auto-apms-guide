@@ -35,7 +35,7 @@ Only a single `StartTreeExecutor` goal is allowed to be executed at a time.
 | Name | Type | Default | Description |
 | :---: | :---: | :---: | :--- |
 | **build_request** | `std::string` | ❌ | String that encodes information about which behavior tree to execute. It must be formatted in a suitable way so that the underlying build handler is able to interpret it correctly. The user must be aware of which format is accepted by which build handler and always create appropriate requests. Otherwise, the build handler may throw an error and the action goal will be rejected. If the build handler doesn't implement that level of validation, it's undefined behavior. |
-| **build_handler** | `std::string` | "" | Fully qualified class name of a declared behavior build handler plugin to be used for interpreting `build_request`. If empty, the one that is currently loaded by the executor will be used. May also be `none` for requesting to "unload" the current build handler (This requires derived executors to be able to build the behavior tree without relying on a build handler). |
+| **build_handler** | `std::string` | "" | Fully qualified class name of a registered behavior build handler plugin to be used for interpreting `build_request`. If empty, the one that is currently loaded by the executor will be used. May also be `none` for requesting to "unload" the current build handler (This requires derived executors to be able to build the behavior tree without relying on a build handler). |
 | **entrypoint** | `std::string` | "" | Single point of entry for execution. This field may be empty if the underlying build handler is able to determine the entrypoint only through `build_request`. Otherwise, the build handler may use this information appropriately when it is passed to `TreeBuildHandler::setBuildRequest`. |
 | **node_manifest** | `std::string` | "" | User-defined node manifest (encoded) specifying how to register all of the behavior tree nodes required by `build_request`. This field may be empty if the underlying build handler is able to independently perform the node registration. Otherwise, the build handler may use this information appropriately when it is passed to `TreeBuildHandler::setBuildRequest`. |
 | **attach** | `bool` | `true` | Flag for determining the execution mode. If `true` (attached mode), the action will attach to the execution routine, run for as long as it is alive and return a goal result encapsulating the final status of the executed behavior tree. If `false`, the action will return immediately after the execution has been started allowing the client to do work asynchronously while the behavior tree is being executed. |
@@ -186,7 +186,7 @@ def generate_launch_description():
 
 ## Configuration Parameters
 
-Here is a list of all statically declared parameters implemented by `TreeExecutorNode`.
+Here is a list of all static parameters implemented by `TreeExecutorNode`.
 
 By default, the following values apply:
 

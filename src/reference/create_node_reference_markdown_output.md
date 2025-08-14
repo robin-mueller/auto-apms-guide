@@ -1,6 +1,4 @@
 <!-- markdownlint-disable MD024 MD041 -->
-## Overview
-
 | Registration Name | Class Name | Package |
 | :--- | :---: | :---: |
 | [AlwaysFailure](#alwaysfailure) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |

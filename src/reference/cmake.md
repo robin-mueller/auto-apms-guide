@@ -7,7 +7,7 @@ sidebar: CMake
 
 AutoAPMS offers the following CMake macros for convenience when configuring the CMakeLists.txt of a ROS 2 package.
 
-## `auto_apms_behavior_tree_declare_nodes` {#declare-nodes}
+## `auto_apms_behavior_tree_register_nodes` {#register-nodes}
 
 **Add behavior tree node plugins to the resource index.**
 
@@ -16,22 +16,22 @@ This macro must be called to make behavior tree node plugins available at runtim
 ### Signature
 
 ```cmake
-auto_apms_behavior_tree_declare_nodes(<target> <class_names>...
+auto_apms_behavior_tree_register_nodes(<target> <class_names>...
   [NODE_MANIFEST node_manifest1 [node_manifest2 ...]]
   [NODE_MODEL_HEADER_TARGET header_target]
 )
 ```
 
 ::: warning
-All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131).
+All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5d6115d73fc702c19bd6d63860dc2131).
 
 This approach was inspired by [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html).
 :::
 
 | Argument | Required/Optional | Description |
 | :--- | :---: | :--- |
-| `target` | Required (Positional) | Shared library target implementing the behavior tree nodes declared under `class_names`. |
-| `class_names` | Required (Positional) | The unique, fully qualified names of behavior tree node classes (fundamental base must be `BT::TreeNode`) being declared with this macro call and associated with the shared library target. |
+| `target` | Required (Positional) | Shared library target implementing the behavior tree nodes given under `class_names`. |
+| `class_names` | Required (Positional) | The unique, fully qualified names of behavior tree node classes (base class must be `BT::TreeNode`) being registered with this macro call and associated with the shared library target. |
 | `NODE_MANIFEST` | Optional (Multi-Value-Keyword) | One or more relative paths (relative to `CMAKE_CURRENT_SOURCE_DIR`) or existing resource identities of node manifests. Multiple file paths are concatenated to a single one. |
 | `NODE_MODEL_HEADER_TARGET` | Optional (Single-Value-Keyword) | Name of a single shared library target. If specified, generate a C++ header that defines model classes for all behavior tree nodes specified inside the node manifest files provided under `NODE_MANIFEST` and add it to the includes of the given target. |
 
@@ -40,7 +40,7 @@ This approach was inspired by [ROS 2 Composition](https://docs.ros.org/en/humble
 ```cmake
 find_package(auto_apms_behavior_tree REQUIRED)
 # ...
-auto_apms_behavior_tree_declare_nodes(my_target
+auto_apms_behavior_tree_register_nodes(my_target
   "my_namespace::MyCustomNodeFoo"
   "my_namespace::MyCustomNodeBar"
   NODE_MANIFEST
@@ -61,7 +61,7 @@ Visit the tutorial [Implementing Custom Behavior Tree Nodes](../tutorial/impleme
 
 This macro configures a unique "marker file" that contains essential information for building and executing behaviors at runtime. It uses `ament_index` for registering this resource with the workspace. Read [this guide](https://docs.ros.org/en/humble/How-To-Guides/Ament-CMake-Documentation.html#the-ament-index-explained) to learn more about the ament resource index.
 
-Use this macro for introducing custom behavior definitions tailored to your specific use case. If you simply want to add a behavior tree to the workspace, use [auto_apms_behavior_tree_declare_trees](#declare-trees) instead.
+Use this macro for introducing custom behavior definitions tailored to your specific use case. If you simply want to add a behavior tree to the workspace, use [auto_apms_behavior_tree_register_trees](#register-trees) instead.
 
 ### Signature
 
@@ -97,7 +97,7 @@ auto_apms_behavior_tree_register_behavior(
 )
 ```
 
-## `auto_apms_behavior_tree_declare_trees` {#declare-trees}
+## `auto_apms_behavior_tree_register_trees` {#register-trees}
 
 **Make behavior trees available to the ROS 2 workspace by adding the corresponding behavior tree XML and node manifest YAML files to the resource index.**
 
@@ -106,7 +106,7 @@ This is a specialization of [auto_apms_behavior_tree_register_behavior](#registe
 ### Signature
 
 ```cmake
-auto_apms_behavior_tree_declare_trees(<paths>...
+auto_apms_behavior_tree_register_trees(<paths>...
   [NODE_MANIFEST node_manifest1 [node_manifest2 ...]]
 )
 ```
@@ -121,7 +121,7 @@ auto_apms_behavior_tree_declare_trees(<paths>...
 ```cmake
 find_package(auto_apms_behavior_tree REQUIRED)
 # ...
-auto_apms_behavior_tree_declare_trees(
+auto_apms_behavior_tree_register_trees(
   "path/to/my_behavior_tree.xml"
   "path/to/another_behavior_tree.xml"
   NODE_MANIFEST
@@ -134,7 +134,7 @@ auto_apms_behavior_tree_declare_trees(
 Visit the tutorial [Building Behavior Trees: Graphical Approach](../tutorial/building-behavior-trees.md#graphical-approach) for more information.
 :::
 
-## `auto_apms_behavior_tree_declare_build_handlers` {#declare-build-handlers}
+## `auto_apms_behavior_tree_register_build_handlers` {#register-build-handlers}
 
 **Add behavior build handler plugins to the resource index.**
 
@@ -143,24 +143,24 @@ This macro must be called to make behavior build handlers available at runtime. 
 ### Signature
 
 ```cmake
-auto_apms_behavior_tree_declare_build_handlers(<target> <class_names>...)
+auto_apms_behavior_tree_register_build_handlers(<target> <class_names>...)
 ```
 
 ::: warning
-All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9).
+All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9).
 :::
 
 | Argument | Required/Optional | Description |
 | :--- | :---: | :--- |
-| `target` | Required (Positional) | Shared library target implementing the behavior build handlers declared under `class_names`. |
-| `class_names` | Optional (Multi-Value-Keyword) | The unique, fully qualified names of classes inheriting from `TreeBuildHandler` being declared with this macro call and associated with the shared library target. |
+| `target` | Required (Positional) | Shared library target implementing the behavior build handlers given under `class_names`. |
+| `class_names` | Optional (Multi-Value-Keyword) | The unique, fully qualified names of classes inheriting from `TreeBuildHandler` being registered with this macro call and associated with the shared library target. |
 
 ### Example
 
 ```cmake
 find_package(auto_apms_behavior_tree REQUIRED)
 # ...
-auto_apms_behavior_tree_declare_build_handlers(my_target
+auto_apms_behavior_tree_register_build_handlers(my_target
   "my_namespace::MyCustomBuildHandlerFoo"
   "my_namespace::MyCustomBuildHandlerBar"
 )

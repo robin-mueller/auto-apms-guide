@@ -85,7 +85,7 @@ public:
 }  // namespace my_namespace
 
 // Make the node discoverable for the class loader
-AUTO_APMS_BEHAVIOR_TREE_DECLARE_NODE(my_namespace::SimpleSkillClient)
+AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE(my_namespace::SimpleSkillClient)
 // #endregion client
 
 // #region build_handler
@@ -150,5 +150,5 @@ public:
 }  // namespace my_namespace
 
 // Make the build handler discoverable for the class loader
-AUTO_APMS_BEHAVIOR_TREE_DECLARE_BUILD_HANDLER(my_namespace::SimpleSkillBuildHandler)
+AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER(my_namespace::SimpleSkillBuildHandler)
 // #endregion build_handler

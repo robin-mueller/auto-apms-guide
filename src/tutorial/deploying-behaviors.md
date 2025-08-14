@@ -159,7 +159,7 @@ We conveniently provide behavior tree nodes associated with these actions:
 - [`HaltExecutor`](../reference/behavior-tree-nodes.md#haltexecutor)
 - [`TerminateExecutor`](../reference/behavior-tree-nodes.md#terminateexecutor)
 
-Since a behavior tree executor implements the same standard interfaces as any other ROS 2 node, it's also possible to query or manipulate parameters at runtime. Besides the statically declared [executor parameters](../concept/behavior-executor.md#configuration-parameters) you may additionally use [scripting enum parameters](../concept/behavior-executor.md#scripting-enums) or [global blackboard parameters](../concept/behavior-executor.md#global-blackboard).
+Since a behavior tree executor implements the same standard interfaces as any other ROS 2 node, it's also possible to query or manipulate parameters at runtime. Besides the static [executor parameters](../concept/behavior-executor.md#configuration-parameters) you may additionally use [scripting enum parameters](../concept/behavior-executor.md#scripting-enums) or [global blackboard parameters](../concept/behavior-executor.md#global-blackboard).
 
 The following nodes allow for interacting with ROS 2 parameters from within a behavior tree:
 

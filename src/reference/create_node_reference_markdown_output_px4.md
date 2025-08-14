@@ -1,6 +1,4 @@
 <!-- markdownlint-disable MD024 MD041 -->
-## Overview
-
 | Registration Name | Class Name | Package |
 | :--- | :---: | :---: |
 | [Arm](#arm) | `auto_apms_px4_behavior::ArmAction` | auto_apms_px4_behavior |

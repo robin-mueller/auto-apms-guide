@@ -77,17 +77,17 @@ To actually distribute your behavior tree within your ROS 2 workspace, you must 
 ```cmake [CMakeLists.txt]
 find_package(auto_apms_behavior_tree REQUIRED)
 # ...
-auto_apms_behavior_tree_declare_trees(
+auto_apms_behavior_tree_register_trees(
   "behavior/my_behavior_tree.xml"  # You must provide at least one XML file
   # ...
 )
 ```
 
 ::: tip Convention 📜
-We recommend storing your behavior tree files under a directory called `behavior`. However, you can put them wherever you want, you just have to adjust the file paths you pass to `auto_apms_behavior_tree_declare_trees` accordingly.
+We recommend storing your behavior tree files under a directory called `behavior`. However, you can put them wherever you want, you just have to adjust the file paths you pass to `auto_apms_behavior_tree_register_trees` accordingly.
 :::
 
-This registers the behavior tree with the resource index (we call it "declaring a tree") and enables you to easily locate the corresponding XML file at runtime. You can refer to a declared tree using for example `TreeDocument::mergeResource` which is demonstrated [below](#using-treedocument).
+This registers the behavior tree with the resource index and enables you to easily locate the corresponding XML file at runtime. You can refer to a registered tree using for example `TreeDocument::mergeResource` which is demonstrated [below](#using-treedocument).
 
 A behavior tree resource can also be used to [deploy the corresponding behavior](./deploying-behaviors.md) using the command line or a launch file.
 
@@ -140,7 +140,7 @@ Initially, the `doc` holds the content of an empty behavior tree document file:
 
 #### Adding an existing behavior tree
 
-To start off, you might want to load a behavior tree that you previously declared using `auto_apms_behavior_tree_declare_trees` and add it to the document. This can be done using the corresponding [resource identity](../concept/common-resources.md#tree-identity). However, you can also add a tree without querying the resource index. There are multiple ways to achieve the same thing:
+To start off, you might want to load a behavior tree that you previously registerd using `auto_apms_behavior_tree_register_trees` and add it to the document. This can be done using the corresponding [resource identity](../concept/common-resources.md#tree-identity). However, you can also add a tree without querying the resource index. There are multiple ways to achieve the same thing:
 
 ```cpp:line-numbers=8
 // If you have only a single tree, the <root> element can be dropped
@@ -209,7 +209,7 @@ Therefore, you must provide [registration options](./implementing-behavior-tree-
 
 To be able to insert user-defined nodes you must make sure that the CMakeLists.txt of your package fulfills the following requirements:
 
-- Custom nodes must be declared using [`auto_apms_behavior_tree_declare_nodes`](../reference/cmake.md#declare-nodes). Otherwise, `NodeRegistrationLoader` will not be able to find the corresponding plugin classes.
+- Custom nodes must be registered using [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#register-nodes). Otherwise, `NodeRegistrationLoader` will not be able to find the corresponding plugin classes.
 
 - The `NODE_MANIFEST` keyword argument must be used to provide one or more node manifests that define which registration options go for which registration name. **The list of available registration names is determined by the given node manifests.**
 
@@ -221,7 +221,7 @@ In the following minimal example we assume, that the user implements `my_namespa
 
 ```cmake [CMakeLists.txt]
 # We assume that custom_nodes and my_source_target are already defined
-auto_apms_behavior_tree_declare_nodes(custom_nodes
+auto_apms_behavior_tree_register_nodes(custom_nodes
   "my_namespace::MyCustomNodeClass"
   NODE_MANIFEST
   "config/node_manifest.yaml"
@@ -292,9 +292,9 @@ The package `auto_apms_behavior_tree` comes with standard behavior build handler
 
 Similar to how it's done with custom behavior tree nodes, one must register custom behavior build handlers with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
 
-1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_DECLARE_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
+1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga45fa41d82d2b212962433e6653b2e0c9) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
 
-2. Call the CMake macro [`auto_apms_behavior_tree_declare_build_handlers`](../reference/cmake.md#declare-build-handlers) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
+2. Call the CMake macro [`auto_apms_behavior_tree_register_build_handlers`](../reference/cmake.md#register-build-handlers) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
 
 Here's an example:
 
@@ -345,7 +345,7 @@ public:
 }  // namespace my_namespace
  
 // Make sure the plugin class is discoverable
-AUTO_APMS_BEHAVIOR_TREE_DECLARE_BUILD_HANDLER(my_namespace::MyCustomBuildHandler)
+AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER(my_namespace::MyCustomBuildHandler)
 ```
 
 ```cmake [CMakeLists.txt]
@@ -363,8 +363,8 @@ target_link_libraries(my_build_handler_library_target PUBLIC
   auto_apms_behavior_tree::auto_apms_behavior_tree
 )
  
-# Declare your custom build handler
-auto_apms_behavior_tree_declare_build_handlers(my_build_handler_library_target
+# Register your custom build handler
+auto_apms_behavior_tree_register_build_handlers(my_build_handler_library_target
   "my_namespace::MyCustomBuildHandler"
 )
  
