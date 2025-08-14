@@ -17,8 +17,8 @@ namespace standard_node_models = auto_apms_behavior_tree::model;
 #include "auto_apms_simulation/behavior_tree_nodes.hpp"
 namespace simulation_node_models = auto_apms_simulation::model;
 
-#include "auto_apms_px4/behavior_tree_nodes.hpp"
-namespace px4_node_models = auto_apms_px4::model;
+#include "auto_apms_px4_behavior/behavior_tree_nodes.hpp"
+namespace px4_node_models = auto_apms_px4_behavior::model;
 ```
 
 ## Overview `auto-apms`
