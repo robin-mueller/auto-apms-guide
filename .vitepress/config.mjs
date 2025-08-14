@@ -15,7 +15,7 @@ const vitePressSidebarOptions = {
     frontmatterTitleFieldName: 'sidebar',
     capitalizeFirst: true,
     hyphenToSpace: true,
-    excludePattern: ['create_node_reference_markdown_output.md']
+    excludePattern: ['create_node_reference_markdown_output.md', 'create_node_reference_markdown_output_px4.md']
 }
 
 const vitePressOptions = {
@@ -62,7 +62,7 @@ const vitePressOptions = {
     ],
 
     srcDir: 'src',
-    srcExclude: ['**/readme.md', '**/README.md', '**/TODO.md', '**/create_node_reference_markdown_output.md'],
+    srcExclude: ['**/readme.md', '**/README.md', '**/TODO.md', '**/create_node_reference_markdown_output.md', '**/create_node_reference_markdown_output_px4.md'],
 
     cleanUrls: true,
 
