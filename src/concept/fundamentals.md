@@ -5,7 +5,9 @@ order: 0
 
 Before starting with the tutorials you should make yourself familiar with the fundamental concepts. This page outlines the most important definitions and design decisions you need to know about.
 
-## Behavior Definition
+## Understanding Behaviors
+
+![Behavior Definition](./behavior_definition.svg)
 
 - extensible by design
 - categories

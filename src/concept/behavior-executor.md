@@ -84,7 +84,7 @@ AutoAPMS introduces the concept of so-called behavior build handlers which allow
 
 The base class for all build handlers is `TreeBuildHandler` and each implementation is defined by the following two virtual methods:
 
-- [`TreeBuildHandler::setBuildRequest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#ac4c4887fcd65b024a89445009cbe15b4)
+- [`TreeBuildHandler::setBuildRequest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#a4b3cefcf372323b226d61973207627d3)
 
     Callback for interpreting the build request. Depending on the provided arguments, the build handler should decide whether to accept the request or not. If it accepts it, it's common practice to cache this information for later use inside `buildTree`.
 
