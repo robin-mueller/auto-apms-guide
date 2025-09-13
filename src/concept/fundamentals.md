@@ -7,19 +7,30 @@ Before starting with the tutorials you should make yourself familiar with the fu
 
 ## Understanding Behaviors
 
+In robotics, the term *behavior* refers to the pattern of actions or responses carried out by an automated system to achieve a specific goal. Behaviors can be very simple (like avoiding obstacles) or complex (like following a person or coordinating with other robots). A popular paradigm widely used for designing such plans of action is the [behavior tree](./behavior-trees.md). Behavior trees are inherently modular hierarchical structures that allow users to comprehensively define a mission sequence by arranging simple building blocks and create arbitrarily complex applications using model-based programming. AutoAPMS adopts this paradigm and makes it a first class citizen for modeling behaviors.
+
+This project introduces a special workflow for communicating behaviors with robots. The intention behind this is to not only have a single behavior definition schema. Instead, we want to give developers the opportunity to design specialized schemas that best suit their needs. In other words, **AutoAPMS allows for customizing the behavior tree build pipeline** that is triggered by the user when launching a behavior. We define a behavior using
+
+1. A behavior **build request** that holds the information about the action plan designed for a specific use-case (according to a user-defined schema)
+
+1. A behavior **build handler** that knows the schema the build request is encoded in and builds the behavior tree accordingly
+
+1. *Optional:* An **entrypoint** that specifies the root of the behavior tree
+
+1. *Optional:* A **node manifest** that maps the behavior's building blocks with the correct plugins
+
 ![Behavior Definition](./behavior_definition.svg)
 
-- extensible by design
-- categories
-- resource registering and required information
+- Behavior resource management and registration
+- Categories
 
 ## Task-Level Control
 
-Users of AutoAPMS benefit from adopting a unique system architecture and flexible abstractions for developing robotic applications. We design the task-level control layer for robotic systems as follows:
+AutoAPMS introduces a unique system architecture for coordinating robot missions. This architecture focuses on separating concerns and provide high modularity. This allows developers to seamlessly integrate their application with our behavior executor and easily extend the system in the process. We advocate the following control model based on clients and servers for individual tasks that need to be coordinated in order to achieve the desired goal:
 
 ![AutoAPMS System Architecture](./system-architecture.gif)
 
-AutoAPMS's behavior engine applies the client-server model. It's necessary that the system provides robotic skills/capabilities offering certain functions for achieving user-defined goals. We distinguish between AutoAPMS's behavior domain and the application specific user domain. It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality. We utilize [behavior trees](./behavior-trees.md) to create clients based on the underlying interfaces and orchestrate missions.
+This model assumes that the developer provides robotic skills/capabilities offering certain functions for achieving user-defined goals. We distinguish between AutoAPMS's behavior domain and the application specific user domain. It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality.
 
 ## Development Workflow
 
