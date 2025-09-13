@@ -7,9 +7,9 @@ Before starting with the tutorials you should make yourself familiar with the fu
 
 ## Understanding Behaviors
 
-In robotics, the term *behavior* refers to the pattern of actions or responses carried out by an automated system to achieve a specific goal. Behaviors can be very simple (like avoiding obstacles) or complex (like following a person or coordinating with other robots). A popular paradigm widely used for designing such plans of action is the [behavior tree](./behavior-trees.md). Behavior trees are inherently modular hierarchical structures that allow users to comprehensively define a mission sequence by arranging simple building blocks and create arbitrarily complex applications using model-based programming. AutoAPMS adopts this paradigm and makes it a first class citizen for modeling behaviors.
+In robotics, the term *behavior* refers to the pattern of actions or responses carried out by an automated system to achieve a specific goal. Behaviors can be very simple (like avoiding obstacles) or complex (like following a person or coordinating with other robots). A popular paradigm widely used for designing such plans of action is the [behavior tree](./behavior-trees.md). Behavior trees are hierarchical structures that allow users to intuitively define missions by arranging simple building blocks and create arbitrarily complex applications using model-based programming. AutoAPMS adopts this paradigm and makes it a first class citizen for modeling behaviors.
 
-This project introduces a special workflow for communicating behaviors with robots. The intention behind this is to not only have a single behavior definition schema. Instead, we want to give developers the opportunity to design specialized schemas that best suit their needs. In other words, **AutoAPMS allows for customizing the behavior tree build pipeline** that is triggered by the user when launching a behavior. We define a behavior using
+For communicating behaviors with robots, we introduce a rather abstract but flexible pipeline. The intention behind this is to give developers the opportunity to design specialized behavior definition schemas that best suit their needs. In other words, **AutoAPMS allows for customizing the behavior tree build workflow** that is triggered by the user when launching a behavior. We define a behavior using
 
 1. A behavior **build request** that holds the information about the action plan designed for a specific use-case (according to a user-defined schema)
 
@@ -21,8 +21,9 @@ This project introduces a special workflow for communicating behaviors with robo
 
 ![Behavior Definition](./behavior_definition.svg)
 
-- Behavior resource management and registration
-- Categories
+The standard way of defining behaviors is using an [XML schema](https://www.behaviortree.dev/docs/learn-the-basics/xml_format) that explicitly states the relation between each individual behavior tree node. In this case, the corresponding build handler can directly create the tree by parsing the build request (formatted XML string) using the [`TreeDocument`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html) class that encapsulates the C++ behavior tree building functionality. This workflow can be adopted by using one of the [commonly used behavior build handlers](./common-resources.md#behavior-build-handlers) that are available out of the box. If you would like to introduce custom behavior tree building algorithms, you can [implement your own build handlers](../tutorial/building-behavior-trees.md#using-treebuildhandler).
+
+The combination of a build request, a build handler and optionally an entrypoint and a node manifest is considered a single behavior. Altogether, they uniquely define the pattern of actions for a robotic system. Typically, they should be installed as resources in your ROS 2 workspace using the CMake macro [`auto_apms_behavior_tree_register_behavior`](../reference/cmake.md#register-behavior). All registered behaviors can be conveniently managed using the [`ros2behavior` CLI](../tutorial/using-ros2behavior.md).
 
 ## Task-Level Control
 
@@ -30,7 +31,7 @@ AutoAPMS introduces a unique system architecture for coordinating robot missions
 
 ![AutoAPMS System Architecture](./system-architecture.gif)
 
-This model assumes that the developer provides robotic skills/capabilities offering certain functions for achieving user-defined goals. We distinguish between AutoAPMS's behavior domain and the application specific user domain. It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality.
+This model assumes that the developer provides robotic skills/capabilities offering certain functions for achieving user-defined goals. We distinguish between AutoAPMS's behavior domain (for the clients) and the application specific user domain (for the servers). It's common practice to use [ROS 2 nodes](https://docs.ros.org/en/humble/Concepts/Basic/About-Nodes.html) to implement skills within the user domain acting as servers for specific functions. These nodes typically incorporate [ROS 2 interfaces](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) which allows other entities to query the respective functionality. Regarding behavior trees, it is the individual building blocks, the behavior tree nodes, which act as clients.
 
 ## Development Workflow
 
@@ -44,13 +45,9 @@ When developing robotic applications according to the presented system architect
 
     🎓 [How to build behavior trees](../tutorial/building-behavior-trees.md)
 
-3. **Execute the behavior tree** you created to realize your application.
+3. **Deploy the behavior** you defined and launch your application.
 
     🎓 [How to deploy behaviors](../tutorial/deploying-behaviors.md)
-
-4. Optional: **Configure a mission** that defines fallback behaviors for hazardous events.
-
-    🎓 [How to execute missions](../tutorial/executing-missions.md)
 
 The provided tutorials demystify the complex development process and teach you how to systematically approach each of those tasks. We recommend sticking to our conventions from start to end. Ultimately, you'll be able to bring your robot to life and make it accomplish any task you want.
 

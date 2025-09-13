@@ -198,5 +198,5 @@ auto_apms_mission_register_missions(
 ```
 
 ::: info Learn more 🎓
-Visit the tutorial [Executing Missions](../tutorial/executing-missions.md) for more information.
+Visit the concept page about our [Mission Architecture](../concept/mission-architecture.md) for more information.
 :::

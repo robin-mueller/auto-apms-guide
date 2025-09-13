@@ -129,7 +129,7 @@ SHUTDOWN:
 All of the shown keys except `MISSION` are optional.
 
 ::: info Learn more 🎓
-Visit the tutorial [Executing Missions: Configuring a Mission](../tutorial/executing-missions.md#configuring-a-mission) for more information about how mission configurations are created.
+Visit the concept page about our [Mission Architecture](./mission-architecture.md) for more information about how to configure missions.
 :::
 
 ### Resource Identity Format {#mission-config-identity}
