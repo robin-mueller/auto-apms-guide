@@ -1,5 +1,5 @@
 ---
-order: 10
+order: 20
 sidebar: Behavior Tree Nodes
 ---
 # Behavior Tree Node Reference

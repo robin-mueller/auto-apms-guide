@@ -417,9 +417,11 @@ AutoAPMS conveniently provides an executable called `run_behavior` which we will
 
 == Graphical Approach
 
-If you decided to create a behavior tree XML file using Groot2 (theoretically you could also do so manually), your behavior tree should be registered using the CMake macro `auto_apms_behavior_tree_register_trees`. This allows it to be discovered at runtime. By default, `TreeExecutorNode` loads the `TreeFromResourceBuildHandler` when it is started, so we may execute any previously registered behavior trees by providing the corresponding [resource identity](../concept/common-resources.md#tree-identity):
+If your created a behavior tree XML file using a graphical user interface like Groot2 or a simple text editor, it must be registered using the CMake macro `auto_apms_behavior_tree_register_trees`. This allows the behavior tree to be discovered at runtime. The recommended way of deploying the behavior is using the [`ros2 behavior run`](../reference/ros2behavior.md#ros2-behavior-run) CLI tool (requires package `auto_apms_ros2behavior`). However, you can also stick to using the lower level `run_behavior` executable that comes with `auto_apms_behavior_tree`.
 
 ```bash [Terminal]
+ros2 behavior run "<package_name>::<tree_file_stem>::<tree_name>"
+# OR
 ros2 run auto_apms_behavior_tree run_behavior "<package_name>::<tree_file_stem>::<tree_name>"
 ```
 
@@ -443,6 +445,8 @@ ros2 run auto_apms_examples simple_skill_server
 Afterwards, create a new terminal and start executing the behavior tree:
 
 ```bash [Terminal]
+ros2 behavior run auto_apms_examples::simple_skill_tree::SimpleSkillDemo
+# OR
 ros2 run auto_apms_behavior_tree run_behavior auto_apms_examples::simple_skill_tree::SimpleSkillDemo
 ```
 
@@ -453,6 +457,7 @@ Or you do both in a single launch file similar to this:
 ```py [simple_skill_launch.py]
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from auto_apms_behavior_tree.launch import RunBehavior, BehaviorResource
 
 def generate_launch_description():
     return LaunchDescription(
@@ -463,10 +468,10 @@ def generate_launch_description():
                 executable="simple_skill_server"
             ),
             # Spawn the behavior tree executor for the simple skill tree
-            Node(
-                package="auto_apms_behavior_tree",
-                executable="run_behavior",
-                arguments=["auto_apms_examples::simple_skill_tree::SimpleSkillDemo"]
+            RunBehavior(
+                build_request=BehaviorResource(
+                    "auto_apms_examples::simple_skill_tree::SimpleSkillDemo"
+                )
             )
         ]
     )
@@ -478,9 +483,11 @@ ros2 launch auto_apms_examples simple_skill_launch.py approach:=graphical
 
 <h4>Modify the behavior using parameters</h4>
 
-Remember that we configured the behavior tree so that we can adjust the behavior according to the parameters `bb.msg` and `bb.n_times`? They can be specified like any other ROS 2 parameter by either using [the command line](https://docs.ros.org/en/humble/How-To-Guides/Node-arguments.html#passing-ros-arguments-to-nodes-via-the-command-line) or [a launch file](https://docs.ros.org/en/humble/How-To-Guides/Launch-file-different-formats.html#). For example, run this:
+Remember that we configured the behavior tree so that we can adjust the behavior according to the variables `msg` and `n_times`? They can be specified using ROS 2 parameters by either using [the command line](https://docs.ros.org/en/humble/How-To-Guides/Node-arguments.html#passing-ros-arguments-to-nodes-via-the-command-line) or [a launch file](https://docs.ros.org/en/humble/How-To-Guides/Launch-file-different-formats.html#). For example, run this:
 
 ```bash [Terminal]
+ros2 behavior run auto_apms_examples::simple_skill_tree::SimpleSkillDemo --blackboard msg:="Custom message" n_times:=10
+# OR
 ros2 run auto_apms_behavior_tree run_behavior auto_apms_examples::simple_skill_tree::SimpleSkillDemo --ros-args -p bb.msg:="Custom message" -p bb.n_times:=10
 ```
 
@@ -489,6 +496,7 @@ Or add the parameters inside the launch file:
 ```py [simple_skill_launch.py]
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from auto_apms_behavior_tree.launch import RunBehavior, BehaviorResource
 
 def generate_launch_description():
     return LaunchDescription(
@@ -499,17 +507,17 @@ def generate_launch_description():
                 executable="simple_skill_server"
             ),
             # Spawn the behavior tree executor for the simple skill tree
-            Node(
-                package="auto_apms_behavior_tree",
-                executable="run_behavior",
-                arguments=["auto_apms_examples::simple_skill_tree::SimpleSkillDemo"],
-                parameters=[{"bb.msg": "Custom message", "bb.n_times": 10}]  # [!code ++]
+            RunBehavior(
+                build_request=BehaviorResource(
+                    "auto_apms_examples::simple_skill_tree::SimpleSkillDemo"
+                ),
+                blackboard={"msg": "Custom message", "n_times": 10}  # [!code ++]
             )
         ]
     )
 ```
 
-Try out different parameters yourself!
+Try out setting the variables yourself!
 
 == Programmatic Approach
 
@@ -532,6 +540,8 @@ ros2 run auto_apms_examples simple_skill_server
 Afterwards, create a new terminal and start executing the behavior tree:
 
 ```bash [Terminal]
+ros2 behavior run --build-handler auto_apms_examples::SimpleSkillBuildHandler
+# OR
 ros2 run auto_apms_behavior_tree run_behavior --ros-args -p build_handler:=auto_apms_examples::SimpleSkillBuildHandler
 ```
 
@@ -542,6 +552,7 @@ Or you do both in a single launch file similar to this:
 ```py [simple_skill_launch.py]
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from auto_apms_behavior_tree.launch import RunBehavior
 
 def generate_launch_description():
     return LaunchDescription(
@@ -552,14 +563,8 @@ def generate_launch_description():
                 executable="simple_skill_server"
             ),
             # Spawn the behavior tree executor for the simple skill tree
-            Node(
-                package="auto_apms_behavior_tree",
-                executable="run_behavior",
-                parameters=[
-                    {
-                        "build_handler": "auto_apms_examples::SimpleSkillBuildHandler"
-                    }
-                ]
+            RunBehavior(
+                build_handler="auto_apms_examples::SimpleSkillBuildHandler"
             )
         ]
     )
@@ -574,6 +579,8 @@ ros2 launch auto_apms_examples simple_skill_launch.py approach:=programmatic
 Remember that we configured the behavior tree so that we can adjust the behavior according to the parameters `bb.msg` and `bb.n_times`? They can be specified just like we did with `build_handler`. For example, run this:
 
 ```bash [Terminal]
+ros2 behavior run --build-handler auto_apms_examples::SimpleSkillBuildHandler --blackboard msg:="Custom message" n_times:=10
+# OR
 ros2 run auto_apms_behavior_tree run_behavior --ros-args -p build_handler:=auto_apms_examples::SimpleSkillBuildHandler -p bb.msg:="Custom message" -p bb.n_times:=10
 ```
 
@@ -582,6 +589,7 @@ Or add the parameters inside the launch file:
 ```py [simple_skill_launch.py]
 from launch import LaunchDescription
 from launch_ros.actions import Node
+from auto_apms_behavior_tree.launch import RunBehavior
 
 def generate_launch_description():
     return LaunchDescription(
@@ -592,21 +600,14 @@ def generate_launch_description():
                 executable="simple_skill_server"
             ),
             # Spawn the behavior tree executor for the simple skill tree
-            Node(
-                package="auto_apms_behavior_tree",
-                executable="run_behavior",
-                parameters=[
-                    {
-                        "build_handler": "auto_apms_examples::SimpleSkillBuildHandler",
-                        "bb.msg": "Custom message",  # [!code ++]
-                        "bb.n_times": 10  # [!code ++]
-                    }
-                ]
+            RunBehavior(
+                build_handler="auto_apms_examples::SimpleSkillBuildHandler",
+                blackboard={"msg": "Custom message", "n_times": 10}  # [!code ++]
             )
         ]
     )
 ```
 
-Try out different parameters yourself!
+Try out setting the variables yourself!
 
 :::

@@ -5,7 +5,7 @@ import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs'
 
 const vitePressSidebarOptions = {
     documentRootPath: 'src',
-    useFolderLinkFromIndexFile: true,
+    useFolderLinkFromIndexFile: false,
     useFolderTitleFromIndexFile: true,
     useTitleFromFileHeading: true,
     useTitleFromFrontmatter: true,
@@ -13,7 +13,7 @@ const vitePressSidebarOptions = {
     sortMenusByFrontmatterOrder: true,
     manualSortFileNameByPriority: ['introduction', 'concept', 'tutorial', 'reference'],
     frontmatterTitleFieldName: 'sidebar',
-    capitalizeFirst: true,
+    capitalizeFirst: false,
     hyphenToSpace: true,
     excludePattern: ['create_node_reference_markdown_output.md', 'create_node_reference_markdown_output_px4.md']
 }

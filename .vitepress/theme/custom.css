@@ -37,3 +37,15 @@
 article>.icon {
     background-color: transparent !important;
 }
+
+.VPDoc .aside {  
+  max-width: 320px; /* Increase from default 256px */  
+}  
+  
+.VPDoc .aside-container {  
+  width: 288px; /* Increase from default 224px */  
+}  
+  
+.VPDoc .aside-curtain {  
+  width: 288px; /* Match aside-container width */  
+}

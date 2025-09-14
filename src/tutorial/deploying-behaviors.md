@@ -81,7 +81,9 @@ def generate_launch_description():
 
 :::
 
-The package `auto_apms_behavior_tree` additionally offers an executable called `run_behavior` which automatically spawns the executor and starts executing a specific behavior tree directly afterwards. It implements a custom runtime and handles SIGINT signals appropriately. Use it like this:
+## Executing a Behavior
+
+The package `auto_apms_behavior_tree` additionally offers an executable called `run_behavior` which automatically spawns the executor and starts executing a specific behavior in one go. It implements a custom runtime and handles SIGINT signals appropriately. Use it like this:
 
 ::: code-group
 
@@ -91,15 +93,13 @@ ros2 run auto_apms_behavior_tree run_behavior -h  # Prints help information
 
 ```py [launch.py]
 from launch import LaunchDescription
-from launch_ros.actions import Node
+from auto_apms_behavior_tree.launch import RunBehavior
 
 def generate_launch_description():
     return LaunchDescription(
         [
-            Node(
-                package="auto_apms_behavior_tree",
-                executable="run_behavior",
-                arguments=["-h"]  # Prints help information
+            RunBehavior(
+                # ...
             )
         ]
     )
@@ -141,6 +141,14 @@ If you cannot use `run_behavior` for some reason (e.g. when applying ROS 2 compo
 
 As a last resort, you can also pass a build request as the first command line argument of `tree_executor` which populates the `arguments` member of `rclcpp::NodeOptions`. This will also cause the executor to automatically start ticking the behavior tree but the runtime doesn't handle interrupt signals very well.
 :::
+
+We also offer a package that extends the ROS 2 command line interface with a subcommand specifically dedicated to deploying behaviors. It wraps the `run_behavior` executable and offers tab completion. You simply need to build `auto_apms_ros2behavior` and source your workspace again. Afterwards, you have access to the [`ros2behavior` CLI extension](../reference/ros2behavior.md) which allows you to execute a behavior like this:
+
+```bash [Terminal]
+ros2 behavior run -h  # Prints help information
+```
+
+**This is the recommended way of executing behaviors from the command line** since it integrates very well with the other concepts introduced by AutoAPMS and looks the cleanest.
 
 ## Interacting with the Executor
 
