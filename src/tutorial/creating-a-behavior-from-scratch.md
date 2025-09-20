@@ -177,11 +177,10 @@ The node manifest for the behavior tree we're going to build looks like this:
 ```yaml [config/simple_skill_node_manifest.yaml]
 SimpleSkillActionNode:
   class_name: my_namespace::SimpleSkillClient
-  port: simple_skill
+  topic: simple_skill
 
 HasParameter:
   class_name: auto_apms_behavior_tree::HasParameter
-  port: (input:node)/list_parameters
 ```
 
 We want to include two custom nodes in our behavior tree:
@@ -192,7 +191,7 @@ We want to include two custom nodes in our behavior tree:
 
 - **HasParameter**
 
-  We additionally want to incorporate a node that allows us to determine if the tree executor defines a certain ROS 2 parameter, because want to support dynamically setting the message to be printed. This node is one of many [standard nodes](../reference/behavior-tree-nodes.md) provided by the package `auto_apms_behavior_tree`.
+  We additionally incorporate a node that allows us to determine if the tree executor defines a certain ROS 2 parameter. This allows us to determine if we it's valid to retrieve the value of `n_times` from the executor's parameters. This node is one of many [standard nodes](../reference/behavior-tree-nodes.md) provided by the package `auto_apms_behavior_tree`.
 
 Before we're able to build our behavior tree, we must make sure that our node manifest will be available at runtime. This is achieved by registering one more `ament_index` resource using the `NODE_MANIFEST` argument accepted by the CMake macros `auto_apms_behavior_tree_register_nodes` and `auto_apms_behavior_tree_register_trees`. The following section defines the corresponding CMakeLists.txt. Visit the designated tutorial towards [adding node manifests](./implementing-behavior-tree-nodes.md#adding-node-manifests) to learn more about the details.
 
@@ -403,7 +402,7 @@ This example behavior tree showcases a very useful concept introduced by AutoAPM
 
 Congratulations! 🎉 You are now familiar with the general workflow of building behavior trees.
 
-## Deploy the Behavior
+## Execute the Behavior
 
 Finally, we're going to demonstrate how our simple skill and the behavior tree we've just created can be deployed. Make sure that you [build and install AutoAPMS](../introduction/getting-started.md#setting-up-the-workspace) and your custom package which contains the source code for the example described above (we called it `my_package` before).
 
@@ -411,7 +410,7 @@ Finally, we're going to demonstrate how our simple skill and the behavior tree w
 colcon build --packages-up-to my_package --symlink-install
 ```
 
-AutoAPMS conveniently provides an executable called `run_behavior` which we will use as shown in [Deploying Behaviors](./deploying-behaviors.md). To run the simple skill example, execute the following steps:
+AutoAPMS conveniently provides an executable called `run_behavior` which we will use as shown in [Executing Behaviors](./deploying-behaviors.md#executing-a-behavior). To run the simple skill example, execute the following steps:
 
 ::: tabs key:approach
 

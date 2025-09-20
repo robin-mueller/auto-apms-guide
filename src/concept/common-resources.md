@@ -185,17 +185,14 @@ Behavior tree node manifests are YAML files used for specifying the [`NodeRegist
 ```yaml [node_manifest.yaml]
 MyCustomNodeRegistrationName:  # Registration name of the node
   class_name: my_namespace::MyCustomNodeClass
-  port: (input:port)
+  description: "My custom description."
+  topic: (input:topic)
+  port_defaults: {}  # Must be a map
   wait_timeout: 3
   request_timeout: 2
   allow_unreachable: false
   logger_level: INFO
-  extra:  # Optional: Allows for specifying custom registration options
-    custom_map:
-      my_parameter: 1
-      my_list:
-        - a
-        - b
+  extra: ~  # Can be any valid yaml object
 
 AnotherCoolNodeName:
   class_name: another_namespace::AnotherCoolNodeClass
@@ -206,16 +203,18 @@ AnotherCoolNodeName:
 | Parameter Name | Required/Optional | Interpreted Type | Description |
 | :--- | :---: | :---: | :--- |
 | `class_name` | Required | `std::string` | Fully qualified class name (includes all namespace levels separated by `::`) of the behavior tree node plugin that implements the functionality accessible to the behavior tree using the given registration name. We use the same approach for referring to specific behavior tree nodes as [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html) does for `rclcpp::Node` components. |
-| `port` | Optional | `std::string` | *Only relevant for ROS 2 interface nodes.* Name of the ROS 2 action/service/topic to communication with. |
+| `description` | Optional | `std::string` | Short description of the behavior tree node's purpose and use-case. |
+| `topic` | Optional | `std::string` | *Only relevant for ROS 2 interface nodes.* Name of the ROS 2 action/service/topic to connect with. It is possible to use a port's value to define this parameter at runtime by using the special pattern `(input:<port_name>)` and replacing `<port_name>` with the desired input port name. |
+| `port_defaults` | Optional | `std::map<std::string, std::string>` | Provides the possibility to define custom default values for the ports implemented by `class_name`. This will override the "hard-coded" value and allows for configuring a behavior tree node without touching its source file. |
 | `wait_timeout` | Optional | `double` | *Only relevant for ROS 2 interface nodes.* Period [s] (measured from tree construction) after the server is considered unreachable. |
 | `request_timeout` | Optional | `double` | *Only relevant for ROS 2 interface nodes.* Period [s] (measured from sending a goal request) after the node aborts waiting for a server response. |
 | `allow_unreachable` | Optional | `bool` | *Only relevant for ROS 2 interface nodes.* Flag whether to tolerate if the action/service is unreachable when trying to create the client. If set to `true`, a warning is logged. Otherwise, an exception is raised. |
 | `logger_level` | Optional | `std::string` | *Only relevant for ROS 2 interface nodes.* Minimum severity level enabled for logging using the ROS 2 Logger API. |
 | `extra` | Optional | `YAML::Node` | Flexible YAML node which allows providing additional and customized registration options to the behavior tree node implementation. May contain any arbitrary YAML structure. |
 
-You should understand that registration options are directly associated with a particular registration name (key of the root YAML map).
+You should understand that registration options are directly associated with a particular registration name.
 
-You may include an arbitrary number of nodes in a node manifest. It's also possible to use the same implementation (specify the same node class name) for different registration names. However, all node registration names within a node manifest must be unique (the YAML specification doesn't allow duplicate map keys anyways).
+You may include an arbitrary number of nodes in a node manifest. It's also possible to use the same implementation (specify the same node class name) for different registration names. However, the node registration names within a node manifest must be unique.
 
 Only the `class_name` option is required. The example above shows the default values that will be used if any optional parameters are omitted. The node classes referred to by `class_name` must have been registered using [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#auto-apms-behavior-tree-register-nodes) before the node manifest is parsed (specifying the node manifest in the same macro call is ok).
 
