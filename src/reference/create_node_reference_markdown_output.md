@@ -86,6 +86,8 @@
 
 **Node Type:** `Action`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### AlwaysSuccess
@@ -93,6 +95,8 @@
 **C++ Model:** `auto_apms_behavior_tree::AlwaysSuccess`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 *This node doesn't have any ports.*
 
@@ -102,6 +106,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### AsyncSequence
@@ -110,6 +116,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### Delay
@@ -117,6 +125,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Delay`
 
 **Node Type:** `Decorator`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -130,6 +140,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### ForceFailure
@@ -137,6 +149,8 @@
 **C++ Model:** `auto_apms_behavior_tree::ForceFailure`
 
 **Node Type:** `Decorator`
+
+**Description:** No description provided.
 
 *This node doesn't have any ports.*
 
@@ -146,6 +160,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### IfThenElse
@@ -153,6 +169,8 @@
 **C++ Model:** `auto_apms_behavior_tree::IfThenElse`
 
 **Node Type:** `Control`
+
+**Description:** No description provided.
 
 *This node doesn't have any ports.*
 
@@ -162,6 +180,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### KeepRunningUntilFailure
@@ -170,6 +190,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### LoopBool
@@ -177,6 +199,8 @@
 **C++ Model:** `auto_apms_behavior_tree::LoopBool`
 
 **Node Type:** `Decorator`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -202,6 +226,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -225,6 +251,8 @@
 **C++ Model:** `auto_apms_behavior_tree::LoopInt`
 
 **Node Type:** `Decorator`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -250,6 +278,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -274,6 +304,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -287,6 +319,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -298,6 +332,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Precondition`
 
 **Node Type:** `Decorator`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -312,6 +348,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### ReactiveSequence
@@ -320,6 +358,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### Repeat
@@ -327,6 +367,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Repeat`
 
 **Node Type:** `Decorator`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -340,6 +382,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -351,6 +395,8 @@
 **C++ Model:** `auto_apms_behavior_tree::RunOnce`
 
 **Node Type:** `Decorator`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -364,6 +410,8 @@
 
 **Node Type:** `Action`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -375,6 +423,8 @@
 **C++ Model:** `auto_apms_behavior_tree::ScriptCondition`
 
 **Node Type:** `Condition`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -388,6 +438,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### SequenceWithMemory
@@ -396,6 +448,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ### SetBlackboard
@@ -403,6 +457,8 @@
 **C++ Model:** `auto_apms_behavior_tree::SetBlackboard`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -422,6 +478,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -433,6 +491,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Sleep`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -446,6 +506,8 @@
 
 **Node Type:** `SubTree`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -457,6 +519,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Switch2`
 
 **Node Type:** `Control`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -472,6 +536,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -486,6 +552,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Switch4`
 
 **Node Type:** `Control`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -503,6 +571,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -519,6 +589,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Switch6`
 
 **Node Type:** `Control`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -538,6 +610,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -549,6 +623,8 @@
 **C++ Model:** `auto_apms_behavior_tree::UnsetBlackboard`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -562,6 +638,8 @@
 
 **Node Type:** `Decorator`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -573,6 +651,8 @@
 **C++ Model:** `auto_apms_behavior_tree::WasEntryUpdated`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -586,6 +666,8 @@
 
 **Node Type:** `Control`
 
+**Description:** No description provided.
+
 *This node doesn't have any ports.*
 
 ## auto_apms_behavior_tree
@@ -597,6 +679,8 @@
 **C++ Model:** `auto_apms_behavior_tree::Error`
 
 **Node Type:** `Action`
+
+**Description:** Throws an exception to interrupt behavior tree execution
 
 #### Input Ports
 
@@ -611,6 +695,8 @@
 **C++ Model:** `auto_apms_behavior_tree::GetParameter`
 
 **Node Type:** `Action`
+
+**Description:** Retrieves a parameter value from a ROS2 node. The type of the output will be BT::Any and the user must make sure to cast it to the correct type when using it.
 
 #### Input Ports
 
@@ -633,6 +719,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Retrieves a boolean parameter value from a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -653,6 +741,8 @@
 **C++ Model:** `auto_apms_behavior_tree::GetParameterBoolVec`
 
 **Node Type:** `Action`
+
+**Description:** Retrieves a boolean array parameter value from a ROS2 node
 
 #### Input Ports
 
@@ -675,6 +765,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Retrieves a byte array parameter value from a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -695,6 +787,8 @@
 **C++ Model:** `auto_apms_behavior_tree::GetParameterDouble`
 
 **Node Type:** `Action`
+
+**Description:** Retrieves a double precision floating point parameter value from a ROS2 node
 
 #### Input Ports
 
@@ -717,6 +811,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Retrieves a double precision floating point array parameter value from a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -737,6 +833,8 @@
 **C++ Model:** `auto_apms_behavior_tree::GetParameterInt`
 
 **Node Type:** `Action`
+
+**Description:** Retrieves an integer parameter value from a ROS2 node
 
 #### Input Ports
 
@@ -759,6 +857,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Retrieves an integer array parameter value from a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -779,6 +879,8 @@
 **C++ Model:** `auto_apms_behavior_tree::GetParameterString`
 
 **Node Type:** `Action`
+
+**Description:** Retrieves a string parameter value from a ROS2 node
 
 #### Input Ports
 
@@ -801,6 +903,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Retrieves a string array parameter value from a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -822,6 +926,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Halts an executor by sending a halt command
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -835,6 +941,8 @@
 **C++ Model:** `auto_apms_behavior_tree::HasParameter`
 
 **Node Type:** `Action`
+
+**Description:** Checks if a ROS2 node has a specific parameter defined
 
 #### Input Ports
 
@@ -851,6 +959,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Logs a message to the ROS2 logging system
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -866,6 +976,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Pauses an executor by sending a pause command
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -880,6 +992,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Resumes a paused executor by sending a resume command
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -893,6 +1007,8 @@
 **C++ Model:** `auto_apms_behavior_tree::SetParameter`
 
 **Node Type:** `Action`
+
+**Description:** Sets a parameter on a ROS2 node. This node can infer the type from a blackboard pointer. For passing a string literal as value, use one of the statically typed versions.
 
 #### Input Ports
 
@@ -910,6 +1026,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Sets a boolean parameter on a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -925,6 +1043,8 @@
 **C++ Model:** `auto_apms_behavior_tree::SetParameterBoolVec`
 
 **Node Type:** `Action`
+
+**Description:** Sets a boolean array parameter on a ROS2 node
 
 #### Input Ports
 
@@ -942,6 +1062,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Sets a byte array parameter on a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -957,6 +1079,8 @@
 **C++ Model:** `auto_apms_behavior_tree::SetParameterDouble`
 
 **Node Type:** `Action`
+
+**Description:** Sets a double precision floating point parameter on a ROS2 node
 
 #### Input Ports
 
@@ -974,6 +1098,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Sets a double precision floating point array parameter on a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -989,6 +1115,8 @@
 **C++ Model:** `auto_apms_behavior_tree::SetParameterInt`
 
 **Node Type:** `Action`
+
+**Description:** Sets an integer parameter on a ROS2 node
 
 #### Input Ports
 
@@ -1006,6 +1134,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Sets an integer array parameter on a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -1021,6 +1151,8 @@
 **C++ Model:** `auto_apms_behavior_tree::SetParameterString`
 
 **Node Type:** `Action`
+
+**Description:** Sets a string parameter on a ROS2 node
 
 #### Input Ports
 
@@ -1038,6 +1170,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Sets a string array parameter on a ROS2 node
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -1053,6 +1187,8 @@
 **C++ Model:** `auto_apms_behavior_tree::StartExecutor`
 
 **Node Type:** `Action`
+
+**Description:** Starts an executor by calling its start action
 
 #### Input Ports
 
@@ -1074,6 +1210,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Terminates an executor by sending a terminate command
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -1089,6 +1227,8 @@
 **C++ Model:** `auto_apms_simulation::GetRobotState`
 
 **Node Type:** `Condition`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -1111,6 +1251,8 @@
 
 **Node Type:** `Action`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -1127,6 +1269,8 @@
 
 **Node Type:** `Action`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -1141,6 +1285,8 @@
 **C++ Model:** `auto_apms_simulation::PickObject`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -1157,6 +1303,8 @@
 
 **Node Type:** `Action`
 
+**Description:** No description provided.
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -1170,6 +1318,8 @@
 **C++ Model:** `auto_apms_simulation::RobotSharesCurrentLocation`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 #### Input Ports
 
@@ -1191,6 +1341,8 @@
 **C++ Model:** `auto_apms_simulation::SetLocationState`
 
 **Node Type:** `Action`
+
+**Description:** No description provided.
 
 #### Input Ports
 
