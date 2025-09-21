@@ -7,6 +7,8 @@
 | [GetGlobalPosition](#getglobalposition) | `auto_apms_px4_behavior::GetPosition<GlobalPositionMsg>` | auto_apms_px4_behavior |
 | [GetLocalPosition](#getlocalposition) | `auto_apms_px4_behavior::GetPosition<LocalPositionMsg>` | auto_apms_px4_behavior |
 | [GoTo](#goto) | `auto_apms_px4_behavior::GoToAction` | auto_apms_px4_behavior |
+| [GoToGlobal](#gotoglobal) | `auto_apms_px4_behavior::GoToAction` | auto_apms_px4_behavior |
+| [GoToLocal](#gotolocal) | `auto_apms_px4_behavior::GoToAction` | auto_apms_px4_behavior |
 | [Land](#land) | `auto_apms_px4_behavior::LandAction` | auto_apms_px4_behavior |
 | [Mission](#mission) | `auto_apms_px4_behavior::MissionAction` | auto_apms_px4_behavior |
 | [RTL](#rtl) | `auto_apms_px4_behavior::RTLAction` | auto_apms_px4_behavior |
@@ -22,6 +24,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Arms the vehicle, making it ready for takeoff
+
 #### Input Ports
 
 | Input Name | Type | Default Value | Description |
@@ -36,6 +40,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Disarms the vehicle if it is landed
+
 *This node doesn't have any ports.*
 
 ### EnableHold
@@ -46,6 +52,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Enables or disables the position loiter mode
+
 *This node doesn't have any ports.*
 
 ### GetGlobalPosition
@@ -55,6 +63,8 @@
 **C++ Model:** `auto_apms_px4_behavior::GetGlobalPosition`
 
 **Node Type:** `Condition`
+
+**Description:** Gets the current position of the vehicle in the global coordinate frame
 
 #### Output Ports
 
@@ -73,6 +83,8 @@
 
 **Node Type:** `Condition`
 
+**Description:** Gets the current position of the vehicle in the local coordinate frame
+
 #### Output Ports
 
 | Output Name | Type | Default Value | Description |
@@ -89,6 +101,8 @@
 **C++ Model:** `auto_apms_px4_behavior::GoTo`
 
 **Node Type:** `Action`
+
+**Description:** Commands the vehicle to go to a specified position. The reference frame can be set via the 'frame' input port
 
 #### Input Ports
 
@@ -107,6 +121,60 @@
 | **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | ❌ | Target position as a row vector (separated by ';') |
 | **frame** | `std::string` | global | Reference frame: 'global' (Latitude, longitude, altitude (AMSL)) or 'local' (North, east, down from start) |
 
+### GoToGlobal
+
+**Plugin Class:** `auto_apms_px4_behavior::GoToAction`
+
+**C++ Model:** `auto_apms_px4_behavior::GoToGlobal`
+
+**Node Type:** `Action`
+
+**Description:** Commands the vehicle to go to a specified position in the global coordinate frame
+
+#### Input Ports
+
+| Input Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **reached_thresh_yaw** | `double` | 7.000000 | Maximum heading error [°] under which the position is considered reached |
+| **reached_thresh_vel** | `double` | 0.300000 | Maximum velocity error [m/s] under which the position is considered reached |
+| **reached_thresh_pos** | `double` | 0.500000 | Maximum position error [m] under which the position is considered reached |
+| **max_heading_rate** | `double` | 30.000000 | Maximum heading rate [°/s] |
+| **max_vertical_vel** | `double` | 5.000000 | Maximum vertical velocity [m/s] |
+| **max_horizontal_vel** | `double` | 10.000000 | Maximum horizontal velocity [m/s] |
+| **yaw** | `double` | ❌ | Desired yaw position in degree from north (heading) [-180°, 180) |
+| **z** | `double` | ❌ | Override vector entry Z |
+| **y** | `double` | ❌ | Override vector entry Y |
+| **x** | `double` | ❌ | Override vector entry X |
+| **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | ❌ | Target position as a row vector (separated by ';') |
+| **frame** | `std::string` | global | Reference frame: 'global' (Latitude, longitude, altitude (AMSL)) or 'local' (North, east, down from start) |
+
+### GoToLocal
+
+**Plugin Class:** `auto_apms_px4_behavior::GoToAction`
+
+**C++ Model:** `auto_apms_px4_behavior::GoToLocal`
+
+**Node Type:** `Action`
+
+**Description:** Commands the vehicle to go to a specified position in the local coordinate frame
+
+#### Input Ports
+
+| Input Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **reached_thresh_yaw** | `double` | 7.000000 | Maximum heading error [°] under which the position is considered reached |
+| **reached_thresh_vel** | `double` | 0.300000 | Maximum velocity error [m/s] under which the position is considered reached |
+| **reached_thresh_pos** | `double` | 0.500000 | Maximum position error [m] under which the position is considered reached |
+| **max_heading_rate** | `double` | 30.000000 | Maximum heading rate [°/s] |
+| **max_vertical_vel** | `double` | 5.000000 | Maximum vertical velocity [m/s] |
+| **max_horizontal_vel** | `double` | 10.000000 | Maximum horizontal velocity [m/s] |
+| **yaw** | `double` | ❌ | Desired yaw position in degree from north (heading) [-180°, 180) |
+| **z** | `double` | ❌ | Override vector entry Z |
+| **y** | `double` | ❌ | Override vector entry Y |
+| **x** | `double` | ❌ | Override vector entry X |
+| **vector** | `Eigen::Matrix<double, -1, -1, 0, -1, -1>` | ❌ | Target position as a row vector (separated by ';') |
+| **frame** | `std::string` | local | Reference frame: 'global' (Latitude, longitude, altitude (AMSL)) or 'local' (North, east, down from start) |
+
 ### Land
 
 **Plugin Class:** `auto_apms_px4_behavior::LandAction`
@@ -114,6 +182,8 @@
 **C++ Model:** `auto_apms_px4_behavior::Land`
 
 **Node Type:** `Action`
+
+**Description:** Commands the vehicle to land at its current position
 
 *This node doesn't have any ports.*
 
@@ -124,6 +194,8 @@
 **C++ Model:** `auto_apms_px4_behavior::Mission`
 
 **Node Type:** `Action`
+
+**Description:** Starts a mission that has been previously uploaded to the vehicle
 
 #### Input Ports
 
@@ -139,6 +211,8 @@
 
 **Node Type:** `Action`
 
+**Description:** Commands the vehicle to return to its home position and land
+
 *This node doesn't have any ports.*
 
 ### Takeoff
@@ -148,6 +222,8 @@
 **C++ Model:** `auto_apms_px4_behavior::Takeoff`
 
 **Node Type:** `Action`
+
+**Description:** Commands the vehicle to take off to a specified altitude
 
 #### Input Ports
 
