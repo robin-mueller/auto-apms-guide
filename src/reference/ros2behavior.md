@@ -54,7 +54,7 @@ ros2 behavior list [options]
 ros2 behavior list
 
 # List behaviors in specific categories
-ros2 behavior list -c navigation control
+ros2 behavior list -c tree mission
 
 # Include internal behaviors
 ros2 behavior list --include-internal
@@ -64,12 +64,11 @@ ros2 behavior list --include-internal
 Behaviors are grouped by category and displayed hierarchically:
 
 ```text
-navigation::
-  - goto_waypoint
-  - follow_path
-control::
-  - pid_controller
-  - velocity_controller
+mission/
+  - navigation::explore
+tree/
+  - navigation::goto_waypoint::Main
+  - navigation::follow_path::Main
 ```
 
 ---
@@ -92,7 +91,7 @@ ros2 behavior show <behavior_resource>
 
 ```bash
 # Show a specific behavior
-ros2 behavior show navigation::goto_waypoint
+ros2 behavior show navigation::goto_waypoint::Main
 ```
 
 **Output:**
@@ -129,16 +128,16 @@ ros2 behavior run [behavior_resource] [options]
 
 ```bash
 # Run a behavior with default settings
-ros2 behavior run navigation::goto_waypoint
+ros2 behavior run navigation::explore
 
 # Run with custom blackboard variables
-ros2 behavior run navigation::goto_waypoint --blackboard target_x:=10.0 target_y:=5.0
+ros2 behavior run navigation::explore --blackboard target_x:=10.0 target_y:=5.0
 
 # Run with custom tick rate and Groot2 visualization
-ros2 behavior run navigation::goto_waypoint --tick-rate 2.0 --groot2-port 1667
+ros2 behavior run navigation::explore --tick-rate 2.0 --groot2-port 1667
 
 # Run with debug logging and state change logger
-ros2 behavior run navigation::goto_waypoint --logging debug --state-change-logger
+ros2 behavior run navigation::explore --logging debug --state-change-logger
 ```
 
 ---
@@ -174,16 +173,16 @@ ros2 behavior send <executor_name> <behavior_resource> [options]
 
 ```bash
 # Send behavior to executor
-ros2 behavior send my_executor navigation::goto_waypoint
+ros2 behavior send my_executor navigation::explore
 
 # Send with blackboard variables
-ros2 behavior send my_executor navigation::goto_waypoint --blackboard target_x:=10.0 target_y:=5.0
+ros2 behavior send my_executor navigation::explore --blackboard target_x:=10.0 target_y:=5.0
 
 # Send without clearing existing blackboard
-ros2 behavior send my_executor navigation::goto_waypoint --keep-blackboard
+ros2 behavior send my_executor navigation::explore --keep-blackboard
 
 # Send with custom settings
-ros2 behavior send my_executor navigation::goto_waypoint --tick-rate 1.0 --groot2-port 1667 --state-change-logger true
+ros2 behavior send my_executor navigation::explore --tick-rate 1.0 --groot2-port 1667 --state-change-logger true
 ```
 
 ---
@@ -255,10 +254,10 @@ ros2 behavior node manifest [identity] [node_name]
 ros2 behavior node manifest
 
 # Show nodes in a specific manifest
-ros2 behavior node manifest navigation::nodes
+ros2 behavior node manifest navigation::behavior_tree_nodes
 
 # Show details for a specific node
-ros2 behavior node manifest navigation::nodes goto_waypoint
+ros2 behavior node manifest navigation::behavior_tree_nodes GeneratePath
 ```
 
 **Output:**
@@ -286,10 +285,10 @@ ros2 behavior node model <manifest> [node_name]
 
 ```bash
 # Show overview of all nodes in a manifest
-ros2 behavior node model navigation::nodes
+ros2 behavior node model navigation::behavior_tree_nodes
 
 # Show detailed information for a specific node
-ros2 behavior node model navigation::nodes goto_waypoint
+ros2 behavior node model navigation::behavior_tree_nodes GeneratePath
 ```
 
 **Output:**
@@ -323,8 +322,8 @@ ros2 behavior node call <manifest> <node_name> [port_values...] [options]
 
 ```bash
 # Call a node with port values
-ros2 behavior node call navigation::nodes goto_waypoint target_x:=10.0 target_y:=5.0
+ros2 behavior node call navigation::behavior_tree_nodes GeneratePath target_x:=10.0 target_y:=5.0
 
 # Call with debug logging
-ros2 behavior node call navigation::nodes goto_waypoint target_x:=10.0 --logging debug
+ros2 behavior node call navigation::behavior_tree_nodes GeneratePath target_x:=10.0 --logging debug
 ```
