@@ -58,6 +58,8 @@
 | [Logger](#logger) | `auto_apms_behavior_tree::Logger` | auto_apms_behavior_tree |
 | [PauseExecutor](#pauseexecutor) | `auto_apms_behavior_tree::PauseExecutor` | auto_apms_behavior_tree |
 | [ResumeExecutor](#resumeexecutor) | `auto_apms_behavior_tree::ResumeExecutor` | auto_apms_behavior_tree |
+| [SetBool](#setbool) | `auto_apms_behavior_tree::SetBool` | auto_apms_behavior_tree |
+| [SetEmpty](#setempty) | `auto_apms_behavior_tree::SetEmpty` | auto_apms_behavior_tree |
 | [SetParameter](#setparameter) | `auto_apms_behavior_tree::SetParameter` | auto_apms_behavior_tree |
 | [SetParameterBool](#setparameterbool) | `auto_apms_behavior_tree::SetParameterBool` | auto_apms_behavior_tree |
 | [SetParameterBoolVec](#setparameterboolvec) | `auto_apms_behavior_tree::SetParameterBoolVec` | auto_apms_behavior_tree |
@@ -68,6 +70,7 @@
 | [SetParameterIntVec](#setparameterintvec) | `auto_apms_behavior_tree::SetParameterIntVec` | auto_apms_behavior_tree |
 | [SetParameterString](#setparameterstring) | `auto_apms_behavior_tree::SetParameterString` | auto_apms_behavior_tree |
 | [SetParameterStringVec](#setparameterstringvec) | `auto_apms_behavior_tree::SetParameterStringVec` | auto_apms_behavior_tree |
+| [SetTrigger](#settrigger) | `auto_apms_behavior_tree::SetTrigger` | auto_apms_behavior_tree |
 | [StartExecutor](#startexecutor) | `auto_apms_behavior_tree::StartExecutor` | auto_apms_behavior_tree |
 | [TerminateExecutor](#terminateexecutor) | `auto_apms_behavior_tree::TerminateExecutor` | auto_apms_behavior_tree |
 | [GetRobotState](#getrobotstate) | `auto_apms_simulation::GetRobotState` | auto_apms_simulation |
@@ -1000,6 +1003,45 @@
 | :--- | :---: | :---: | :--- |
 | **executor** | `std::string` | ❌ | Name of the executor to command. |
 
+### SetBool
+
+**Plugin Class:** `auto_apms_behavior_tree::SetBool`
+
+**C++ Model:** `auto_apms_behavior_tree::SetBool`
+
+**Node Type:** `Action`
+
+**Description:** Sets a std_srvs/SetBool service with the given boolean value
+
+#### Input Ports
+
+| Input Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **data** | `bool` | ❌ | Boolean data to set (true, false, 1, 0). |
+| **topic** | `std::string` | ❌ | Name of the ROS 2 service. |
+
+#### Output Ports
+
+| Output Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **message** | `std::string` | ❌ | Service response: informational message. |
+
+### SetEmpty
+
+**Plugin Class:** `auto_apms_behavior_tree::SetEmpty`
+
+**C++ Model:** `auto_apms_behavior_tree::SetEmpty`
+
+**Node Type:** `Action`
+
+**Description:** Calls a std_srvs/Empty service
+
+#### Input Ports
+
+| Input Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **topic** | `std::string` | ❌ | Name of the ROS 2 service. |
+
 ### SetParameter
 
 **Plugin Class:** `auto_apms_behavior_tree::SetParameter`
@@ -1179,6 +1221,28 @@
 | **parameter** | `std::string` | ❌ | Name of the parameter to be set. |
 | **value** | `std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >` | ❌ | Value of the parameter to be set. |
 | **node** | `std::string` | ❌ | Name of the targeted ROS 2 node. Leave empty to target this executor's node. |
+
+### SetTrigger
+
+**Plugin Class:** `auto_apms_behavior_tree::SetTrigger`
+
+**C++ Model:** `auto_apms_behavior_tree::SetTrigger`
+
+**Node Type:** `Action`
+
+**Description:** Calls a std_srvs/Trigger service
+
+#### Input Ports
+
+| Input Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **topic** | `std::string` | ❌ | Name of the ROS 2 service. |
+
+#### Output Ports
+
+| Output Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **message** | `std::string` | ❌ | Service response: informational message. |
 
 ### StartExecutor
 
