@@ -188,6 +188,7 @@ MyCustomNodeRegistrationName:  # Registration name of the node
   description: "My custom description."
   topic: (input:topic)
   port_defaults: {}  # Must be a map
+  hidden_ports: []  # Must be a list
   wait_timeout: 3
   request_timeout: 2
   allow_unreachable: false
@@ -206,6 +207,7 @@ AnotherCoolNodeName:
 | `description` | Optional | `std::string` | Short description of the behavior tree node's purpose and use-case. |
 | `topic` | Optional | `std::string` | *Only relevant for ROS 2 interface nodes.* Name of the ROS 2 action/service/topic to connect with. It is possible to use a port's value to define this parameter at runtime by using the special pattern `(input:<port_name>)` and replacing `<port_name>` with the desired input port name. |
 | `port_defaults` | Optional | `std::map<std::string, std::string>` | Provides the possibility to define custom default values for the ports implemented by `class_name`. This will override the "hard-coded" value and allows for configuring a behavior tree node without touching its source file. |
+| `hidden_ports` | Optional | `std::vector<std::string>` | List of port names to hide in the node model for visualization tools like Groot2. This will not change the implementation, but only modify the generated node model. |
 | `wait_timeout` | Optional | `double` | *Only relevant for ROS 2 interface nodes.* Period [s] (measured from tree construction) after the server is considered unreachable. |
 | `request_timeout` | Optional | `double` | *Only relevant for ROS 2 interface nodes.* Period [s] (measured from sending a goal request) after the node aborts waiting for a server response. |
 | `allow_unreachable` | Optional | `bool` | *Only relevant for ROS 2 interface nodes.* Flag whether to tolerate if the action/service is unreachable when trying to create the client. If set to `true`, a warning is logged. Otherwise, an exception is raised. |
