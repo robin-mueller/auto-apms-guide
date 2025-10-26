@@ -187,7 +187,8 @@ MyCustomNodeRegistrationName:  # Registration name of the node
   class_name: my_namespace::MyCustomNodeClass
   description: "My custom description."
   topic: (input:topic)
-  port_defaults: {}  # Must be a map
+  port_alias: {}  # Must be a map
+  port_default: {}  # Must be a map
   hidden_ports: []  # Must be a list
   wait_timeout: 3
   request_timeout: 2
@@ -206,7 +207,8 @@ AnotherCoolNodeName:
 | `class_name` | Required | `std::string` | Fully qualified class name (includes all namespace levels separated by `::`) of the behavior tree node plugin that implements the functionality accessible to the behavior tree using the given registration name. We use the same approach for referring to specific behavior tree nodes as [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html) does for `rclcpp::Node` components. |
 | `description` | Optional | `std::string` | Short description of the behavior tree node's purpose and use-case. |
 | `topic` | Optional | `std::string` | *Only relevant for ROS 2 interface nodes.* Name of the ROS 2 action/service/topic to connect with. It is possible to use a port's value to define this parameter at runtime by using the special pattern `(input:<port_name>)` and replacing `<port_name>` with the desired input port name. |
-| `port_defaults` | Optional | `std::map<std::string, std::string>` | Provides the possibility to define custom default values for the ports implemented by `class_name`. This will override the "hard-coded" value and allows for configuring a behavior tree node without touching its source file. |
+| `port_alias` | Optional | `std::map<std::string, std::string>` | Provides the possibility to rename ports implemented by `class_name`. This is useful when a node implementation is used in a different context and the meaning of some of the ports has changed. In this case, it's possible to define a more descriptive port name. The description can also be updated by appending it within round brackets (e.g. `original name: alias_name (new description)`). |
+| `port_default` | Optional | `std::map<std::string, std::string>` | Provides the possibility to define custom default values for the ports implemented by `class_name`. This will override the "hard-coded" value and allows for configuring a behavior tree node without touching its source file. |
 | `hidden_ports` | Optional | `std::vector<std::string>` | List of port names to hide in the node model for visualization tools like Groot2. This will not change the implementation, but only modify the generated node model. |
 | `wait_timeout` | Optional | `double` | *Only relevant for ROS 2 interface nodes.* Period [s] (measured from tree construction) after the server is considered unreachable. |
 | `request_timeout` | Optional | `double` | *Only relevant for ROS 2 interface nodes.* Period [s] (measured from sending a goal request) after the node aborts waiting for a server response. |
