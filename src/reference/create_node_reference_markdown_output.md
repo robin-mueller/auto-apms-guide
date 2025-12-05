@@ -57,6 +57,7 @@
 | [HasParameter](#hasparameter) | `auto_apms_behavior_tree::HasParameter` | auto_apms_behavior_tree |
 | [Logger](#logger) | `auto_apms_behavior_tree::Logger` | auto_apms_behavior_tree |
 | [PauseExecutor](#pauseexecutor) | `auto_apms_behavior_tree::PauseExecutor` | auto_apms_behavior_tree |
+| [PublishPose](#publishpose) | `auto_apms_behavior_tree::PublishPose` | auto_apms_behavior_tree |
 | [ResumeExecutor](#resumeexecutor) | `auto_apms_behavior_tree::ResumeExecutor` | auto_apms_behavior_tree |
 | [SetBool](#setbool) | `auto_apms_behavior_tree::SetBool` | auto_apms_behavior_tree |
 | [SetEmpty](#setempty) | `auto_apms_behavior_tree::SetEmpty` | auto_apms_behavior_tree |
@@ -986,6 +987,30 @@
 | Input Name | Type | Default Value | Description |
 | :--- | :---: | :---: | :--- |
 | **executor** | `std::string` | ❌ | Name of the executor to command. |
+
+### PublishPose
+
+**Plugin Class:** `auto_apms_behavior_tree::PublishPose`
+
+**C++ Model:** `auto_apms_behavior_tree::PublishPose`
+
+**Node Type:** `Condition`
+
+**Description:** Publishes a geometry_msgs/PoseStamped message with position and orientation
+
+#### Input Ports
+
+| Input Name | Type | Default Value | Description |
+| :--- | :---: | :---: | :--- |
+| **x** | `double` | 0.000000 | Target x position in meters. |
+| **y** | `double` | 0.000000 | Target y position in meters. |
+| **z** | `double` | 0.000000 | Target z position in meters. |
+| **frame_id** | `std::string` | map | Frame ID for the pose. |
+| **roll** | `double` | 0.000000 | Target roll angle in radians (or degrees if use_degrees is true). |
+| **use_degrees** | `bool` | false | If true, interpret roll, pitch, yaw as degrees instead of radians. |
+| **pitch** | `double` | 0.000000 | Target pitch angle in radians (or degrees if use_degrees is true). |
+| **yaw** | `double` | 0.000000 | Target yaw angle in radians (or degrees if use_degrees is true). |
+| **topic** | `std::string` | ❌ | Name of the ROS 2 topic to publish to. |
 
 ### ResumeExecutor
 
