@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD024 MD041 -->
+<!-- markdownlint-disable MD024 MD041 MD060 -->
 | Registration Name | Class Name | Package |
 | :--- | :---: | :---: |
 | [AlwaysFailure](#alwaysfailure) | `None` | auto_apms_behavior_tree (BehaviorTree.CPP) |
