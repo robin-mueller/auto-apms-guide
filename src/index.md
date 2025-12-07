@@ -16,10 +16,10 @@ hero:
       link: /introduction/about
     - theme: brand
       text: API Documentation
-      link: https://robin-mueller.github.io/auto-apms
+      link: https://autoapms.github.io/auto-apms
     - theme: brand
       text: GitHub
-      link: https://github.com/robin-mueller/auto-apms
+      link: https://github.com/autoapms/auto-apms
 
 features:
   - title: Leveraging modern ROS 2

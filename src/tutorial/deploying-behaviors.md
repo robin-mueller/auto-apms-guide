@@ -18,7 +18,7 @@ The user is expected to provide a resource identity in order to specify the buil
 
 ## Spinning the Executor
 
-Users may spawn the behavior tree executor as it's done with any other ROS 2 node. We provide a minimal executable called `tree_executor` which simply spins the node. It can be used from the terminal or inside a [ROS 2 launch file](https://docs.ros.org/en/humble/tutorial/Intermediate/Launch/Creating-Launch-Files.html) like this:
+Users may spawn the behavior tree executor as it's done with any other ROS 2 node. We provide a minimal executable called `tree_executor` which simply spins the node. It can be used from the terminal or inside a [ROS 2 launch file](https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Launch/Creating-Launch-Files.html) like this:
 
 ::: code-group
 
@@ -43,7 +43,7 @@ def generate_launch_description():
 
 :::
 
-If you're using [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html), the corresponding component can be found under the name `auto_apms_behavior_tree::TreeExecutorNode` and spawned like this:
+If you're using [ROS 2 Composition](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Composition.html), the corresponding component can be found under the name `auto_apms_behavior_tree::TreeExecutorNode` and spawned like this:
 
 ::: code-group
 

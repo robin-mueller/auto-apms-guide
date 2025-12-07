@@ -5,19 +5,24 @@ order: 20
 
 Start leveraging the advantages of Behavior Trees 🌳 fully integrated with ROS 2 🤖.
 
-::: tip AutoAPMS is Linux only!
-For a list of supported ROS 2 distributions see the [GitHub build workflow](.github/workflows/test.yaml).
-:::
+> [!NOTE]
+> Currently we support **Linux only**!.
+
+| ROS 2 | Build & Test |
+|:------------------:|:------:|
+| Jazzy Jalisco | [![Jazzy](https://github.com/autoapms/auto-apms/actions/workflows/jazzy.yaml/badge.svg?branch=master)](https://github.com/autoapms/auto-apms/actions/workflows/jazzy.yaml) |
+| Kilted Kaiju | [![Kilted](https://github.com/autoapms/auto-apms/actions/workflows/kilted.yaml/badge.svg?branch=master)](https://github.com/autoapms/auto-apms/actions/workflows/kilted.yaml) |
+| Rolling Ridley | [![Rolling](https://github.com/autoapms/auto-apms/actions/workflows/rolling.yaml/badge.svg?branch=master)](https://github.com/autoapms/auto-apms/actions/workflows/rolling.yaml) |
 
 ## Run your first Behavior
 
 The following installation guide helps you getting started with AutoAPMS.
 
-1. Create a [ROS 2 workspace](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html) and clone this repository
+1. Create a [ROS 2 workspace](https://docs.ros.org/en/jazzy/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html) and clone this repository
 
     ```bash
     mkdir ros2_ws && cd ros2_ws
-    (mkdir src && cd src && git clone https://github.com/robin-mueller/auto-apms.git)
+    (mkdir src && cd src && git clone https://github.com/autoapms/auto-apms.git)
     ```
 
 1. Install all required dependencies. We assume that you already installed ROS 2 on your system

@@ -101,11 +101,11 @@ You should build your behavior tree **programmatically** if
 
 This approach requires you to be familiar with AutoAPMS's behavior tree builder API. Most of this functionality is encapsulated by two central C++ classes:
 
-- [`TreeDocument`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html)
+- [`TreeDocument`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html)
 
   Implements a [Document Object Model (DOM)](https://de.wikipedia.org/wiki/Document_Object_Model) for the [behavior tree XML schema](https://www.behaviortree.dev/docs/learn-the-basics/xml_format). It offers a modular, streamlined API to create and modify the XML representation of behavior trees within ROS 2 workspaces.
 
-- [`TreeBuildHandler`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html)
+- [`TreeBuildHandler`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html)
 
   Introduces a plugin-based approach for implementing specialized algorithms for building behavior trees. When deploying behaviors, users may dynamically load plugins created by inheriting from this class to customize how the [behavior tree executor](../concept/behavior-executor.md) interprets incoming build requests.
 
@@ -288,11 +288,11 @@ In this snippet we brought both `my_namespace::model` and `auto_apms_behavior_tr
 
 ### Using `TreeBuildHandler`
 
-The package `auto_apms_behavior_tree` comes with standard behavior build handlers. You can learn more about how to use them [here](../concept/common-resources.md#behavior-build-handlers). In the following, we want to explain how you implement build handlers yourself.
+The package `auto_apms_behavior_tree` comes with [standard behavior build handlers](../concept/common-resources.md#behavior-build-handlers). In the following, we want to explain how you implement build handlers yourself.
 
 Similar to how it's done with custom behavior tree nodes, one must register custom behavior build handlers with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
 
-1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga9e4ca44bb2265ef63f68487c01d32d92) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
+1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://autoapms.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga9e4ca44bb2265ef63f68487c01d32d92) inside the `.cpp` source file. You may call it multiple times for all your custom build handler classes.
 
 2. Call the CMake macro [`auto_apms_behavior_tree_register_build_handlers`](../reference/cmake.md#register-build-handlers) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
 

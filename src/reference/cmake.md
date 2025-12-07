@@ -11,7 +11,7 @@ AutoAPMS offers the following CMake macros for convenience when configuring the 
 
 **Add behavior tree node plugins to the resource index.**
 
-This macro must be called to make behavior tree node plugins available at runtime and configure their registration callbacks with the behavior tree factory. Optionally, a corresponding node model header is generated. This header facilitates integrating the specified nodes when building behavior trees using [`TreeDocument`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html).
+This macro must be called to make behavior tree node plugins available at runtime and configure their registration callbacks with the behavior tree factory. Optionally, a corresponding node model header is generated. This header facilitates integrating the specified nodes when building behavior trees using [`TreeDocument`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html).
 
 ### Signature
 
@@ -23,9 +23,9 @@ auto_apms_behavior_tree_register_nodes(<target> <class_names>...
 ```
 
 ::: warning
-All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08).
+All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://autoapms.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08).
 
-This approach was inspired by [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html).
+This approach was inspired by [ROS 2 Composition](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Composition.html).
 :::
 
 | Argument | Required/Optional | Description |
@@ -59,8 +59,8 @@ Visit the tutorial [Implementing Custom Behavior Tree Nodes](../tutorial/impleme
 
 **Add a custom behavior definition to the workspace and register it with the resource index.**
 
-This macro configures a unique "marker file" that contains essential information for building and executing behaviors at runtime. It uses `ament_index` for registering this resource with the workspace. Read [this guide](https://docs.ros.org/en/humble/How-To-Guides/Ament-CMake-Documentation.html#the-ament-index-explained) to learn more about the ament resource index.
-
+This macro configures a unique "marker file" that contains essential information for building and executing behaviors at runtime. It uses `ament_index` for registering this resource with the workspace. Read [this guide](https://docs.ros.org/en/jazzy/How-To-Guides/Ament-CMake-Documentation.html#the-ament-index-explained) to learn more about the ament resource index.
+<!-- markdown-link-check-disable-next-line -->
 Use this macro for introducing custom behavior definitions tailored to your specific use case. If you simply want to add a behavior tree to the workspace, use [auto_apms_behavior_tree_register_trees](#register-trees) instead.
 
 ### Signature
@@ -100,8 +100,9 @@ auto_apms_behavior_tree_register_behavior(
 ## `auto_apms_behavior_tree_register_trees` {#register-trees}
 
 **Make behavior trees available to the ROS 2 workspace by adding the corresponding behavior tree XML and node manifest YAML files to the resource index.**
-
-This is a specialization of [auto_apms_behavior_tree_register_behavior](#register-behavior) for behavior trees. It provides a standardized way of registering behavior tree resources and allows the user to refer to them using a unique [resource identity](../concept/common-resources.md#tree-identity).
+<!-- markdown-link-check-disable-next-line -->
+This is a specialization of [auto_apms_behavior_tree_register_behavior](#register-behavior) for behavior trees.
+It provides a standardized way of registering behavior tree resources and allows the user to refer to them using a unique [resource identity](../concept/common-resources.md#tree-identity).
 
 ### Signature
 
@@ -147,7 +148,7 @@ auto_apms_behavior_tree_register_build_handlers(<target> <class_names>...)
 ```
 
 ::: warning
-All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga9e4ca44bb2265ef63f68487c01d32d92).
+All classes passed to `class_names` must also be made discoverable using the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_BUILD_HANDLER`](https://autoapms.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga9e4ca44bb2265ef63f68487c01d32d92).
 :::
 
 | Argument | Required/Optional | Description |

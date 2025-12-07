@@ -7,7 +7,7 @@ The behavior executor or sometimes also referred to as behavior engine is a core
 
 Internally, the executor relies on behavior trees for task planning. Each request for starting a behavior leads to a behavior tree being created. It's up to the [build handler](#behavior-build-handler) to interpret the incoming request and build the behavior tree accordingly.
 
-The behavior executor is represented by the [`TreeExecutorNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeExecutorNode.html) class. This central ROS 2 node offers a universal interface for dynamically deploying behaviors at runtime.
+The behavior executor is represented by the [`TreeExecutorNode`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeExecutorNode.html) class. This central ROS 2 node offers a universal interface for dynamically deploying behaviors at runtime.
 
 ## ROS 2 Interfaces
 
@@ -26,7 +26,7 @@ using StartTreeExecutor = auto_apms_interfaces::action::StartTreeExecutor;
 
 **This action allows starting the execution of a specific behavior tree.**
 
-In the request, the user must formulate which behavior tree is to be executed by providing `build_request`. Optionally, `build_handler` may be specified to determine which build handler must be used to interpret `build_request` (If empty, the one that is currently loaded will be used). Depending on the implementation of the build handler, `entrypoint` and `node_manifest` may be required for defining the entry point for execution and/or registering the corresponding behavior tree nodes.`build_request`, `entrypoint` and `node_manifest` are passed to [`TreeBuildHandler::setBuildRequest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#ac4c4887fcd65b024a89445009cbe15b4).
+In the request, the user must formulate which behavior tree is to be executed by providing `build_request`. Optionally, `build_handler` may be specified to determine which build handler must be used to interpret `build_request` (If empty, the one that is currently loaded will be used). Depending on the implementation of the build handler, `entrypoint` and `node_manifest` may be required for defining the entry point for execution and/or registering the corresponding behavior tree nodes.`build_request`, `entrypoint` and `node_manifest` are passed to [`TreeBuildHandler::setBuildRequest`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#ac4c4887fcd65b024a89445009cbe15b4).
 
 Only a single `StartTreeExecutor` goal is allowed to be executed at a time.
 
@@ -84,13 +84,13 @@ AutoAPMS introduces the concept of so-called behavior build handlers which allow
 
 The base class for all build handlers is `TreeBuildHandler` and each implementation is defined by the following two virtual methods:
 
-- [`TreeBuildHandler::setBuildRequest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#a4b3cefcf372323b226d61973207627d3)
+- [`TreeBuildHandler::setBuildRequest`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#a4b3cefcf372323b226d61973207627d3)
 
     Callback for interpreting the build request. Depending on the provided arguments, the build handler should decide whether to accept the request or not. If it accepts it, it's common practice to cache this information for later use inside `buildTree`.
 
     By default (if this method is not overridden), all requests are accepted and the arguments of the build request are ignored. This typically means that the build handler is able to create the tree regardless of the user input.
 
-- [`TreeBuildHandler::buildTree`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#afbe6b3c853a2eabad3ff5c48fb50db3d)
+- [`TreeBuildHandler::buildTree`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1TreeBuildHandler.html#afbe6b3c853a2eabad3ff5c48fb50db3d)
 
     Callback for actually building the behavior tree. It is **imperative to override** this method. If `setBuildRequest` is overridden, this method is expected to refer to the information provided by the build request and create the tree accordingly. It's the user's responsibility to implement a sensible algorithm which might as well not use the build request to determine which tree is created.
 
@@ -100,7 +100,7 @@ This architecture offers great flexibility because it allows the user to not jus
 
 ## Global Blackboard
 
-BehaviorTree.CPP allows behavior tree nodes to access the top level blackboard by prepending `@` to the respective entry name. This feature is known as the [global blackboard idiom](https://www.behaviortree.dev/docs/tutorial-advanced/tutorial_16_global_blackboard). We expose the global blackboard to the executor's [ROS 2 Parameters](https://docs.ros.org/en/humble/Concepts/Basic/About-Parameters.html) so that the user may manipulate entries of the global blackboard remotely.
+BehaviorTree.CPP allows behavior tree nodes to access the top level blackboard by prepending `@` to the respective entry name. This feature is known as the [global blackboard idiom](https://www.behaviortree.dev/docs/tutorial-advanced/tutorial_16_global_blackboard). We expose the global blackboard to the executor's [ROS 2 Parameters](https://docs.ros.org/en/jazzy/Concepts/Basic/About-Parameters.html) so that the user may manipulate entries of the global blackboard remotely.
 
 Global blackboard parameter names must be formatted like `bb.<entry_name>`. The `bb` prefix indicates that the parameter refers to an entry of the global blackboard with name `<entry_name>`.
 

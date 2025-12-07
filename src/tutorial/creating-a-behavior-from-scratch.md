@@ -6,13 +6,13 @@ sidebar: "Walkthrough: Creating a Behavior From Scratch"
 
 In this tutorial we will implement and execute a simple behavior tree starting from scratch. By the end of it, you'll be familiar with every development step required for creating behaviors with AutoAPMS.
 
-The full source code of the following examples can be found in the GitHub repository inside the package [`auto_apms_examples`](https://github.com/robin-mueller/auto-apms/blob/master/auto_apms_examples).
+The full source code of the following examples can be found in the GitHub repository inside the package [`auto_apms_examples`](https://github.com/autoapms/auto-apms/blob/master/auto_apms_examples).
 
 [[toc]]
 
 ## Implement a Simple Skill
 
-We're going to create a simple skill that repeatedly prints a given text to the terminal. To achieve this using AutoAPMS and ROS 2, we need to implement an action server that performs the task of writing to the terminal and a separate client that is supposed to send a message specifying the goal of the action. You could approach this development task by sticking to the [official ROS 2 tutorial for writing an action](https://docs.ros.org/en/humble/tutorial/Intermediate/Writing-an-Action-Server-Client/Cpp.html). However, we'd like to show you a more streamlined and modular approach enabled by AutoAPMS.
+We're going to create a simple skill that repeatedly prints a given text to the terminal. To achieve this using AutoAPMS and ROS 2, we need to implement an action server that performs the task of writing to the terminal and a separate client that is supposed to send a message specifying the goal of the action. You could approach this development task by sticking to the [official ROS 2 tutorial for writing an action](https://docs.ros.org/en/jazzy/Tutorials/Intermediate/Writing-an-Action-Server-Client/Cpp.html). However, we'd like to show you a more streamlined and modular approach enabled by AutoAPMS.
 
 ### Action Interface
 
@@ -31,11 +31,11 @@ float64 time_required
 
 ### Server
 
-For implementing robot skills using a ROS 2 action server, we provide the helper class [`ActionWrapper`](https://robin-mueller.github.io/auto-apms/classauto__apms__util_1_1ActionWrapper.html). The `SimpleSkillServer` shown below provides the functionality we want:
+For implementing robot skills using a ROS 2 action server, we provide the helper class [`ActionWrapper`](https://autoapms.github.io/auto-apms/classauto__apms__util_1_1ActionWrapper.html). The `SimpleSkillServer` shown below provides the functionality we want:
 
 <<< ./simple_skill.cpp#server [src/simple_skill_server.cpp]
 
-All we have to do in the CMakeLists.txt of our package is to invoke this macro provided by [`rclcpp_components`](https://github.com/ros2/rclcpp/tree/humble/rclcpp_components) (assuming you add the server's source file to a shared library called "simple_skill_server"):
+All we have to do in the CMakeLists.txt of our package is to invoke this macro provided by [`rclcpp_components`](https://github.com/ros2/rclcpp/tree/jazzy/rclcpp_components) (assuming you add the server's source file to a shared library called "simple_skill_server"):
 
 ::: code-group
 
@@ -118,7 +118,7 @@ ament_package()
 
 ### Client
 
-Until now, we've pretty much only applied the standard ROS 2 workflow. This is about to change when we create the client for `SimpleSkillServer`. Very differently to what you're used to with ROS 2, the `SimpleSkillClient` in the following snippet does **NOT** inherit the interface of a typical `rclcpp::Node`. When using AutoAPMS, we prefer to [implement clients as behavior tree nodes](./implementing-behavior-tree-nodes.md). In this case, it is a [`RosActionNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosActionNode.html).
+Until now, we've pretty much only applied the standard ROS 2 workflow. This is about to change when we create the client for `SimpleSkillServer`. Very differently to what you're used to with ROS 2, the `SimpleSkillClient` in the following snippet does **NOT** inherit the interface of a typical `rclcpp::Node`. When using AutoAPMS, we prefer to [implement clients as behavior tree nodes](./implementing-behavior-tree-nodes.md). In this case, it is a [`RosActionNode`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosActionNode.html).
 
 <<< ./simple_skill.cpp#client [simple_skill_client.cpp]
 
@@ -161,8 +161,8 @@ By "registering a node" we expose the class as a plugin resource and make it dis
 
   Type  | C++ | CMake
 --- | --- | ---
-**Server** | [`RCLCPP_COMPONENTS_REGISTER_NODE`](https://docs.ros.org/en/humble/p/rclcpp_components/generated/define_register__node__macro_8hpp_1a544e598f1116a756e7440b8ce8bc5296.html#c.RCLCPP_COMPONENTS_REGISTER_NODE) | [`rclcpp_components_register_node`](https://github.com/ros2/rclcpp/blob/humble/rclcpp_components/cmake/rclcpp_components_register_node.cmake) [`rclcpp_components_register_nodes`](https://github.com/ros2/rclcpp/blob/humble/rclcpp_components/cmake/rclcpp_components_register_nodes.cmake)
-**Client** | [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08) | [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#auto-apms-behavior-tree-register-nodes)
+**Server** | [`RCLCPP_COMPONENTS_REGISTER_NODE`](https://docs.ros.org/en/jazzy/p/rclcpp_components/generated/define_register__node__macro_8hpp_1a544e598f1116a756e7440b8ce8bc5296.html#c.RCLCPP_COMPONENTS_REGISTER_NODE) | [`rclcpp_components_register_node`](https://github.com/ros2/rclcpp/blob/jazzy/rclcpp_components/cmake/rclcpp_components_register_node.cmake) [`rclcpp_components_register_nodes`](https://github.com/ros2/rclcpp/blob/jazzy/rclcpp_components/cmake/rclcpp_components_register_nodes.cmake)
+**Client** | [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://autoapms.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08) | [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#auto-apms-behavior-tree-register-nodes)
 
 ## Create a Behavior
 
@@ -482,7 +482,7 @@ ros2 launch auto_apms_examples simple_skill_launch.py approach:=graphical
 
 <h4>Modify the behavior using parameters</h4>
 
-Remember that we configured the behavior tree so that we can adjust the behavior according to the variables `msg` and `n_times`? They can be specified using ROS 2 parameters by either using [the command line](https://docs.ros.org/en/humble/How-To-Guides/Node-arguments.html#passing-ros-arguments-to-nodes-via-the-command-line) or [a launch file](https://docs.ros.org/en/humble/How-To-Guides/Launch-file-different-formats.html#). For example, run this:
+Remember that we configured the behavior tree so that we can adjust the behavior according to the variables `msg` and `n_times`? They can be specified using ROS 2 parameters by either using [the command line](https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html#passing-ros-arguments-to-nodes-via-the-command-line) or [a launch file](https://docs.ros.org/en/jazzy/How-To-Guides/Launch-file-different-formats.html#). For example, run this:
 
 ```bash [Terminal]
 ros2 behavior run auto_apms_examples::simple_skill_tree::SimpleSkillDemo --blackboard msg:="Custom message" n_times:=10
@@ -522,7 +522,7 @@ Try out setting the variables yourself!
 
 If you decided to use the `TreeBuildHandler` abstraction and implemented a custom plugin which builds your behavior tree, there is no XML file that you can refer to when you want to execute your behavior. Instead, you must provide the class name of the corresponding build handler to `TreeExecutorNode`. This is achieved by setting a parameter named `build_handler`. When this parameter is set, the tree executor loads the given build handler plugin which allows the behavior tree to be built according to the underlying algorithm.
 
-The user can set the `build_handler` parameter for `TreeExecutorNode` like any other ROS 2 parameter by either using [the command line](https://docs.ros.org/en/humble/How-To-Guides/Node-arguments.html#passing-ros-arguments-to-nodes-via-the-command-line) or [a launch file](https://docs.ros.org/en/humble/How-To-Guides/Launch-file-different-formats.html#).
+The user can set the `build_handler` parameter for `TreeExecutorNode` like any other ROS 2 parameter by either using [the command line](https://docs.ros.org/en/jazzy/How-To-Guides/Node-arguments.html#passing-ros-arguments-to-nodes-via-the-command-line) or [a launch file](https://docs.ros.org/en/jazzy/How-To-Guides/Launch-file-different-formats.html#).
 
 ### Run the Example (Programmatic approach)
 

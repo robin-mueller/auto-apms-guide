@@ -2,7 +2,7 @@
   "devDependencies": {
     "markdownlint-cli2": "^0.14.0",
     "markdown-link-check": "^3.13.6",
-    "vitepress": "1.6.3",
+    "vitepress": "1.6.4",
     "vitepress-sidebar": "1.30.2",
     "vitepress-plugin-group-icons": "1.6.0",
     "vitepress-plugin-tabs": "0.5.0"

@@ -3,16 +3,16 @@ order: 10
 ---
 # Implementing Custom Behavior Tree Nodes
 
-Once the robot's skill set has been defined, we must create a way to actually use them. It's common practice in ROS 2 to distribute functionality using the client-server model. Let's assume that we've already created the server of a particular function by implementing a skill using ROS's `rclcpp::Node`. The next step is to allow programs to access that skill using a specific [ROS 2 interface](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html) inside a corresponding client structure.
+Once the robot's skill set has been defined, we must create a way to actually use them. It's common practice in ROS 2 to distribute functionality using the client-server model. Let's assume that we've already created the server of a particular function by implementing a skill using ROS's `rclcpp::Node`. The next step is to allow programs to access that skill using a specific [ROS 2 interface](https://docs.ros.org/en/jazzy/Concepts/Basic/About-Interfaces.html) inside a corresponding client structure.
 
 AutoAPMS advocates using [behavior trees](../concept/behavior-trees.md) for triggering skills. They are composed of nodes designed to be exactly what we search for: Function handles for specific algorithms. We provide various [standard behavior tree nodes](../reference/behavior-tree-nodes.md) that you may use for creating your behavior.
 
 For functionality that is directly associated with custom skills, you must implement your own nodes. If your custom nodes require to use ROS 2 interfaces, you should inherit from one of the following classes:
 
-- [`RosActionNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosActionNode.html) - Client node for a ROS 2 action
-- [`RosServiceNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosServiceNode.html) - Client node for a ROS 2 service
-- [`RosPublisherNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosPublisherNode.html) - Client node for a ROS 2 publisher
-- [`RosSubscriberNode`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosSubscriberNode.html) - Client node for a ROS 2 subscriber
+- [`RosActionNode`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosActionNode.html) - Client node for a ROS 2 action
+- [`RosServiceNode`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosServiceNode.html) - Client node for a ROS 2 service
+- [`RosPublisherNode`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosPublisherNode.html) - Client node for a ROS 2 publisher
+- [`RosSubscriberNode`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1RosSubscriberNode.html) - Client node for a ROS 2 subscriber
 
 If you want to write nodes that are not related to any of the above mentioned ROS 2 interfaces, you should inherit from lower level classes maintained by BehaviorTree.CPP:
 
@@ -31,7 +31,7 @@ AutoAPMS introduces a modular, plugin-based approach for distributing node imple
 
 We provide a straightforward approach for registering custom behavior tree nodes with the resource index and make them discoverable for `pluginlib::ClassLoader`. Our convention requires you to
 
-1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://robin-mueller.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08) inside the `.cpp` source file. You may call it multiple times for all your custom node classes.
+1. Call the C++ macro [`AUTO_APMS_BEHAVIOR_TREE_REGISTER_NODE`](https://autoapms.github.io/auto-apms/group__auto__apms__behavior__tree.html#ga5ce6f5e1249a2f980b0487ca8bb95c08) inside the `.cpp` source file. You may call it multiple times for all your custom node classes.
 
 2. Call the CMake macro [`auto_apms_behavior_tree_register_nodes`](../reference/cmake.md#register-nodes) inside the CMakeLists.txt of your package. You may pass multiple class names to the same call.
 
@@ -118,7 +118,7 @@ ament_package()
 ::: info What does it mean to register a node?
 In the context of `auto_apms_behavior_tree` we use the term *node* as a shorthand for *behavior tree node*. **This is not to be confused with ROS 2 nodes!**
 
-Additionally, the user needs to be aware that there is a difference between registering a node as a package resource and [registering a node with a specific `TreeDocument`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html#a85ea14f41726e1f6b28ade34befb570f).
+Additionally, the user needs to be aware that there is a difference between registering a node as a package resource and [registering a node with a specific `TreeDocument`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html#a85ea14f41726e1f6b28ade34befb570f).
 :::
 
 ## About Registration Options
@@ -129,7 +129,7 @@ If you're familiar with BehaviorTree.CPP, you'll probably know about [`BT::Behav
 
 When directly using `BT::BehaviorTreeFactory`, there are multiple ways of registering nodes. With AutoAPMS, we provide an alternative, unified approach for doing so by introducing so-called [node manifests](../concept/common-resources.md#behavior-tree-node-manifests). These are simple YAML files which specify the **registration options** for each node that is registered as described in the previous section. Follow the link for more information about the structure of the file.
 
-AutoAPMS only requires the user to create a `.yaml` file, configure the node manifest and add it to the `ament_index` using certain CMake macros. No extra C++ source code is required for registering your custom nodes. This process is fully automated by the [`TreeDocument`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html) class. Thus, [building behavior trees](./building-behavior-trees.md) is significantly simpler when using AutoAPMS.
+AutoAPMS only requires the user to create a `.yaml` file, configure the node manifest and add it to the `ament_index` using certain CMake macros. No extra C++ source code is required for registering your custom nodes. This process is fully automated by the [`TreeDocument`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1TreeDocument.html) class. Thus, [building behavior trees](./building-behavior-trees.md) is significantly simpler when using AutoAPMS.
 
 ## Adding Node Manifests
 

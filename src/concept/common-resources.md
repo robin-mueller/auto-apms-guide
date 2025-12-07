@@ -19,8 +19,7 @@ This page provides the most relevant information for all behavior related resour
 
 ## Behavior Trees
 
-Probably the most important non-compiled resource when using AutoAPMS is the behavior tree XML file. The schema of such a file is defined [here](https://www.behaviortree.dev/docs/learn-the-basics/xml_format)
-and looks similar to this:
+Probably the most important non-compiled resource when using AutoAPMS is the behavior tree XML file. The [XML Schema](https://www.behaviortree.dev/docs/learn-the-basics/xml_format) looks similar to this:
 
 ```xml
 <root BTCPP_format="4" main_tree_to_execute="RootTree">
@@ -171,7 +170,7 @@ This is the full signature of a build handler's resource identity:
 
 - `<namespace>::<class_name>`
 
-This is also referred to as the "fully qualified class name". We use the same approach for referring to specific build handler plugin as [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html) does for `rclcpp::Node` components.
+This is also referred to as the "fully qualified class name". We use the same approach for referring to specific build handler plugin as [ROS 2 Composition](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Composition.html) does for `rclcpp::Node` components.
 
 | Token Name | Description |
 | :---: | :--- |
@@ -180,7 +179,7 @@ This is also referred to as the "fully qualified class name". We use the same ap
 
 ## Behavior Tree Node Manifests
 
-Behavior tree node manifests are YAML files used for specifying the [`NodeRegistrationOptions`](https://robin-mueller.github.io/auto-apms/structauto__apms__behavior__tree_1_1core_1_1NodeRegistrationOptions.html) required when loading node plugins implemented by the user. Programmatically, a node manifest is represented by [`NodeManifest`](https://robin-mueller.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1NodeManifest.html). The format of the corresponding YAML file must be as follows:
+Behavior tree node manifests are YAML files used for specifying the [`NodeRegistrationOptions`](https://autoapms.github.io/auto-apms/structauto__apms__behavior__tree_1_1core_1_1NodeRegistrationOptions.html) required when loading node plugins implemented by the user. Programmatically, a node manifest is represented by [`NodeManifest`](https://autoapms.github.io/auto-apms/classauto__apms__behavior__tree_1_1core_1_1NodeManifest.html). The format of the corresponding YAML file must be as follows:
 
 ```yaml [node_manifest.yaml]
 MyCustomNodeRegistrationName:  # Registration name of the node
@@ -204,7 +203,7 @@ AnotherCoolNodeName:
 
 | Parameter Name | Required/Optional | Interpreted Type | Description |
 | :--- | :---: | :---: | :--- |
-| `class_name` | Required | `std::string` | Fully qualified class name (includes all namespace levels separated by `::`) of the behavior tree node plugin that implements the functionality accessible to the behavior tree using the given registration name. We use the same approach for referring to specific behavior tree nodes as [ROS 2 Composition](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Composition.html) does for `rclcpp::Node` components. |
+| `class_name` | Required | `std::string` | Fully qualified class name (includes all namespace levels separated by `::`) of the behavior tree node plugin that implements the functionality accessible to the behavior tree using the given registration name. We use the same approach for referring to specific behavior tree nodes as [ROS 2 Composition](https://docs.ros.org/en/jazzy/Concepts/Intermediate/About-Composition.html) does for `rclcpp::Node` components. |
 | `description` | Optional | `std::string` | Short description of the behavior tree node's purpose and use-case. |
 | `topic` | Optional | `std::string` | *Only relevant for ROS 2 interface nodes.* Name of the ROS 2 action/service/topic to connect with. It is possible to use a port's value to define this parameter at runtime by using the special pattern `(input:<port_name>)` and replacing `<port_name>` with the desired input port name. |
 | `port_alias` | Optional | `std::map<std::string, std::string>` | Provides the possibility to rename ports implemented by `class_name`. This is useful when a node implementation is used in a different context and the meaning of some of the ports has changed. In this case, it's possible to define a more descriptive port name. The description can also be updated by appending it within round brackets (e.g. `original name: alias_name (new description)`). |

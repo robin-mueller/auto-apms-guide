@@ -23,13 +23,19 @@ The long-term goal is to eventually be able to incorporate existing planning lib
 
 AutoAPMS provides developers of real-time systems with the following key features:
 
-- Efficient behavior resource management using `ament_cmake` and `ament_index`
+- Convenient resource management using `ament_cmake` and `ament_index`
+
 - Inherently extensible due to plugin-based design
+
 - Flexible and highly configurable behavior execution engine
+
 - Powerful C++ behavior tree builder API (a supplement to BehaviorTree.CPP)
-- Easy integration of custom behavior tree node implementations
+
+- High-level node manifests for registering node plugins without writing a single line of code
+
 - Support for custom behavior definitions and tree builder algorithms
-- `ros2cli` extensions for orchestrating the system from the command line
+
+- `ros2 behavior` command extending the ROS2 CLI for behavior management
 
 These features frame a unified toolset for implementing behavior-based systems and make it significantly more user-friendly and less error prone to design and execute robotic applications.
 

@@ -36,7 +36,7 @@ The figure below shows how these tiers/layers interact with each other and appli
 ### Multilayered Control
 
 ## Related Research
-
+<!-- markdown-link-check-disable-next-line -->
 - [Usach, H.; Torens, C. et al. (2017): Architectural Considerations Towards Automated Contingency Management for Unmanned Aircraft](https://doi.org/10.2514/6.2017-1293)
 
 - [Müller, R. and Bauer, M. (2024): Automated Mission Management of Small Unmanned Aircraft Systems for Critical Events in Urban Air Traffic](https://doi.org/10.5220/0012951500003822)

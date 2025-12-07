@@ -43,19 +43,19 @@ const vitePressOptions = {
         ['meta', { name: 'msapplication-TileColor', content: '#1ca5bd' }],
         ['meta', { name: 'msapplication-TileImage', content: '/auto-apms-guide/logo/ms-icon-144x144.png' }],
         ['meta', { name: 'theme-color', content: '#1ca5bd' }],
-        ['meta', { property: 'og:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
+        ['meta', { property: 'og:url', content: 'https://autoapms.github.io/auto-apms-guide/' }],
         ['meta', { property: 'og:type', content: 'website' }],
         ['meta', { property: 'og:locale', content: 'en' }],
         ['meta', { property: 'og:title', content: 'AutoAPMS - Automated Action Planning and Management System' }],
         ['meta', { property: 'og:site_name', content: 'AutoAPMS' }],
-        ['meta', { property: 'og:image', content: 'https://robin-mueller.github.io/auto-apms-guide/logo/logo-og.png' }],
+        ['meta', { property: 'og:image', content: 'https://autoapms.github.io/auto-apms-guide/logo/logo-og.png' }],
         ['meta', { property: 'og:image:width', content: '1306' }],
         ['meta', { property: 'og:image:height', content: '910' }],
         ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-        ['meta', { property: 'twitter:domain', content: 'robin-mueller.github.io' }],
-        ['meta', { property: 'twitter:url', content: 'https://robin-mueller.github.io/auto-apms-guide/' }],
+        ['meta', { property: 'twitter:domain', content: 'autoapms.github.io' }],
+        ['meta', { property: 'twitter:url', content: 'https://autoapms.github.io/auto-apms-guide/' }],
         ['meta', { name: 'twitter:title', content: 'AutoAPMS - Automated Action Planning and Management System' }],
-        ['meta', { name: 'twitter:image', content: 'https://robin-mueller.github.io/auto-apms-guide/logo/logo-og.png' }],
+        ['meta', { name: 'twitter:image', content: 'https://autoapms.github.io/auto-apms-guide/logo/logo-og.png' }],
 
         // Google Search Console
         ['meta', { name: 'google-site-verification', content: 'deYaqCwJq_6IydHhpWd_eiMjPjwJJ_yelf0aAgET3Ow' }]
@@ -67,7 +67,7 @@ const vitePressOptions = {
     cleanUrls: true,
 
     sitemap: {
-        hostname: 'https://robin-mueller.github.io/auto-apms-guide/'
+        hostname: 'https://autoapms.github.io/auto-apms-guide/'
     },
 
     themeConfig: {
@@ -82,17 +82,17 @@ const vitePressOptions = {
 
         nav: [
             { text: 'User Guide', link: '/introduction/about', activeMatch: '/\\S' },
-            { text: 'API Docs', link: 'https://robin-mueller.github.io/auto-apms' }
+            { text: 'API Docs', link: 'https://autoapms.github.io/auto-apms' }
         ],
 
         socialLinks: [
-            { icon: 'github', link: 'https://github.com/robin-mueller/auto-apms' }
+            { icon: 'github', link: 'https://github.com/autoapms/auto-apms' }
         ],
 
         outline: [2, 3],
 
         editLink: {
-            pattern: 'https://github.com/robin-mueller/auto-apms-guide/blob/master/src/:path'
+            pattern: 'https://github.com/autoapms/auto-apms-guide/blob/master/src/:path'
         },
         lastUpdated: {
             text: 'Last update',

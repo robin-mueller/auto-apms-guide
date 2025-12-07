@@ -5,7 +5,7 @@ sidebar: About this Guide
 ---
 # User Guide for AutoAPMS
 
-[![Release](https://img.shields.io/github/v/release/robin-mueller/auto-apms?label=Release)](https://github.com/robin-mueller/auto-apms/releases)
+[![Release](https://img.shields.io/github/v/release/autoapms/auto-apms?label=Release)](https://github.com/autoapms/auto-apms/releases)
 
 Welcome developers, engineers and ROS 2 enthusiasts! 🎉
 
@@ -35,7 +35,7 @@ You want to know more about the features of this framework and how to get starte
 
 ::: info
 
-This website hosts the "human-readable" documentation of the project. For all the details regarding the C++ implementation, refer to the [**API Documentation**](https://robin-mueller.github.io/auto-apms/).
+This website hosts the "human-readable" documentation of the project. For all the details regarding the C++ implementation, refer to the [**API Documentation**](https://autoapms.github.io/auto-apms/index.html).
 
 :::
 
