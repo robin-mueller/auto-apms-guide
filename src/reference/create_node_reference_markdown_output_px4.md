@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD024 MD041 -->
+<!-- markdownlint-disable MD024 MD041 MD060 -->
 | Registration Name | Class Name | Package |
 | :--- | :---: | :---: |
 | [Arm](#arm) | `auto_apms_px4_behavior::ArmAction` | auto_apms_px4_behavior |
